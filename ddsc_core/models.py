@@ -20,6 +20,23 @@ CASSANDRA = getattr(settings, 'CASSANDRA', {})
 COLNAME_FORMAT = '%Y-%m-%dT%H:%M:%SZ'
 INTERNAL_TIMEZONE = pytz.UTC
 
+class DataStore(object):
+    _instance = None
+
+    def __new__(cls, *args, **kwargs):
+        if not cls._instance:
+            cls._instance = super(DataStore, cls).__new__(cls, *args, **kwargs)
+            cls._instance.cassandra = CassandraDataStore(CASSANDRA['servers'],
+                CASSANDRA['keyspace'], CASSANDRA['column_family'], 10000)
+        return cls._instance
+     
+    def read(self, *args, **kwargs):
+        return self.cassandra.read(*args, **kwargs)
+
+    def write(self, *args, **kwargs):
+        return self.cassandra.write(*args, **kwargs)
+
+
 class Location(models.Model):
     """
     Location
@@ -93,15 +110,14 @@ class Timeseries(models.Model):
     #process_method = models.ForeignKey(ProcessMethod, null=True)
 
     def get_series_data(self):
-        cassandra = CassandraDataStore(CASSANDRA['servers'],
-            CASSANDRA['keyspace'], CASSANDRA['column_family'], 10000)
         
         try:
             start = datetime.now() + relativedelta( years = -3 )
             end = datetime.now()
             filter = ['value', 'flag']
     
-            df = cassandra.read(self.code,
+            store = DataStore()
+            df = store.read(self.code,
                 INTERNAL_TIMEZONE.localize(start),
                 INTERNAL_TIMEZONE.localize(end), params=filter)
             
