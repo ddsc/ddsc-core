@@ -29,6 +29,13 @@ class DataStore(CassandraDataStore):
             cls._instance = super(DataStore, cls).__new__(cls, *args, **kwargs)
         return cls._instance
 
+    def __init__(self, *args, **kw):
+        CassandraDataStore.__init__(
+            self,
+            CASSANDRA['servers'],
+            CASSANDRA['keyspace'],
+            CASSANDRA['batch_size'],
+        )
 
 class Location(models.Model):
     """
@@ -134,13 +141,9 @@ class Timeseries(models.Model):
             end = datetime.now()
             filter = ['value', 'flag']
 
-            store = DataStore(
-                CASSANDRA['servers'],
-                CASSANDRA['keyspace'],
-                CASSANDRA['column_family'],
-                10000
-            )
+            store = DataStore()
             df = store.read(
+                'timeseries',
                 self.code,
                 INTERNAL_TIMEZONE.localize(start),
                 INTERNAL_TIMEZONE.localize(end),
