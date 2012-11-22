@@ -25,17 +25,18 @@ class DataStore(CassandraDataStore):
     _instance = None
 
     def __new__(cls, *args, **kwargs):
-        if not cls._instance:
+        if cls._instance is None:
             cls._instance = super(DataStore, cls).__new__(cls, *args, **kwargs)
         return cls._instance
 
     def __init__(self, *args, **kw):
-        CassandraDataStore.__init__(
+        return CassandraDataStore.__init__(
             self,
             CASSANDRA['servers'],
             CASSANDRA['keyspace'],
             CASSANDRA['batch_size'],
         )
+
 
 class Location(models.Model):
     """
@@ -134,31 +135,37 @@ class Timeseries(models.Model):
     #valuation_method = models.ForeignKey(ValuationMethod, null=True)
     #process_method = models.ForeignKey(ProcessMethod, null=True)
 
-    def get_series_data(self):
-
-        try:
-            start = datetime.now() + relativedelta(years=-3)
+    def get_events(self, start=None, end=None, filter=None):
+        self.commit_events()
+        if end is None:
             end = datetime.now()
+        if start is None:
+            start = end + relativedelta(years=-3)
+        if filter is None:
             filter = ['value', 'flag']
 
-            store = DataStore()
-            df = store.read(
-                'timeseries',
-                self.code,
-                INTERNAL_TIMEZONE.localize(start),
-                INTERNAL_TIMEZONE.localize(end),
-                params=filter
-            )
+        store = DataStore()
+        return store.read(
+            'events',
+            self.code,
+            INTERNAL_TIMEZONE.localize(start),
+            INTERNAL_TIMEZONE.localize(end),
+            params=filter
+        )
 
-            data = [
-                dict([('datetime', timestamp.strftime(COLNAME_FORMAT))] + [
-                    (colname, row[i])
-                    for i, colname in enumerate(df.columns)
-                ])
-                for timestamp, row in df.iterrows()
-            ]
-            return data
+    def set_events(self, df):
+        store = DataStore()
+        store.write_frame('events', self.code, df)
 
-        except Exception as ex:
-            print repr(ex)
-            return []
+    def set_event(self, timestamp, row):
+        store = DataStore()
+        store.write_row('events', self.code, timestamp, row)
+
+    def commit_events(self):
+        store = DataStore()
+        store.commit()
+
+    def save(self):
+        result = super(Timeseries, self).save()
+        self.commit_events()
+        return result
