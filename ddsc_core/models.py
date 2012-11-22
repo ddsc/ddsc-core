@@ -136,7 +136,6 @@ class Timeseries(models.Model):
     #process_method = models.ForeignKey(ProcessMethod, null=True)
 
     def get_events(self, start=None, end=None, filter=None):
-        self.commit_events()
         if end is None:
             end = datetime.now()
         if start is None:
