@@ -164,7 +164,7 @@ class Timeseries(models.Model):
         store = DataStore()
         store.commit()
 
-    def save(self):
-        result = super(Timeseries, self).save()
+    def save(self, *args, **kwargs):
+        result = super(Timeseries, self).save(*args, **kwargs)
         self.commit_events()
         return result
