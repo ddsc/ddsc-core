@@ -30,13 +30,25 @@ DATABASES = {
     # that as an error.
     'default': {
         'NAME': os.path.join(BUILDOUT_DIR, 'var', 'sqlite', 'test.db'),
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.contrib.gis.db.backends.spatialite',
         'USER': '',
         'PASSWORD': '',
         'HOST': '',  # empty string for localhost.
         'PORT': '',  # empty string for default.
         }
     }
+
+CASSANDRA = {
+    'servers': [
+        '10.100.235.201:9160',
+        '10.100.235.202:9160',
+        '10.100.235.203:9160',
+        '10.100.235.204:9160'
+    ],
+    'keyspace': 'ddsc_unittests',
+    'batch_size': 10000,
+}
+
 SITE_ID = 1
 SECRET_KEY = 'This is not secret but that is ok.'
 INSTALLED_APPS = [
