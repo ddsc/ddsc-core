@@ -30,8 +30,7 @@ class DataStore(CassandraDataStore):
         return cls._instance
 
     def __init__(self, *args, **kw):
-        return CassandraDataStore.__init__(
-            self,
+        super(DataStore, self).__init__(
             CASSANDRA['servers'],
             CASSANDRA['keyspace'],
             CASSANDRA['batch_size'],
