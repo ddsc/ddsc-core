@@ -67,32 +67,34 @@ class Location(models.Model):
 
 
 class Timeseries(models.Model):
-    INTEGER = 0
-    FLOAT = 1
-    TEXT = 4
-    IMAGE = 5
-    GEO_REMOTE_SENSING = 7
-    MOVIE = 8
-    FILE = 10
+    class ValueType:
+        INTEGER = 0
+        FLOAT = 1
+        TEXT = 4
+        IMAGE = 5
+        GEO_REMOTE_SENSING = 7
+        MOVIE = 8
+        FILE = 10
 
     VALUE_TYPE = (
-        (INTEGER, 'integer'),
-        (FLOAT, 'float'),
-        (TEXT, 'text'),
-        (IMAGE, 'image'),
-        (GEO_REMOTE_SENSING, 'georeferenced remote sensing'),
-        (MOVIE, 'movie'),
-        (FILE, 'file'),
+        (ValueType.INTEGER, 'integer'),
+        (ValueType.FLOAT, 'float'),
+        (ValueType.TEXT, 'text'),
+        (ValueType.IMAGE, 'image'),
+        (ValueType.GEO_REMOTE_SENSING, 'georeferenced remote sensing'),
+        (ValueType.MOVIE, 'movie'),
+        (ValueType.FILE, 'file'),
     )
 
-    HISTORICAL = 0
-    SIMULATED_FORECAST = 1
-    SIMULATED_HISTORICAL = 2
+    class TimeseriesType:
+        HISTORICAL = 0
+        SIMULATED_FORECAST = 1
+        SIMULATED_HISTORICAL = 2
 
     TIMESERIES_TYPE = (
-        (HISTORICAL, 'historical'),
-        (SIMULATED_FORECAST, 'simulated forecast'),
-        (SIMULATED_HISTORICAL, 'simulated historical'),
+        (TimeseriesType.HISTORICAL, 'historical'),
+        (TimeseriesType.SIMULATED_FORECAST, 'simulated forecast'),
+        (TimeseriesType.SIMULATED_HISTORICAL, 'simulated historical'),
     )
 
     code = models.CharField(
@@ -134,6 +136,32 @@ class Timeseries(models.Model):
     #valuation_method = models.ForeignKey(ValuationMethod, null=True)
     #process_method = models.ForeignKey(ProcessMethod, null=True)
 
+    first_value_timestamp = models.DateTimeField(
+        null=True,
+        help_text='timestamp of first value'
+    )
+
+    latest_value_number = models.FloatField(null=True)
+    latest_value_text = models.TextField(
+        null=True,
+        help_text='latest value in case of a text, image or file type '
+                  '(image and file is a reference to the file location'
+    )
+    latest_value_timestamp = models.DateTimeField(
+        null=True,
+        help_text='timestamp of latest value'
+    )
+
+    def latest_value(self):
+        if self.value_type == Timeseries.ValueType.INTEGER \
+                or self.value_type == Timeseries.ValueType.FLOAT:
+            return self.latest_value_number
+        if self.value_type == Timeseries.ValueType.TEXT \
+                or self.value_type == Timeseries.ValueType.IMAGE:
+            return self.latest_value_text
+        return None
+
+
     def get_events(self, start=None, end=None, filter=None):
         if end is None:
             end = datetime.now()
@@ -142,26 +170,41 @@ class Timeseries(models.Model):
         if filter is None:
             filter = ['value', 'flag']
 
+        start = INTERNAL_TIMEZONE.localize(start)
+        end = INTERNAL_TIMEZONE.localize(end)
+        
+        if start < self.first_value_timestamp:
+            start = self.first_value_timestamp
+        if end > self.latest_value_timestamp:
+            end = self.latest_value_timestamp
+
         store = DataStore()
-        return store.read(
-            'events',
-            self.code,
-            INTERNAL_TIMEZONE.localize(start),
-            INTERNAL_TIMEZONE.localize(end),
-            params=filter
-        )
+        return store.read('events', self.code, start, end, params=filter)
 
     def set_events(self, df):
-        store = DataStore()
-        store.write_frame('events', self.code, df)
+        for timestamp, row in df.iterrows():
+            self.set_event(timestamp, row)
 
     def set_event(self, timestamp, row):
         store = DataStore()
         store.write_row('events', self.code, timestamp, row)
+        if 'value' in row:
+            if not self.latest_value_timestamp \
+                    or self.latest_value_timestamp < timestamp:
+                if self.value_type == Timeseries.ValueType.INTEGER \
+                        or self.value_type == Timeseries.ValueType.FLOAT:
+                    self.latest_value_number = row['value']
+                elif self.value_type == Timeseries.ValueType.TEXT \
+                        or self.value_type == Timeseries.ValueType.IMAGE:
+                    self.latest_value_text = row['value']
+                self.latest_value_timestamp = timestamp
+            if not self.first_value_timestamp \
+                    or timestamp < self.first_value_timestamp:
+                self.first_value_timestamp = timestamp
 
     def commit_events(self):
         store = DataStore()
-        store.commit()
+        store.commit('events')
 
     def save(self, *args, **kwargs):
         result = super(Timeseries, self).save(*args, **kwargs)
