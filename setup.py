@@ -14,8 +14,6 @@ install_requires = [
     'django-nose',
     'lizard-ui >= 4.0b5',
     'cassandralib',
-    'rabbitmqlib',
-    'tslib',
     'jsonfield',
     ],
 
