@@ -15,6 +15,7 @@ install_requires = [
     'lizard-ui >= 4.0b5',
     'cassandralib',
     'jsonfield',
+    'pandas',
     ],
 
 tests_require = [
@@ -38,7 +39,7 @@ setup(name='ddsc-core',
       zip_safe=False,
       install_requires=install_requires,
       tests_require=tests_require,
-      extras_require = {'test': tests_require},
+      extras_require={'test': tests_require},
       entry_points={
           'console_scripts': [
           ]},
