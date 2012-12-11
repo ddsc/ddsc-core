@@ -20,6 +20,9 @@ class AquoModel(models.Model):
     def __unicode__(self):
         return "{0}".format(self.description)
 
+    def natural_key(self):
+        return (self.code, )
+
     class Meta:
         abstract = True
         app_label = APP_LABEL
