@@ -1,6 +1,10 @@
-"""Models that resemble Aquo domain tables.
+# (c) Nelen & Schuurmans. MIT licensed, see LICENSE.rst.
+
+"""Models that represent Aquo domain tables.
 
 See: http://domeintabellen-idsw.rws.nl/
+
+The classes below have to match the Java entity classes in ddsc-aquo.
 """
 
 from __future__ import unicode_literals
