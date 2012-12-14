@@ -1,0 +1,618 @@
+[
+    {
+        "pk": 34,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Waterkwantiteit",
+            "code": "134",
+            "begin_date": "2012-05-15",
+            "description": "Akoestisch Doppler (ADCP)",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 21,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Meteorologie",
+            "code": "121",
+            "begin_date": "2012-05-15",
+            "description": "Barometer",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Waterkwaliteit",
+            "code": "101",
+            "begin_date": "2012-05-15",
+            "description": "Centrifuge",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Waterkwantiteit",
+            "code": "102",
+            "begin_date": "2012-05-15",
+            "description": "Debietmeter",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Overig",
+            "code": "103",
+            "begin_date": "2012-05-15",
+            "description": "Digitaliseer apparaat",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 55,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Niveaumeting",
+            "code": "155",
+            "begin_date": "2012-06-05",
+            "description": "Druksensor",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Overig",
+            "code": "111",
+            "begin_date": "2012-05-15",
+            "description": "Duimstok",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 35,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Waterkwantiteit",
+            "code": "135",
+            "begin_date": "2012-05-15",
+            "description": "Elektromagnetisch (EM)",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 41,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Waterkwaliteit",
+            "code": "141",
+            "begin_date": "2012-05-15",
+            "description": "Fluorescentiemeter",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Overig",
+            "code": "107",
+            "begin_date": "2012-05-15",
+            "description": "Fototoestel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 54,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Waterkwaliteit",
+            "code": "154",
+            "begin_date": "2012-06-05",
+            "description": "Geleidendheid- en temperatuursensor",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 42,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Waterkwaliteit",
+            "code": "142",
+            "begin_date": "2012-05-15",
+            "description": "Geleidendheidmeter",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 43,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Waterkwaliteit",
+            "code": "143",
+            "begin_date": "2012-05-15",
+            "description": "Geluidssnelheidsmeter",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Waterkwantiteit",
+            "code": "108",
+            "begin_date": "2012-05-15",
+            "description": "Golfmeetboei",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 44,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Waterkwaliteit",
+            "code": "144",
+            "begin_date": "2012-05-15",
+            "description": "Grondwater(monster) sonde",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 30,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Overig",
+            "code": "130",
+            "begin_date": "2012-05-15",
+            "description": "Gyrokompas",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Niveaumeting",
+            "code": "112",
+            "begin_date": "2012-05-15",
+            "description": "Handlood",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Overig",
+            "code": "110",
+            "begin_date": "2012-05-15",
+            "description": "Handmatig",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 31,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Overig",
+            "code": "131",
+            "begin_date": "2012-05-15",
+            "description": "Hellinghoekmeter",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 36,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Waterkwantiteit",
+            "code": "136",
+            "begin_date": "2012-05-15",
+            "description": "HF-Radar",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 22,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Meteorologie",
+            "code": "122",
+            "begin_date": "2012-05-15",
+            "description": "Hygrometer",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 38,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Overig",
+            "code": "138",
+            "begin_date": "2012-05-15",
+            "description": "Kwikthermometer",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 13,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Niveaumeting",
+            "code": "113",
+            "begin_date": "2012-05-15",
+            "description": "Laser",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Waterkwaliteit",
+            "code": "104",
+            "begin_date": "2012-05-15",
+            "description": "Lichtintensiteitsmeter",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 14,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Niveaumeting",
+            "code": "114",
+            "begin_date": "2012-05-15",
+            "description": "LiDar - Laserhoogtemeter",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 23,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Meteorologie",
+            "code": "123",
+            "begin_date": "2012-05-15",
+            "description": "MERIS instrument ENVISAT",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 15,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Niveaumeting",
+            "code": "115",
+            "begin_date": "2012-05-15",
+            "description": "Multibeam echolood",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 24,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Niveaumeting",
+            "code": "124",
+            "begin_date": "2012-05-15",
+            "description": "Peilschaal",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 45,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Waterkwaliteit",
+            "code": "145",
+            "begin_date": "2012-05-15",
+            "description": "pH meter",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 28,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Meteorologie",
+            "code": "128",
+            "begin_date": "2012-05-15",
+            "description": "Pluviograaf",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 37,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Waterkwantiteit",
+            "code": "137",
+            "begin_date": "2012-05-15",
+            "description": "Propellor",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Overig",
+            "code": "109",
+            "begin_date": "2012-05-15",
+            "description": "Radar",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 46,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Waterkwaliteit",
+            "code": "146",
+            "begin_date": "2012-05-15",
+            "description": "Saliniteitmeter",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 16,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Overig",
+            "code": "116",
+            "begin_date": "2012-05-15",
+            "description": "Schuifmaat",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Waterkwaliteit",
+            "code": "105",
+            "begin_date": "2012-05-15",
+            "description": "Secchi schijf",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 17,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Niveaumeting",
+            "code": "117",
+            "begin_date": "2012-05-15",
+            "description": "Singlebeam echolood - hoog frequent",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 18,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Niveaumeting",
+            "code": "118",
+            "begin_date": "2012-05-15",
+            "description": "Singlebeam echolood - laag frequent",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 19,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Niveaumeting",
+            "code": "119",
+            "begin_date": "2012-05-15",
+            "description": "Slaggaard / Peilstok",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 32,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Overig",
+            "code": "132",
+            "begin_date": "2012-05-15",
+            "description": "Standopnemer",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 25,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Niveaumeting",
+            "code": "125",
+            "begin_date": "2012-05-15",
+            "description": "Stappenbaak",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 33,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Waterkwaliteit",
+            "code": "133",
+            "begin_date": "2012-05-15",
+            "description": "Stralingsmeter",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 56,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Waterkwantiteit",
+            "code": "156",
+            "begin_date": "2012-09-06",
+            "description": "Stroomsnelheidsmeter",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 53,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Waterkwaliteit",
+            "code": "153",
+            "begin_date": "2012-05-31",
+            "description": "Temperatuursensor",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 39,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Overig",
+            "code": "139",
+            "begin_date": "2012-05-15",
+            "description": "Thermograaf",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 29,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Meteorologie",
+            "code": "129",
+            "begin_date": "2012-05-15",
+            "description": "Tipping bucket",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 47,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Waterkwaliteit",
+            "code": "147",
+            "begin_date": "2012-05-15",
+            "description": "Titratiemeter",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Waterkwaliteit",
+            "code": "106",
+            "begin_date": "2012-05-15",
+            "description": "Troebelheidsmeter",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 26,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Niveaumeting",
+            "code": "126",
+            "begin_date": "2012-05-15",
+            "description": "Ultrasoon",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 40,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Overig",
+            "code": "140",
+            "begin_date": "2012-05-15",
+            "description": "Verrekijker",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 27,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Niveaumeting",
+            "code": "127",
+            "begin_date": "2012-05-15",
+            "description": "Vlotter",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 20,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Niveaumeting",
+            "code": "120",
+            "begin_date": "2012-05-15",
+            "description": "Waterpasinstrument",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 49,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Meteorologie",
+            "code": "149",
+            "begin_date": "2012-05-15",
+            "description": "Windrichtingmeter",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 50,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Meteorologie",
+            "code": "150",
+            "begin_date": "2012-05-15",
+            "description": "Windsnelheidsmeter",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 51,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Meteorologie",
+            "code": "151",
+            "begin_date": "2012-05-15",
+            "description": "Wolkenmeter",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 52,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Meteorologie",
+            "code": "152",
+            "begin_date": "2012-05-15",
+            "description": "Zichtmeter",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 48,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "Waterkwaliteit",
+            "code": "148",
+            "begin_date": "2012-05-15",
+            "description": "Zuurstofmeter",
+            "end_date": "2999-12-31"
+        }
+    }
+]

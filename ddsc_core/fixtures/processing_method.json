@@ -1,0 +1,541 @@
+[
+    {
+        "pk": 15,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Percentielen",
+            "code": "P10",
+            "begin_date": "2011-06-11",
+            "description": "10-Percentiel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 16,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Percentielen",
+            "code": "P15",
+            "begin_date": "2011-06-11",
+            "description": "15-Percentiel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 17,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Percentielen",
+            "code": "P20",
+            "begin_date": "2011-06-11",
+            "description": "20-Percentiel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 18,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Percentielen",
+            "code": "P25",
+            "begin_date": "2011-06-11",
+            "description": "25-Percentiel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 19,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Percentielen",
+            "code": "P30",
+            "begin_date": "2011-06-11",
+            "description": "30-Percentiel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 20,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Percentielen",
+            "code": "P35",
+            "begin_date": "2011-06-11",
+            "description": "35-Percentiel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 21,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Percentielen",
+            "code": "P40",
+            "begin_date": "2011-06-11",
+            "description": "40-Percentiel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 22,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Percentielen",
+            "code": "P45",
+            "begin_date": "2011-06-11",
+            "description": "45-Percentiel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Percentielen",
+            "code": "MED",
+            "begin_date": "2011-06-11",
+            "description": "50-Percentiel (mediaan)",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 23,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Percentielen",
+            "code": "P55",
+            "begin_date": "2011-06-11",
+            "description": "55-Percentiel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 14,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Percentielen",
+            "code": "P05",
+            "begin_date": "2011-06-11",
+            "description": "5-Percentiel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 24,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Percentielen",
+            "code": "P60",
+            "begin_date": "2011-06-11",
+            "description": "60-Percentiel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 25,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Percentielen",
+            "code": "P65",
+            "begin_date": "2011-06-11",
+            "description": "65-Percentiel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 26,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Percentielen",
+            "code": "P67",
+            "begin_date": "2011-06-11",
+            "description": "67-Percentiel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 27,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Percentielen",
+            "code": "P70",
+            "begin_date": "2011-06-11",
+            "description": "70-Percentiel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 28,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Percentielen",
+            "code": "P75",
+            "begin_date": "2011-06-11",
+            "description": "75-Percentiel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 29,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Percentielen",
+            "code": "P80",
+            "begin_date": "2011-06-11",
+            "description": "80-Percentiel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 30,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Percentielen",
+            "code": "P85",
+            "begin_date": "2011-06-11",
+            "description": "85-Percentiel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 31,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Percentielen",
+            "code": "P90",
+            "begin_date": "2011-06-11",
+            "description": "90-Percentiel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 32,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Percentielen",
+            "code": "P90ZWR",
+            "begin_date": "2012-12-08",
+            "description": "90 percentiel volgens Zwemwaterrichtlijn 2006",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 33,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Percentielen",
+            "code": "P95",
+            "begin_date": "2011-06-11",
+            "description": "95-Percentiel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 34,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Percentielen",
+            "code": "P95ZWR",
+            "begin_date": "2012-12-08",
+            "description": "95 percentiel volgens Zwemwaterrichtlijn 2006 ",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 35,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Percentielen",
+            "code": "P96",
+            "begin_date": "2011-06-11",
+            "description": "96-Percentiel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 36,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Percentielen",
+            "code": "P97",
+            "begin_date": "2011-06-11",
+            "description": "97-Percentiel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 37,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Percentielen",
+            "code": "P98",
+            "begin_date": "2011-06-11",
+            "description": "98-Percentiel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 38,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Richtlijn/protocol",
+            "code": "P98MAX",
+            "begin_date": "2011-06-11",
+            "description": "98-Percentiel van de maximale dagwaarde",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 39,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Percentielen",
+            "code": "P99",
+            "begin_date": "2011-06-11",
+            "description": "99-Percentiel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Statistiek",
+            "code": "NUM",
+            "begin_date": "2011-06-11",
+            "description": "Aantal meetwaarden",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Statistiek",
+            "code": "NBO",
+            "begin_date": "2011-06-11",
+            "description": "Aantal meetwaarden boven maximum detectiegrens",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Statistiek",
+            "code": "NON",
+            "begin_date": "2011-06-11",
+            "description": "Aantal meetwaarden onder minimum detectiegrens",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Methodiek",
+            "code": "BER",
+            "begin_date": "2011-06-11",
+            "description": "Berekend",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Richtlijn/protocol",
+            "code": "C10",
+            "begin_date": "2011-06-11",
+            "description": "CUWVO 10 percentiel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Richtlijn/protocol",
+            "code": "C90",
+            "begin_date": "2011-06-11",
+            "description": "CUWVO 90 percentiel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Statistiek",
+            "code": "GEM",
+            "begin_date": "2011-06-11",
+            "description": "Gemiddelde",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Richtlijn/protocol",
+            "code": "GSD",
+            "begin_date": "2011-06-11",
+            "description": "Gestandaardiseerde waarde",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Richtlijn/protocol",
+            "code": "JGM",
+            "begin_date": "2011-06-11",
+            "description": "Jaargemiddelde",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Statistiek",
+            "code": "MAX",
+            "begin_date": "2011-06-11",
+            "description": "Maximum",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Statistiek",
+            "code": "MIN",
+            "begin_date": "2011-06-11",
+            "description": "Minimum",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 13,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "(technisch)",
+            "code": "NVT",
+            "begin_date": "2011-06-11",
+            "description": "Niet van toepassing",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 42,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Sommatie deelparameters",
+            "code": "SOM",
+            "begin_date": "2011-06-11",
+            "description": "Sommatie waarden",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 41,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Sommatie deelparameters",
+            "code": "S10",
+            "begin_date": "2011-06-11",
+            "description": "Sommatie waarden deelparameters boven bepalingsgrens",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 40,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Sommatie deelparameters",
+            "code": "S07",
+            "begin_date": "2011-06-11",
+            "description": "Sommatie waarden deelparameters (factor 0.7 als onder bepg)",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 43,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Statistiek",
+            "code": "STD",
+            "begin_date": "2011-06-11",
+            "description": "Standaarddeviatie",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 44,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Statistiek",
+            "code": "VAR",
+            "begin_date": "2011-06-11",
+            "description": "Variantie",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 45,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Richtlijn/protocol",
+            "code": "WGM",
+            "begin_date": "2011-06-11",
+            "description": "Wintergemiddelde",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 46,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Richtlijn/protocol",
+            "code": "ZGM",
+            "begin_date": "2011-06-11",
+            "description": "Zomergemiddelde",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 47,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Richtlijn/protocol",
+            "code": "ZHJ",
+            "begin_date": "2011-06-11",
+            "description": "Zomerhalfjaar",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 48,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Richtlijn/protocol",
+            "code": "ZHM",
+            "begin_date": "2011-06-11",
+            "description": "Zomerhalfjaar doorzicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 49,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "Richtlijn/protocol",
+            "code": "ZPH",
+            "begin_date": "2011-06-11",
+            "description": "Zomerhalfjaar ionenconcentratie",
+            "end_date": "2999-12-31"
+        }
+    }
+]

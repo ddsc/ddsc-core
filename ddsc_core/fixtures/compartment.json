@@ -1,0 +1,326 @@
+[
+    {
+        "pk": 1,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "AW",
+            "group": "Medium",
+            "description": "Afvalwater",
+            "end_date": "2999-12-31",
+            "numeric_code": "30",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "BS",
+            "group": "Medium-MilieuCompartiment",
+            "description": "Bodem/Sediment",
+            "end_date": "2999-12-31",
+            "numeric_code": "40",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "CH",
+            "group": "Medium",
+            "description": "Chemische hulpstoffen",
+            "end_date": "2999-12-31",
+            "numeric_code": "90",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "DL",
+            "group": "Medium",
+            "description": "Drijflaag",
+            "end_date": "2999-12-31",
+            "numeric_code": "103",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "DW",
+            "group": "Medium",
+            "description": "Drinkwater",
+            "end_date": "2999-12-31",
+            "numeric_code": "18",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "GW",
+            "group": "Medium-MilieuCompartiment",
+            "description": "Grondwater",
+            "end_date": "2999-12-31",
+            "numeric_code": "15",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "HW",
+            "group": "Medium-MilieuCompartiment",
+            "description": "Hemelwater",
+            "end_date": "2999-12-31",
+            "numeric_code": "35",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "KH",
+            "group": "Biotoop",
+            "description": "Klinkhout",
+            "end_date": "2999-12-31",
+            "numeric_code": "72",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "KS",
+            "group": "Biotoop",
+            "description": "Kunstmatig substraat",
+            "end_date": "2999-12-31",
+            "numeric_code": "73",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "LM",
+            "group": "Biotoop",
+            "description": "Litoraal",
+            "end_date": "2999-12-31",
+            "numeric_code": "85",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "LW",
+            "group": "Medium",
+            "description": "Lozingswater",
+            "end_date": "2999-12-31",
+            "numeric_code": "31",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "LT",
+            "group": "Medium-MilieuCompartiment",
+            "description": "Lucht",
+            "end_date": "2999-12-31",
+            "numeric_code": "80",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 13,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "NT",
+            "group": "(technisch)",
+            "description": "Niet van toepassing",
+            "end_date": "2999-12-31",
+            "numeric_code": "99",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 16,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "OR",
+            "group": "Biotoop",
+            "description": "Oever",
+            "end_date": "2999-12-31",
+            "numeric_code": "100",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 15,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "OP",
+            "group": "Biotoop",
+            "description": "Onderhoudspad (maaipad)",
+            "end_date": "2999-12-31",
+            "numeric_code": "107",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 17,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "OW",
+            "group": "Medium-MilieuCompartiment",
+            "description": "Oppervlaktewater",
+            "end_date": "2999-12-31",
+            "numeric_code": "10",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 14,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "OE",
+            "group": "(technisch)",
+            "description": "Organisme (biota)",
+            "end_date": "2999-12-31",
+            "numeric_code": "60",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 19,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "PW",
+            "group": "Medium-MilieuCompartiment",
+            "description": "Poriewater",
+            "end_date": "2999-12-31",
+            "numeric_code": "20",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 18,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "PM",
+            "group": "Biotoop",
+            "description": "Profundaal",
+            "end_date": "2999-12-31",
+            "numeric_code": "86",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 21,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "SR",
+            "group": "Biotoop",
+            "description": "Siliconenrubber",
+            "end_date": "2999-12-31",
+            "numeric_code": "105",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 20,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "SN",
+            "group": "Biotoop",
+            "description": "Steen",
+            "end_date": "2999-12-31",
+            "numeric_code": "71",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 22,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "TD",
+            "group": "Biotoop",
+            "description": "Talud",
+            "end_date": "2999-12-31",
+            "numeric_code": "106",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 23,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "VE",
+            "group": "Medium",
+            "description": "Vegetatie",
+            "end_date": "2999-12-31",
+            "numeric_code": "65",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 25,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "ZD",
+            "group": "Medium",
+            "description": "Zand",
+            "end_date": "2999-12-31",
+            "numeric_code": "43",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 24,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "ZB",
+            "group": "Medium",
+            "description": "Zuiveringsslib",
+            "end_date": "2999-12-31",
+            "numeric_code": "55",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 27,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "ZW",
+            "group": "Medium",
+            "description": "Zwembadwater",
+            "end_date": "2999-12-31",
+            "numeric_code": "108",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 26,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "ZS",
+            "group": "Medium-MilieuCompartiment",
+            "description": "Zwevende stof",
+            "end_date": "2999-12-31",
+            "numeric_code": "50",
+            "begin_date": "2011-06-10"
+        }
+    }
+]

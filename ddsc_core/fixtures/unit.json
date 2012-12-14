@@ -1,0 +1,2043 @@
+[
+    {
+        "pk": 2,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "A",
+            "group": "SI grondeenheid",
+            "description": "amp\u00e8re",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1",
+            "begin_date": "2011-06-10",
+            "dimension": "I"
+        }
+    },
+    {
+        "pk": 23,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "bar",
+            "group": "SI niet-SI-eenheid",
+            "description": "bar",
+            "end_date": "2999-12-31",
+            "conversion_factor": "100000",
+            "begin_date": "2011-06-10",
+            "dimension": "M/LT2"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "B",
+            "group": "Overig",
+            "description": "Beaufort",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": null
+        }
+    },
+    {
+        "pk": 4,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "Bq/kg",
+            "group": "SI afgeleide eenheid",
+            "description": "becquerel per kilogram",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1",
+            "begin_date": "2011-06-10",
+            "dimension": "/MT"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "Bq/m3",
+            "group": "SI afgeleide eenheid",
+            "description": "becquerel per kubieke meter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1",
+            "begin_date": "2011-06-10",
+            "dimension": "/L3T"
+        }
+    },
+    {
+        "pk": 29,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "coC",
+            "group": "SI afgeleide eenheid",
+            "description": "centigraad Celsius",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.01",
+            "begin_date": "2012-12-11",
+            "dimension": "O"
+        }
+    },
+    {
+        "pk": 24,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "cm",
+            "group": "SI afgeleide eenheid",
+            "description": "centimeter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.01",
+            "begin_date": "2012-12-11",
+            "dimension": "L"
+        }
+    },
+    {
+        "pk": 25,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "cm/s",
+            "group": "SI afgeleide eenheid",
+            "description": "centimeter per seconde",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.01",
+            "begin_date": "2012-12-11",
+            "dimension": "L/T"
+        }
+    },
+    {
+        "pk": 30,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "cs",
+            "group": "SI afgeleide eenheid",
+            "description": "centiseconde",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.01",
+            "begin_date": "2012-12-11",
+            "dimension": "T"
+        }
+    },
+    {
+        "pk": 31,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "d",
+            "group": "SI niet-SI-eenheid",
+            "description": "dag",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1.157407E-05",
+            "begin_date": "2012-12-11",
+            "dimension": "T"
+        }
+    },
+    {
+        "pk": 33,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "dbar",
+            "group": "SI niet-SI-eenheid",
+            "description": "decibar",
+            "end_date": "2999-12-31",
+            "conversion_factor": "10000",
+            "begin_date": "2011-09-27",
+            "dimension": "M/LT2"
+        }
+    },
+    {
+        "pk": 32,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "dB",
+            "group": "Overig",
+            "description": "decibel",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-09-27",
+            "dimension": null
+        }
+    },
+    {
+        "pk": 37,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "doC",
+            "group": "SI afgeleide eenheid",
+            "description": "decigraad Celsius",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.1",
+            "begin_date": "2012-12-11",
+            "dimension": "O"
+        }
+    },
+    {
+        "pk": 34,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "dm",
+            "group": "SI afgeleide eenheid",
+            "description": "decimeter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.1",
+            "begin_date": "2012-12-11",
+            "dimension": "L"
+        }
+    },
+    {
+        "pk": 35,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "dm/s",
+            "group": "SI afgeleide eenheid",
+            "description": "decimeter per seconde",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.1",
+            "begin_date": "2012-12-11",
+            "dimension": "L/T"
+        }
+    },
+    {
+        "pk": 38,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "ds",
+            "group": "SI afgeleide eenheid",
+            "description": "deciseconde",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.1",
+            "begin_date": "2012-12-11",
+            "dimension": "T"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "DIMSLS",
+            "group": "Overig",
+            "description": "dimensieloos",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": null
+        }
+    },
+    {
+        "pk": 139,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "oD",
+            "group": "Overig",
+            "description": "Duitse graad",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": null
+        }
+    },
+    {
+        "pk": 121,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "n",
+            "group": "Aantal",
+            "description": "exemplaren",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1",
+            "begin_date": "2011-06-10",
+            "dimension": "X"
+        }
+    },
+    {
+        "pk": 122,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "n/dl",
+            "group": "Aantal",
+            "description": "exemplaren per deciliter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "10000",
+            "begin_date": "2011-06-10",
+            "dimension": "X/L3"
+        }
+    },
+    {
+        "pk": 123,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "n/g",
+            "group": "Aantal",
+            "description": "exemplaren per gram",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1000",
+            "begin_date": "2012-05-26",
+            "dimension": "X/M"
+        }
+    },
+    {
+        "pk": 124,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "n/ha",
+            "group": "Aantal",
+            "description": "exemplaren per hectare",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.0001",
+            "begin_date": "2012-12-11",
+            "dimension": "X/L2"
+        }
+    },
+    {
+        "pk": 125,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "n/km",
+            "group": "Aantal",
+            "description": "exemplaren per kilometer",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "X/L"
+        }
+    },
+    {
+        "pk": 127,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "n/l",
+            "group": "Aantal",
+            "description": "exemplaren per liter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1000",
+            "begin_date": "2011-06-10",
+            "dimension": "X/L3"
+        }
+    },
+    {
+        "pk": 128,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "n/m",
+            "group": "Aantal",
+            "description": "exemplaren per meter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1",
+            "begin_date": "2011-06-10",
+            "dimension": "X/L"
+        }
+    },
+    {
+        "pk": 130,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "n/mg",
+            "group": "Aantal",
+            "description": "exemplaren per milligram",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1000000",
+            "begin_date": "2011-06-10",
+            "dimension": "X/M"
+        }
+    },
+    {
+        "pk": 132,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "n/ml",
+            "group": "Aantal",
+            "description": "exemplaren per milliliter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1000000",
+            "begin_date": "2011-06-10",
+            "dimension": "X/L3"
+        }
+    },
+    {
+        "pk": 126,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "n/km2",
+            "group": "Aantal",
+            "description": "exemplaren per vierkante kilometer",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.000001",
+            "begin_date": "2012-12-11",
+            "dimension": "X/L2"
+        }
+    },
+    {
+        "pk": 129,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "n/m2",
+            "group": "Aantal",
+            "description": "exemplaren per vierkante meter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1",
+            "begin_date": "2011-06-10",
+            "dimension": "X/L2"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "FTU",
+            "group": "Overig",
+            "description": "Formazine Turbidity Unit",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": null
+        }
+    },
+    {
+        "pk": 50,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "graad",
+            "group": "SI niet-SI-eenheid",
+            "description": "graad",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": null
+        }
+    },
+    {
+        "pk": 138,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "oC",
+            "group": "SI afgeleide eenheid",
+            "description": "graad Celsius",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1",
+            "begin_date": "2011-06-10",
+            "dimension": "O"
+        }
+    },
+    {
+        "pk": 39,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "g",
+            "group": "SI afgeleide eenheid",
+            "description": "gram",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "M"
+        }
+    },
+    {
+        "pk": 41,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "g/d",
+            "group": "SI afgeleide eenheid",
+            "description": "gram per dag",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1.157407E-08",
+            "begin_date": "2012-12-11",
+            "dimension": "M/T"
+        }
+    },
+    {
+        "pk": 42,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "g/dl",
+            "group": "SI afgeleide eenheid",
+            "description": "gram per deciliter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "10",
+            "begin_date": "2011-06-10",
+            "dimension": "M/L3"
+        }
+    },
+    {
+        "pk": 43,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "g/ie",
+            "group": "Overig",
+            "description": "gram per inwoner equivalent",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": null
+        }
+    },
+    {
+        "pk": 40,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "g/a",
+            "group": "SI afgeleide eenheid",
+            "description": "gram per jaar",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": "M/T"
+        }
+    },
+    {
+        "pk": 44,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "g/kg",
+            "group": "SI afgeleide eenheid",
+            "description": "gram per kilogram",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "M/M"
+        }
+    },
+    {
+        "pk": 47,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "g/m3",
+            "group": "SI afgeleide eenheid",
+            "description": "gram per kubieke meter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "M/L3"
+        }
+    },
+    {
+        "pk": 45,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "g/l",
+            "group": "SI afgeleide eenheid",
+            "description": "gram per liter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1",
+            "begin_date": "2011-06-10",
+            "dimension": "M/L3"
+        }
+    },
+    {
+        "pk": 48,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "g/ml",
+            "group": "SI afgeleide eenheid",
+            "description": "gram per milliliter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1000",
+            "begin_date": "2011-06-10",
+            "dimension": "M/L3"
+        }
+    },
+    {
+        "pk": 49,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "g/s",
+            "group": "SI afgeleide eenheid",
+            "description": "gram per seconde",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "M/T"
+        }
+    },
+    {
+        "pk": 46,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "g/m2",
+            "group": "SI afgeleide eenheid",
+            "description": "gram per vierkante meter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "M/L2"
+        }
+    },
+    {
+        "pk": 53,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "ha",
+            "group": "SI niet-SI-eenheid",
+            "description": "hectare",
+            "end_date": "2999-12-31",
+            "conversion_factor": "10000",
+            "begin_date": "2011-06-10",
+            "dimension": "L2"
+        }
+    },
+    {
+        "pk": 52,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "hPa",
+            "group": "SI afgeleide eenheid",
+            "description": "hectopascal",
+            "end_date": "2999-12-31",
+            "conversion_factor": "100",
+            "begin_date": "2011-06-10",
+            "dimension": "M/LT2"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "Hz",
+            "group": "SI afgeleide eenheid",
+            "description": "hertz",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1",
+            "begin_date": "2011-06-10",
+            "dimension": "/T"
+        }
+    },
+    {
+        "pk": 54,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "ie",
+            "group": "Overig",
+            "description": "inwoner equivalent",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": null
+        }
+    },
+    {
+        "pk": 22,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "a",
+            "group": "SI niet-SI-eenheid",
+            "description": "jaar",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": "T"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "JTU",
+            "group": "Overig",
+            "description": "Jackson Turbidity Unit",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": null
+        }
+    },
+    {
+        "pk": 9,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "J",
+            "group": "SI afgeleide eenheid",
+            "description": "joule",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1",
+            "begin_date": "2011-06-10",
+            "dimension": "L2M/T2"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "J/g",
+            "group": "SI afgeleide eenheid",
+            "description": "joule per gram",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "L2M/MT2"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "J/cm2",
+            "group": "SI afgeleide eenheid",
+            "description": "joule per vierkante centimeter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.0001",
+            "begin_date": "2012-12-11",
+            "dimension": "L2M/L2T2"
+        }
+    },
+    {
+        "pk": 62,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "keV",
+            "group": "SI niet-SI-eenheid",
+            "description": "kilo electronvolt",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": null
+        }
+    },
+    {
+        "pk": 63,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "kg",
+            "group": "SI grondeenheid",
+            "description": "kilogram",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1",
+            "begin_date": "2011-06-10",
+            "dimension": "M"
+        }
+    },
+    {
+        "pk": 66,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "kg/ha",
+            "group": "SI afgeleide eenheid",
+            "description": "kilogram per hectare",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.0001",
+            "begin_date": "2012-12-11",
+            "dimension": "M/L2"
+        }
+    },
+    {
+        "pk": 67,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "kg/ha.a",
+            "group": "SI afgeleide eenheid",
+            "description": "kilogram per hectare per jaar",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2012-11-28",
+            "dimension": "M/L2T"
+        }
+    },
+    {
+        "pk": 64,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "kg/a",
+            "group": "SI afgeleide eenheid",
+            "description": "kilogram per jaar",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": "M/T"
+        }
+    },
+    {
+        "pk": 69,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "kg/m3",
+            "group": "SI afgeleide eenheid",
+            "description": "kilogram per kubieke meter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1",
+            "begin_date": "2011-06-10",
+            "dimension": "M/L3"
+        }
+    },
+    {
+        "pk": 70,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "kg/ton",
+            "group": "SI afgeleide eenheid",
+            "description": "kilogram per ton",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "M/M"
+        }
+    },
+    {
+        "pk": 65,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "kg/h",
+            "group": "SI afgeleide eenheid",
+            "description": "kilogram per uur",
+            "end_date": "2999-12-31",
+            "conversion_factor": "2.777780E-04",
+            "begin_date": "2012-12-11",
+            "dimension": "M/T"
+        }
+    },
+    {
+        "pk": 68,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "kg/km2",
+            "group": "SI afgeleide eenheid",
+            "description": "kilogram per vierkante kilometer",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.000001",
+            "begin_date": "2012-12-11",
+            "dimension": "M/L2"
+        }
+    },
+    {
+        "pk": 55,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "kHz",
+            "group": "SI afgeleide eenheid",
+            "description": "kilohertz",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1000",
+            "begin_date": "2011-06-10",
+            "dimension": "/T"
+        }
+    },
+    {
+        "pk": 56,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "kJ/g",
+            "group": "SI afgeleide eenheid",
+            "description": "kilojoule per gram",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1000000",
+            "begin_date": "2011-06-10",
+            "dimension": "L2M/MT2"
+        }
+    },
+    {
+        "pk": 71,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "km",
+            "group": "SI afgeleide eenheid",
+            "description": "kilometer",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1000",
+            "begin_date": "2011-06-10",
+            "dimension": "L"
+        }
+    },
+    {
+        "pk": 57,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "kV",
+            "group": "SI afgeleide eenheid",
+            "description": "kilovolt",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1000",
+            "begin_date": "2011-06-10",
+            "dimension": "L2M/T3I"
+        }
+    },
+    {
+        "pk": 58,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "kW",
+            "group": "SI afgeleide eenheid",
+            "description": "kilowatt",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1000",
+            "begin_date": "2011-06-10",
+            "dimension": "L2M/T3"
+        }
+    },
+    {
+        "pk": 59,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "kWh",
+            "group": "SI niet-SI-eenheid",
+            "description": "kilowattuur",
+            "end_date": "2999-12-31",
+            "conversion_factor": "3600000",
+            "begin_date": "2011-06-10",
+            "dimension": "L2M/T2"
+        }
+    },
+    {
+        "pk": 60,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "kWh/dam3",
+            "group": "SI afgeleide eenheid",
+            "description": "kilowattuur per kubieke decameter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "3.600000E+09",
+            "begin_date": "2012-12-11",
+            "dimension": "L2M/L3T2"
+        }
+    },
+    {
+        "pk": 61,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "kWh/m3",
+            "group": "SI afgeleide eenheid",
+            "description": "kilowattuur per kubieke meter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "3600000",
+            "begin_date": "2011-06-10",
+            "dimension": "L2M/L3T2"
+        }
+    },
+    {
+        "pk": 36,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "dm3/s",
+            "group": "SI afgeleide eenheid",
+            "description": "kubieke decimeter per seconde",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "L3/T"
+        }
+    },
+    {
+        "pk": 82,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "m3",
+            "group": "SI afgeleide eenheid",
+            "description": "kubieke meter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1",
+            "begin_date": "2011-06-10",
+            "dimension": "L3"
+        }
+    },
+    {
+        "pk": 84,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "m3/d",
+            "group": "SI afgeleide eenheid",
+            "description": "kubieke meter per dag",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1.157407E-05",
+            "begin_date": "2012-12-11",
+            "dimension": "L3/T"
+        }
+    },
+    {
+        "pk": 86,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "m3/ie",
+            "group": "Overig",
+            "description": "kubieke meter per inwoner equivalent",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": null
+        }
+    },
+    {
+        "pk": 83,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "m3/a",
+            "group": "SI afgeleide eenheid",
+            "description": "kubieke meter per jaar",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": "L3/T"
+        }
+    },
+    {
+        "pk": 87,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "m3/min",
+            "group": "SI afgeleide eenheid",
+            "description": "kubieke meter per minuut",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1.666667E-02",
+            "begin_date": "2012-12-11",
+            "dimension": "L3/T"
+        }
+    },
+    {
+        "pk": 88,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "m3/s",
+            "group": "SI afgeleide eenheid",
+            "description": "kubieke meter per seconde",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1",
+            "begin_date": "2011-06-10",
+            "dimension": "L3/T"
+        }
+    },
+    {
+        "pk": 85,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "m3/h",
+            "group": "SI afgeleide eenheid",
+            "description": "kubieke meter per uur",
+            "end_date": "2999-12-31",
+            "conversion_factor": "2.777778E-04",
+            "begin_date": "2012-12-11",
+            "dimension": "L3/T"
+        }
+    },
+    {
+        "pk": 111,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mm3/l",
+            "group": "SI afgeleide eenheid",
+            "description": "kubieke millimeter per liter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.000001",
+            "begin_date": "2012-12-11",
+            "dimension": "L3/L3"
+        }
+    },
+    {
+        "pk": 112,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mm3/ml",
+            "group": "SI afgeleide eenheid",
+            "description": "kubieke millimeter per milliliter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "L3/L3"
+        }
+    },
+    {
+        "pk": 142,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "q",
+            "group": "SI niet-SI-eenheid",
+            "description": "kwartaal",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": "T"
+        }
+    },
+    {
+        "pk": 72,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "l",
+            "group": "SI niet-SI-eenheid",
+            "description": "liter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "L3"
+        }
+    },
+    {
+        "pk": 74,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "l/ie",
+            "group": "Overig",
+            "description": "liter per inwoner equivalent",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": null
+        }
+    },
+    {
+        "pk": 75,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "l/kg",
+            "group": "SI afgeleide eenheid",
+            "description": "liter per kilogram",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "L3/M"
+        }
+    },
+    {
+        "pk": 76,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "l/m3",
+            "group": "SI afgeleide eenheid",
+            "description": "liter per kubieke meter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "L3/L3"
+        }
+    },
+    {
+        "pk": 77,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "l/min",
+            "group": "SI afgeleide eenheid",
+            "description": "liter per minuut",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1.666667E-05",
+            "begin_date": "2012-12-11",
+            "dimension": "L3/T"
+        }
+    },
+    {
+        "pk": 78,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "l/s",
+            "group": "SI afgeleide eenheid",
+            "description": "liter per seconde",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "L3/T"
+        }
+    },
+    {
+        "pk": 73,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "l/h",
+            "group": "SI afgeleide eenheid",
+            "description": "liter per uur",
+            "end_date": "2999-12-31",
+            "conversion_factor": "2.777778E-07",
+            "begin_date": "2012-12-11",
+            "dimension": "L3/T"
+        }
+    },
+    {
+        "pk": 116,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mnd",
+            "group": "SI niet-SI-eenheid",
+            "description": "maand",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": "T"
+        }
+    },
+    {
+        "pk": 13,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "MJ/s",
+            "group": "SI afgeleide eenheid",
+            "description": "megajoule per seconde",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1000000",
+            "begin_date": "2011-06-10",
+            "dimension": "L2M/T3"
+        }
+    },
+    {
+        "pk": 79,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "m",
+            "group": "SI grondeenheid",
+            "description": "meter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1",
+            "begin_date": "2011-06-10",
+            "dimension": "L"
+        }
+    },
+    {
+        "pk": 80,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "m/s",
+            "group": "SI afgeleide eenheid",
+            "description": "meter per seconde",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1",
+            "begin_date": "2011-06-10",
+            "dimension": "L/T"
+        }
+    },
+    {
+        "pk": 146,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "uE",
+            "group": "Overig",
+            "description": "microeinstein",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": null
+        }
+    },
+    {
+        "pk": 148,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "ug/kg",
+            "group": "SI afgeleide eenheid",
+            "description": "microgram per kilogram",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.000001",
+            "begin_date": "2012-12-11",
+            "dimension": "M/M"
+        }
+    },
+    {
+        "pk": 149,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "ug/l",
+            "group": "SI afgeleide eenheid",
+            "description": "microgram per liter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "M/L3"
+        }
+    },
+    {
+        "pk": 150,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "ug/mg",
+            "group": "SI afgeleide eenheid",
+            "description": "microgram per milligram",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "M/M"
+        }
+    },
+    {
+        "pk": 151,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "um",
+            "group": "SI afgeleide eenheid",
+            "description": "micrometer",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.000001",
+            "begin_date": "2012-12-11",
+            "dimension": "L"
+        }
+    },
+    {
+        "pk": 152,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "umol/kg",
+            "group": "SI afgeleide eenheid",
+            "description": "micromol per kilogram",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.000001",
+            "begin_date": "2012-12-11",
+            "dimension": "N/M"
+        }
+    },
+    {
+        "pk": 153,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "umol/l",
+            "group": "SI afgeleide eenheid",
+            "description": "micromol per liter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "N/L3"
+        }
+    },
+    {
+        "pk": 154,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "us",
+            "group": "SI afgeleide eenheid",
+            "description": "microseconde",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.000001",
+            "begin_date": "2012-12-11",
+            "dimension": "T"
+        }
+    },
+    {
+        "pk": 147,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "uS/cm",
+            "group": "SI afgeleide eenheid",
+            "description": "microsiemens per centimeter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.0001",
+            "begin_date": "2012-12-11",
+            "dimension": "T3I2/L3M"
+        }
+    },
+    {
+        "pk": 95,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mbar",
+            "group": "SI niet-SI-eenheid",
+            "description": "millibar",
+            "end_date": "2999-12-31",
+            "conversion_factor": "100",
+            "begin_date": "2011-06-10",
+            "dimension": "M/LT2"
+        }
+    },
+    {
+        "pk": 89,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mBq/l",
+            "group": "SI afgeleide eenheid",
+            "description": "millibecquerel per liter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1",
+            "begin_date": "2011-06-10",
+            "dimension": "/L3T"
+        }
+    },
+    {
+        "pk": 96,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "meq/l",
+            "group": "Overig",
+            "description": "milliequivalent per liter",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": null
+        }
+    },
+    {
+        "pk": 97,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mg/g",
+            "group": "SI afgeleide eenheid",
+            "description": "milligram per gram",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "M/M"
+        }
+    },
+    {
+        "pk": 98,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mg/g.h",
+            "group": "SI afgeleide eenheid",
+            "description": "milligram per gram uur",
+            "end_date": "2999-12-31",
+            "conversion_factor": "2.777778E-07",
+            "begin_date": "2012-12-11",
+            "dimension": "M/MT"
+        }
+    },
+    {
+        "pk": 99,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mg/kg",
+            "group": "SI afgeleide eenheid",
+            "description": "milligram per kilogram",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.000001",
+            "begin_date": "2012-12-11",
+            "dimension": "M/M"
+        }
+    },
+    {
+        "pk": 101,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mg/m3",
+            "group": "SI afgeleide eenheid",
+            "description": "milligram per kubieke meter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.000001",
+            "begin_date": "2012-12-11",
+            "dimension": "M/L3"
+        }
+    },
+    {
+        "pk": 100,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mg/l",
+            "group": "SI afgeleide eenheid",
+            "description": "milligram per liter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "M/L3"
+        }
+    },
+    {
+        "pk": 102,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mg/ml",
+            "group": "SI afgeleide eenheid",
+            "description": "milligram per milliliter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1",
+            "begin_date": "2011-09-27",
+            "dimension": "M/L3"
+        }
+    },
+    {
+        "pk": 90,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mHz",
+            "group": "SI afgeleide eenheid",
+            "description": "millihertz",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "/T"
+        }
+    },
+    {
+        "pk": 104,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "ml",
+            "group": "SI afgeleide eenheid",
+            "description": "milliliter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.000001",
+            "begin_date": "2012-12-11",
+            "dimension": "L3"
+        }
+    },
+    {
+        "pk": 105,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "ml/g",
+            "group": "SI afgeleide eenheid",
+            "description": "milliliter per gram",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "L3/M"
+        }
+    },
+    {
+        "pk": 106,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "ml/l",
+            "group": "SI afgeleide eenheid",
+            "description": "milliliter per liter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "L3/L3"
+        }
+    },
+    {
+        "pk": 107,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mm",
+            "group": "SI afgeleide eenheid",
+            "description": "millimeter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "L"
+        }
+    },
+    {
+        "pk": 108,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mm/d",
+            "group": "SI afgeleide eenheid",
+            "description": "millimeter per dag",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1.157407E-08",
+            "begin_date": "2012-12-11",
+            "dimension": "L/T"
+        }
+    },
+    {
+        "pk": 109,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mm/w",
+            "group": "SI afgeleide eenheid",
+            "description": "millimeter per week",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1.653439E-09",
+            "begin_date": "2012-12-11",
+            "dimension": "L/T"
+        }
+    },
+    {
+        "pk": 113,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mmol",
+            "group": "SI afgeleide eenheid",
+            "description": "millimol",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "N"
+        }
+    },
+    {
+        "pk": 114,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mmol/kg",
+            "group": "SI afgeleide eenheid",
+            "description": "millimol per kilogram",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "N/M"
+        }
+    },
+    {
+        "pk": 115,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mmol/l",
+            "group": "SI afgeleide eenheid",
+            "description": "millimol per liter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.000001",
+            "begin_date": "2012-12-11",
+            "dimension": "N/L3"
+        }
+    },
+    {
+        "pk": 91,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mPa.s",
+            "group": "SI afgeleide eenheid",
+            "description": "millipascal seconde",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "M/LT"
+        }
+    },
+    {
+        "pk": 92,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mS/cm",
+            "group": "SI afgeleide eenheid",
+            "description": "millisiemens per centimeter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.1",
+            "begin_date": "2012-12-11",
+            "dimension": "T3I2/L3M"
+        }
+    },
+    {
+        "pk": 93,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mS/m",
+            "group": "SI afgeleide eenheid",
+            "description": "millisiemens per meter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "T3I2/L3M"
+        }
+    },
+    {
+        "pk": 94,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mV",
+            "group": "SI afgeleide eenheid",
+            "description": "millivolt",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "L2M/T3I"
+        }
+    },
+    {
+        "pk": 103,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "min",
+            "group": "SI niet-SI-eenheid",
+            "description": "minuut",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1.666667E-02",
+            "begin_date": "2012-12-11",
+            "dimension": "T"
+        }
+    },
+    {
+        "pk": 117,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mol",
+            "group": "SI grondeenheid",
+            "description": "mol",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1",
+            "begin_date": "2011-06-10",
+            "dimension": "N"
+        }
+    },
+    {
+        "pk": 119,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mol/m3",
+            "group": "SI afgeleide eenheid",
+            "description": "mol per kubieke meter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1",
+            "begin_date": "2011-06-10",
+            "dimension": "N/L3"
+        }
+    },
+    {
+        "pk": 118,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mol/l",
+            "group": "SI afgeleide eenheid",
+            "description": "mol per liter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "N/L3"
+        }
+    },
+    {
+        "pk": 120,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mol/mol",
+            "group": "SI afgeleide eenheid",
+            "description": "mol per mol",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1",
+            "begin_date": "2011-06-10",
+            "dimension": "N/N"
+        }
+    },
+    {
+        "pk": 133,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "ng/g",
+            "group": "SI afgeleide eenheid",
+            "description": "nanogram per gram",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.000001",
+            "begin_date": "2012-12-11",
+            "dimension": "M/M"
+        }
+    },
+    {
+        "pk": 134,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "ng/kg",
+            "group": "SI afgeleide eenheid",
+            "description": "nanogram per kilogram",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.000000001",
+            "begin_date": "2012-12-11",
+            "dimension": "M/M"
+        }
+    },
+    {
+        "pk": 135,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "ng/l",
+            "group": "SI afgeleide eenheid",
+            "description": "nanogram per liter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.000001",
+            "begin_date": "2012-12-11",
+            "dimension": "M/L3"
+        }
+    },
+    {
+        "pk": 136,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "ng/ml",
+            "group": "SI afgeleide eenheid",
+            "description": "nanogram per milliliter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "M/L3"
+        }
+    },
+    {
+        "pk": 137,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "nmol/mg",
+            "group": "SI afgeleide eenheid",
+            "description": "nanomol per milligram",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.001",
+            "begin_date": "2012-12-11",
+            "dimension": "N/M"
+        }
+    },
+    {
+        "pk": 14,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "NTU",
+            "group": "Overig",
+            "description": "Nephelometric Turbidity Unit",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": null
+        }
+    },
+    {
+        "pk": 131,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "n/min",
+            "group": "Overig",
+            "description": "omwentelingen per minuut",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": null
+        }
+    },
+    {
+        "pk": 141,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "ppm",
+            "group": "Overig",
+            "description": "parts per million",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": null
+        }
+    },
+    {
+        "pk": 15,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "Pa",
+            "group": "SI afgeleide eenheid",
+            "description": "pascal",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1",
+            "begin_date": "2011-06-10",
+            "dimension": "M/LT2"
+        }
+    },
+    {
+        "pk": 140,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "pmol/mg",
+            "group": "SI afgeleide eenheid",
+            "description": "picomol per milligram",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.000001",
+            "begin_date": "2012-12-11",
+            "dimension": "N/M"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "%",
+            "group": "Overig",
+            "description": "procent",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": null
+        }
+    },
+    {
+        "pk": 157,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "\u2030",
+            "group": "Overig",
+            "description": "promille",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": null
+        }
+    },
+    {
+        "pk": 143,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "s",
+            "group": "SI grondeenheid",
+            "description": "seconde",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1",
+            "begin_date": "2011-06-10",
+            "dimension": "T"
+        }
+    },
+    {
+        "pk": 16,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "S/m",
+            "group": "SI afgeleide eenheid",
+            "description": "siemens per meter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1",
+            "begin_date": "2011-06-10",
+            "dimension": "T3I2/L3M"
+        }
+    },
+    {
+        "pk": 17,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "TJ",
+            "group": "SI afgeleide eenheid",
+            "description": "terajoule",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1.000000E+12",
+            "begin_date": "2012-12-11",
+            "dimension": "L2M/T2"
+        }
+    },
+    {
+        "pk": 144,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "ton",
+            "group": "SI afgeleide eenheid",
+            "description": "ton",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1000",
+            "begin_date": "2011-06-10",
+            "dimension": "M"
+        }
+    },
+    {
+        "pk": 145,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "ton/a",
+            "group": "SI afgeleide eenheid",
+            "description": "ton per jaar",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": "M/T"
+        }
+    },
+    {
+        "pk": 18,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "TU",
+            "group": "Overig",
+            "description": "Toxic Unit",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": null
+        }
+    },
+    {
+        "pk": 51,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "h",
+            "group": "SI niet-SI-eenheid",
+            "description": "uur",
+            "end_date": "2999-12-31",
+            "conversion_factor": "2.777778E-04",
+            "begin_date": "2012-12-11",
+            "dimension": "T"
+        }
+    },
+    {
+        "pk": 155,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "ve",
+            "group": "Overig",
+            "description": "vervuilingseenheden",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": null
+        }
+    },
+    {
+        "pk": 26,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "cm2",
+            "group": "SI afgeleide eenheid",
+            "description": "vierkante centimeter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.0001",
+            "begin_date": "2012-12-11",
+            "dimension": "L2"
+        }
+    },
+    {
+        "pk": 27,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "cm2/Hz",
+            "group": "SI afgeleide eenheid",
+            "description": "vierkante centimeter per hertz",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.0001",
+            "begin_date": "2012-12-11",
+            "dimension": "L2T"
+        }
+    },
+    {
+        "pk": 28,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "cm2s",
+            "group": "SI afgeleide eenheid",
+            "description": "vierkante centimeter seconde",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.0001",
+            "begin_date": "2012-12-11",
+            "dimension": "L2T"
+        }
+    },
+    {
+        "pk": 81,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "m2",
+            "group": "SI afgeleide eenheid",
+            "description": "vierkante meter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1",
+            "begin_date": "2011-06-10",
+            "dimension": "L2"
+        }
+    },
+    {
+        "pk": 110,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "mm2",
+            "group": "SI afgeleide eenheid",
+            "description": "vierkante millimeter",
+            "end_date": "2999-12-31",
+            "conversion_factor": "0.000001",
+            "begin_date": "2012-12-11",
+            "dimension": "L2"
+        }
+    },
+    {
+        "pk": 19,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "V",
+            "group": "SI afgeleide eenheid",
+            "description": "volt",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1",
+            "begin_date": "2011-06-10",
+            "dimension": "L2M/T3I"
+        }
+    },
+    {
+        "pk": 20,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "Wh/ie",
+            "group": "Overig",
+            "description": "wattuur per inwoner equivalent",
+            "end_date": "2999-12-31",
+            "conversion_factor": null,
+            "begin_date": "2011-06-10",
+            "dimension": null
+        }
+    },
+    {
+        "pk": 21,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "Wh/kg",
+            "group": "SI afgeleide eenheid",
+            "description": "wattuur per kilogram",
+            "end_date": "2999-12-31",
+            "conversion_factor": "3600000",
+            "begin_date": "2011-06-10",
+            "dimension": "L2M/MT2"
+        }
+    },
+    {
+        "pk": 156,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "w",
+            "group": "SI afgeleide eenheid",
+            "description": "week",
+            "end_date": "2999-12-31",
+            "conversion_factor": "1.653439E-06",
+            "begin_date": "2012-12-11",
+            "dimension": "T"
+        }
+    }
+]

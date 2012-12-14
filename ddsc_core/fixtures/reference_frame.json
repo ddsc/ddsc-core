@@ -1,0 +1,4314 @@
+[
+    {
+        "pk": 359,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidFractieBasis",
+            "code": "adg",
+            "begin_date": "2011-08-26",
+            "description": "asvrij drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 364,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidFractieBasis",
+            "code": "dBZV",
+            "begin_date": "2011-06-10",
+            "description": "BZV verwijderd",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 365,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "dBZVdg",
+            "begin_date": "2011-06-10",
+            "description": "BZV verwijderd / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 366,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidFractieBasis",
+            "code": "dCZV",
+            "begin_date": "2011-06-10",
+            "description": "CZV verwijderd",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 367,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "dCZVdg",
+            "begin_date": "2011-06-10",
+            "description": "CZV verwijderd / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 109,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dg0150",
+            "begin_date": "2011-06-10",
+            "description": "diameter groter dan 150 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 113,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dg2000",
+            "begin_date": "2011-06-10",
+            "description": "diameter groter dan 2000 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 114,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dg2000md",
+            "begin_date": "2011-06-10",
+            "description": "diameter groter dan 2000 um / minerale delen",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 110,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dg0210",
+            "begin_date": "2011-06-10",
+            "description": "diameter groter dan 210 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 111,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dg0250",
+            "begin_date": "2011-06-10",
+            "description": "diameter groter dan 250 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 104,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dg0038",
+            "begin_date": "2012-12-08",
+            "description": "diameter groter dan 38 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 112,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dg0425",
+            "begin_date": "2011-06-10",
+            "description": "diameter groter dan 425 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 105,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dg0043",
+            "begin_date": "2011-06-10",
+            "description": "diameter groter dan 43 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 106,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dg0050",
+            "begin_date": "2011-06-10",
+            "description": "diameter groter dan 50 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 107,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dg0053",
+            "begin_date": "2011-06-10",
+            "description": "diameter groter dan 53 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 108,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dg0063",
+            "begin_date": "2011-06-10",
+            "description": "diameter groter dan 63 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 152,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk1000",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 1000 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 153,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk1000md",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 1000 um / minerale delen",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 139,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0105",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 105 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 140,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0106",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 106 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 120,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0010",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 10 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 141,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0125",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 125 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 142,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0125md",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 125 um / minerale delen",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 121,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0016",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 16 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 122,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0016dg",
+            "begin_date": "2012-05-26",
+            "description": "diameter kleiner dan 16 um / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 123,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0016md",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 16 um / minerale delen",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 143,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0180",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 180 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 144,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0180md",
+            "begin_date": "2012-12-08",
+            "description": "diameter kleiner dan 180 um / minerale delen",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 154,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk2000",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 2000 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 155,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk2000md",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 2000 um / minerale delen",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 124,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0020",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 20 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 145,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0210",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 210 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 146,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0250",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 250 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 147,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0250md",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 250 um / minerale delen",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 115,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0002",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 2 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 116,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0002dg",
+            "begin_date": "2012-05-26",
+            "description": "diameter kleiner dan 2 um / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 117,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0002md",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 2 um / minerale delen",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 125,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0032",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 32 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 126,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0032md",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 32 um / minerale delen",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 148,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0355",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 355 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 149,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0355md",
+            "begin_date": "2012-12-08",
+            "description": "diameter kleiner dan 355 um / minerale delen",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 127,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0035",
+            "begin_date": "2012-05-26",
+            "description": "diameter kleiner dan 35 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 128,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0038",
+            "begin_date": "2012-12-08",
+            "description": "diameter kleiner dan 38 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 129,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0038md",
+            "begin_date": "2012-12-08",
+            "description": "diameter kleiner dan 38 um / minerale delen",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 156,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk4000",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 4000 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 130,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0045",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 45 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 118,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0004",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 4 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 150,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0500",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 500 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 151,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0500md",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 500 um / minerale delen",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 131,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0050",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 50 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 132,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0050md",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 50 um / minerale delen",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 133,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0053",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 53 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 134,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0063",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 63 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 135,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0063md",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 63 um / minerale delen",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 157,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk8000",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 8000 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 136,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0080",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 80 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 119,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0008",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 8 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 137,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0090",
+            "begin_date": "2011-06-10",
+            "description": "diameter kleiner dan 90 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 138,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "Dk0090md",
+            "begin_date": "2012-12-08",
+            "description": "diameter kleiner dan 90 um / minerale delen",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 94,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "D1E3-2E3",
+            "begin_date": "2011-06-10",
+            "description": "diameter tussen 1000 en 2000 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 89,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "D106-150",
+            "begin_date": "2011-06-10",
+            "description": "diameter tussen 106 en 150 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 90,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "D125-180",
+            "begin_date": "2011-06-10",
+            "description": "diameter tussen 125 en 180 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 91,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "D125-250",
+            "begin_date": "2011-06-10",
+            "description": "diameter tussen 125 en 250 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 92,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "D150-212",
+            "begin_date": "2011-06-10",
+            "description": "diameter tussen 150 en 212 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 93,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "D180-250",
+            "begin_date": "2011-06-10",
+            "description": "diameter tussen 180 en 250 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 95,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "D212-250",
+            "begin_date": "2011-06-10",
+            "description": "diameter tussen 212 en 250 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 96,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "D250-300",
+            "begin_date": "2011-06-10",
+            "description": "diameter tussen 250 en 300 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 97,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "D250-355",
+            "begin_date": "2011-06-10",
+            "description": "diameter tussen 250 en 355 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 98,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "D250-500",
+            "begin_date": "2011-06-10",
+            "description": "diameter tussen 250 en 500 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 99,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "D300-425",
+            "begin_date": "2011-06-10",
+            "description": "diameter tussen 300 en 425 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 100,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "D355-500",
+            "begin_date": "2011-06-10",
+            "description": "diameter tussen 355 en 500 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 83,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "D038-050",
+            "begin_date": "2011-06-10",
+            "description": "diameter tussen 38 en 50 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 84,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "D038-063",
+            "begin_date": "2011-06-10",
+            "description": "diameter tussen 38 en 63 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 101,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "D500-1E3",
+            "begin_date": "2011-06-10",
+            "description": "diameter tussen 500 en 1000 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 85,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "D050-063",
+            "begin_date": "2011-06-10",
+            "description": "diameter tussen 50 en 63 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 87,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "D063-125",
+            "begin_date": "2011-06-10",
+            "description": "diameter tussen 63 en 125 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 86,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "D063-090",
+            "begin_date": "2011-06-10",
+            "description": "diameter tussen 63 en 90 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 88,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KorrelgrootteFractie",
+            "code": "D090-125",
+            "begin_date": "2011-06-10",
+            "description": "diameter tussen 90 en 125 um",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 102,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "DOOD",
+            "begin_date": "2012-03-17",
+            "description": "Dood",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 103,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidFractieBasis",
+            "code": "DRIJVD",
+            "begin_date": "2011-08-05",
+            "description": "Drijvende fractie",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 164,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentiePlaats",
+            "code": "EPSG23031",
+            "begin_date": "2012-09-24",
+            "description": "ED50/UTM31",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 165,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentiePlaats",
+            "code": "EPSG23032",
+            "begin_date": "2012-09-24",
+            "description": "ED50/UTM32",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 162,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidFractieBasis",
+            "code": "EMS",
+            "begin_date": "2011-08-05",
+            "description": "Emerse fractie",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 158,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "EB-F",
+            "begin_date": "2011-06-10",
+            "description": "Energiebron-Fototroof",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 159,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "EB-H",
+            "begin_date": "2011-06-10",
+            "description": "Energiebron-Heterotroof",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 168,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentiePlaats",
+            "code": "EPSG3034",
+            "begin_date": "2012-09-24",
+            "description": "ETRS89-LambertConformConic",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 163,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentiePlaats",
+            "code": "EPSG19986",
+            "begin_date": "2012-09-24",
+            "description": "ETRS89-LambertEqualArea",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 360,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidFractieBasis",
+            "code": "blauwalg",
+            "begin_date": "2011-06-10",
+            "description": "fractie afkomstig van blauwalgen",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 363,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidFractieBasis",
+            "code": "cryptofy",
+            "begin_date": "2011-06-10",
+            "description": "fractie afkomstig van cryptofyten",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 371,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidFractieBasis",
+            "code": "diatomee",
+            "begin_date": "2011-06-10",
+            "description": "fractie afkomstig van diatomee\u00ebn",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 374,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidFractieBasis",
+            "code": "groenalg",
+            "begin_date": "2011-06-10",
+            "description": "fractie afkomstig van groenalgen",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 391,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidFractieBasis",
+            "code": "toxblauw",
+            "begin_date": "2011-06-11",
+            "description": "fractie afkomstig van toxische blauwalgen",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 235,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidOnterecht",
+            "code": "L250nm",
+            "begin_date": "2011-06-10",
+            "description": "gemeten bij golflengte 250 nm",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 236,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidOnterecht",
+            "code": "L254nm",
+            "begin_date": "2011-06-10",
+            "description": "gemeten bij golflengte 254 nm",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 237,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidOnterecht",
+            "code": "L380nm",
+            "begin_date": "2011-06-10",
+            "description": "gemeten bij golflengte 380 nm",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 238,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidOnterecht",
+            "code": "L400nm",
+            "begin_date": "2011-06-10",
+            "description": "gemeten bij golflengte 400 nm",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 239,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidOnterecht",
+            "code": "L440nm",
+            "begin_date": "2011-06-10",
+            "description": "gemeten bij golflengte 440 nm",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 240,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidOnterecht",
+            "code": "L455nm",
+            "begin_date": "2012-10-06",
+            "description": "gemeten bij golflengte 455 nm",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 241,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidOnterecht",
+            "code": "L465nm",
+            "begin_date": "2011-06-10",
+            "description": "gemeten bij golflengte 465 nm",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 242,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidOnterecht",
+            "code": "L470nm",
+            "begin_date": "2011-06-10",
+            "description": "gemeten bij golflengte 470 nm",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 243,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidOnterecht",
+            "code": "L525nm",
+            "begin_date": "2011-06-10",
+            "description": "gemeten bij golflengte 525 nm",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 244,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidOnterecht",
+            "code": "L570nm",
+            "begin_date": "2012-02-29",
+            "description": "gemeten bij golflengte 570 nm",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 245,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidOnterecht",
+            "code": "L590nm",
+            "begin_date": "2011-06-10",
+            "description": "gemeten bij golflengte 590 nm",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 246,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidOnterecht",
+            "code": "L610nm",
+            "begin_date": "2012-02-29",
+            "description": "gemeten bij golflengte 610 nm",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 247,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidOnterecht",
+            "code": "L650nm",
+            "begin_date": "2011-06-10",
+            "description": "gemeten bij golflengte 650 nm",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 248,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidOnterecht",
+            "code": "L655nm",
+            "begin_date": "2012-10-06",
+            "description": "gemeten bij golflengte 655 nm",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 249,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidOnterecht",
+            "code": "L665nm",
+            "begin_date": "2011-06-10",
+            "description": "gemeten bij golflengte 665 nm",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 250,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidOnterecht",
+            "code": "L672nm",
+            "begin_date": "2011-06-10",
+            "description": "gemeten bij golflengte 672 nm",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 251,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidOnterecht",
+            "code": "L776nm",
+            "begin_date": "2011-06-10",
+            "description": "gemeten bij golflengte 776 nm",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 217,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "GE-M",
+            "begin_date": "2011-06-10",
+            "description": "Geslacht-Man",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 218,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "GE-V",
+            "begin_date": "2011-06-10",
+            "description": "Geslacht-Vrouw",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 177,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F105-115",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 105 en 115 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 178,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F115-125",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 115 en 125 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 179,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F125-135",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 125 en 135 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 180,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F135-145",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 135 en 145 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 181,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F145-155",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 145 en 155 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 182,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F155-165",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 155 en 165 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 183,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F165-175",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 165 en 175 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 184,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F175-185",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 175 en 185 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 185,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F185-195",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 185 en 195 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 186,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F195-205",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 195 en 205 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 187,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F205-215",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 205 en 215 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 188,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F215-225",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 215 en 225 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 189,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F225-235",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 225 en 235 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 190,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F235-245",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 235 en 245 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 191,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F245-255",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 245 en 255 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 192,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F255-265",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 255 en 265 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 169,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F025-035",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 25 en 35 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 193,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F265-275",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 265 en 275 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 194,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F275-285",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 275 en 285 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 195,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F285-295",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 285 en 295 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 196,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F295-305",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 295 en 305 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 197,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F305-315",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 305 en 315 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 198,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F315-325",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 315 en 325 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 199,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F325-335",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 325 en 335 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 200,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F335-345",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 335 en 345 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 201,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F345-355",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 345 en 355 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 202,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F355-365",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 355 en 365 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 170,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F035-045",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 35 en 45 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 203,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F365-375",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 365 en 375 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 204,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F375-385",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 375 en 385 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 205,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F385-395",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 385 en 395 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 206,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F395-405",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 395 en 405 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 207,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F405-415",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 405 en 415 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 208,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F415-425",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 415 en 425 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 209,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F425-435",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 425 en 435 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 210,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F435-445",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 435 en 445 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 211,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F445-455",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 445 en 455 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 212,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F455-465",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 455 en 465 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 171,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F045-055",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 45 en 55 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 213,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F465-475",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 465 en 475 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 214,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F475-485",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 475 en 485 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 215,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F485-495",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 485 en 495 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 216,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F495-505",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 495 en 505 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 172,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F055-065",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 55 en 65 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 173,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F065-075",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 65 en 75 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 174,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F075-085",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 75 en 85 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 175,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F085-095",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 85 en 95 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 176,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "GolffrequentieKlasse",
+            "code": "F095-105",
+            "begin_date": "2011-06-10",
+            "description": "golffrequentie tussen 95 en 105 mHz",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 220,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieVlak",
+            "code": "HALVWTKL",
+            "begin_date": "2011-06-10",
+            "description": "halve waterkolom",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 225,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidFractieBasis",
+            "code": "HOOGTRF",
+            "begin_date": "2011-06-10",
+            "description": "hoog tarief",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 376,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidFractieBasis",
+            "code": "hyf",
+            "begin_date": "2011-06-10",
+            "description": "hydroliseerbare fractie",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 375,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieRichting",
+            "code": "hor-vlak",
+            "begin_date": "2011-06-10",
+            "description": "in horizontaal vlak",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 228,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "niet gebruiken",
+            "code": "INSU",
+            "begin_date": "2011-06-10",
+            "description": "in situ, direct gemeten in compartiment",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 392,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieRichting",
+            "code": "ver-vlak",
+            "begin_date": "2011-06-10",
+            "description": "in verticaal vlak",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 28,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KoolwaterstofFractie",
+            "code": "C10C16",
+            "begin_date": "2012-05-26",
+            "description": "koolwaterstoffractie C10-16",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 26,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KoolwaterstofFractie",
+            "code": "C10C12",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C10-C12",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 27,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C10C12dg",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C10-C12 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 29,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C10C16dg",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C10-C16 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 30,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C10C19dg",
+            "begin_date": "2011-08-02",
+            "description": "koolwaterstoffractie C10-C19 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 31,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KoolwaterstofFractie",
+            "code": "C10C20",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C10-C20",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 32,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C10C20dg",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C10-C20 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 33,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KoolwaterstofFractie",
+            "code": "C10C40",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C10-C40",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 34,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C10C40dg",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C10-C40 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 35,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C12C14dg",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C12-C14 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 36,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KoolwaterstofFractie",
+            "code": "C12C16",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C12-C16",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 37,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C12C16dg",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C12-C16 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 38,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C12C20dg",
+            "begin_date": "2011-08-02",
+            "description": "koolwaterstoffractie C12-C20 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 39,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KoolwaterstofFractie",
+            "code": "C12C22",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C12-C22",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 40,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C12C22dg",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C12-C22 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 41,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C14C20dg",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C14-C20 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 42,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KoolwaterstofFractie",
+            "code": "C16C20",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C16-C20",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 43,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C16C20dg",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C16-C20 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 44,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C16C21dg",
+            "begin_date": "2011-08-02",
+            "description": "koolwaterstoffractie C16-C21 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 45,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KoolwaterstofFractie",
+            "code": "C16C22",
+            "begin_date": "2012-05-26",
+            "description": "koolwaterstoffractie C16-C22",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 46,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C16C22dg",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C16-C22 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 47,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KoolwaterstofFractie",
+            "code": "C20C24",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C20-C24",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 48,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C20C24dg",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C20-C24 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 49,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C20C26dg",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C20-C26 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 50,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C20C29dg",
+            "begin_date": "2011-08-02",
+            "description": "koolwaterstoffractie C20-C29 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 51,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KoolwaterstofFractie",
+            "code": "C20C40",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C20-C40",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 52,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C20C40dg",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C20-C40 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 53,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C21C30dg",
+            "begin_date": "2011-08-02",
+            "description": "koolwaterstoffractie C21-C30 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 54,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KoolwaterstofFractie",
+            "code": "C22C30",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C22-C30",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 55,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C22C30dg",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C22-C30 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 56,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KoolwaterstofFractie",
+            "code": "C24C28",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C24-C28",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 57,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C24C28dg",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C24-C28 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 58,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C26C34dg",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C26-C34 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 59,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KoolwaterstofFractie",
+            "code": "C28C32",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C28-C32",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 60,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C28C32dg",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C28-C32 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 61,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C30C35dg",
+            "begin_date": "2011-08-02",
+            "description": "koolwaterstoffractie C30-C35 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 62,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KoolwaterstofFractie",
+            "code": "C30C40",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C30-C40",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 63,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C30C40dg",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C30-C40 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 64,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KoolwaterstofFractie",
+            "code": "C32C36",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C32-C36",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 65,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C32C36dg",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C32-C36 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 66,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C34C40dg",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C34-C40 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 67,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C35C40dg",
+            "begin_date": "2011-08-02",
+            "description": "koolwaterstoffractie C35-C40 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 68,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KoolwaterstofFractie",
+            "code": "C36C40",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C36-C40",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 69,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C36C40dg",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C36-C40 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 23,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "KoolwaterstofFractie",
+            "code": "C06C10",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C6-C10",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 24,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C06C10dg",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C6-C10 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 25,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "C08C10dg",
+            "begin_date": "2011-06-10",
+            "description": "koolwaterstoffractie C8-C10 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 253,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidFractieBasis",
+            "code": "LAAGTRF",
+            "begin_date": "2011-06-10",
+            "description": "laag tarief",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 255,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "LEVD",
+            "begin_date": "2011-06-10",
+            "description": "Levend",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 275,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "LS-VE",
+            "begin_date": "2011-06-10",
+            "description": "Levensstadium-Veliger",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 260,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "LS-AD",
+            "begin_date": "2011-06-10",
+            "description": "Levenstadium-Adult",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 261,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "LS-CO",
+            "begin_date": "2011-06-10",
+            "description": "Levenstadium-Copepodiet",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 262,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "LS-EI",
+            "begin_date": "2011-06-10",
+            "description": "Levenstadium-Ei",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 263,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "LS-EM",
+            "begin_date": "2011-06-10",
+            "description": "Levenstadium-Embryo",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 264,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "LS-EP",
+            "begin_date": "2011-08-31",
+            "description": "Levenstadium-Ephippium",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 265,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "LS-EX",
+            "begin_date": "2011-06-10",
+            "description": "Levenstadium-Exuvium",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 266,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "LS-FL",
+            "begin_date": "2011-06-10",
+            "description": "Levenstadium-Flagellaat",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 267,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "LS-JU",
+            "begin_date": "2011-06-10",
+            "description": "Levenstadium-Juveniel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 268,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "LS-KU",
+            "begin_date": "2011-06-10",
+            "description": "Levenstadium-Kuiken",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 269,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "LS-LA",
+            "begin_date": "2011-06-10",
+            "description": "Levenstadium-Larve",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 270,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "LS-NA",
+            "begin_date": "2011-06-10",
+            "description": "Levenstadium-Nauplius",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 271,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "LS-NY",
+            "begin_date": "2011-06-10",
+            "description": "Levenstadium-Nimf",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 272,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "LS-PO",
+            "begin_date": "2011-06-10",
+            "description": "Levenstadium-Pop",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 273,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "LS-PU",
+            "begin_date": "2011-06-10",
+            "description": "Levenstadium-Pul of donsjong",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 274,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "LS-SP",
+            "begin_date": "2011-06-10",
+            "description": "Levenstadium-Spore",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 276,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "LV-K",
+            "begin_date": "2011-06-10",
+            "description": "Levensvorm-Kolonie",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 277,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "LV-S",
+            "begin_date": "2011-06-10",
+            "description": "Levensvorm-Solitair",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 283,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidOnterecht",
+            "code": "MWA",
+            "begin_date": "2011-06-10",
+            "description": "meest waarschijnlijke aantal",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 378,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidFractieBasis",
+            "code": "md",
+            "begin_date": "2011-06-10",
+            "description": "minerale delen ( OS / Calciet verwijderd)",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 379,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidOnterecht",
+            "code": "nb",
+            "begin_date": "2011-06-10",
+            "description": "na beluchten",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 380,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidOnterecht",
+            "code": "nbz",
+            "begin_date": "2011-06-10",
+            "description": "na bezinken",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 381,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidOnterecht",
+            "code": "nc",
+            "begin_date": "2011-06-10",
+            "description": "na centifugeren",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 383,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidOnterecht",
+            "code": "ndc",
+            "begin_date": "2011-06-10",
+            "description": "na decanteren",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 384,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidOnterecht",
+            "code": "ne",
+            "begin_date": "2011-06-10",
+            "description": "na extractie",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 386,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "nfdg",
+            "begin_date": "2011-06-10",
+            "description": "na filtratie / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 385,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidFractieBasis",
+            "code": "nf",
+            "begin_date": "2011-06-10",
+            "description": "na filtratie (opgeloste fractie)",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 382,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidOnterecht",
+            "code": "nd",
+            "begin_date": "2011-06-10",
+            "description": "na verdunning",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 388,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidOnterecht",
+            "code": "nv",
+            "begin_date": "2011-06-10",
+            "description": "na vriesdrogen",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 287,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "(technisch)",
+            "code": "NVT",
+            "begin_date": "2011-06-10",
+            "description": "niet van toepassing",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 306,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidOnterecht",
+            "code": "OPGLT",
+            "begin_date": "2011-06-10",
+            "description": "opgelost",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 390,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidFractieBasis",
+            "code": "pg",
+            "begin_date": "2011-06-10",
+            "description": "particulair gebonden",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 167,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentiePlaats",
+            "code": "EPSG28992",
+            "begin_date": "2012-09-24",
+            "description": "Rijksdriehoekstelsel-Nieuw",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 166,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentiePlaats",
+            "code": "EPSG28991",
+            "begin_date": "2012-09-24",
+            "description": "Rijksdriehoekstelsel-Oud",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 327,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidFractieBasis",
+            "code": "SUBMS",
+            "begin_date": "2011-08-05",
+            "description": "Submerse fractie",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 337,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidFractieBasis",
+            "code": "TOERTHG",
+            "begin_date": "2011-06-10",
+            "description": "toerental hoog",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 338,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidFractieBasis",
+            "code": "TOERTLG",
+            "begin_date": "2011-06-10",
+            "description": "toerental laag",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 339,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidFractieBasis",
+            "code": "TOERTMDL",
+            "begin_date": "2011-06-10",
+            "description": "toerental middel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidReferentieBasis",
+            "code": "18oC",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. 18 graden Celsius",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidReferentieBasis",
+            "code": "20oC",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. 20 graden Celsius",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "20oCINSU",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. 20 graden Celsius / in situ gemeten",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidReferentieBasis",
+            "code": "22oC",
+            "begin_date": "2011-08-26",
+            "description": "t.o.v. 22 graden Celsius",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidReferentieBasis",
+            "code": "25oC",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. 25 graden Celsius",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "25oCINSU",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. 25 graden Celsius / in situ gemeten",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidReferentieBasis",
+            "code": "36oC",
+            "begin_date": "2011-08-26",
+            "description": "t.o.v. 36 graden Celsius",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 15,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieVlak",
+            "code": "ASTNMH",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. astronomisch getij",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 17,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieVlak",
+            "code": "BOORVLR",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. boorvloer",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 16,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieVlak",
+            "code": "BODM",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. de bodem",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 370,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidReferentieBasis",
+            "code": "dg",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 221,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieVlak",
+            "code": "HAT",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. Highest Astronomical Tide",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 224,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieVlak",
+            "code": "HOOGPL",
+            "begin_date": "2012-01-18",
+            "description": "t.o.v. hoog peil",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 324,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieVlak",
+            "code": "SENSR",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. (hoogte van) sensor",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 230,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieRichting",
+            "code": "KAARTNDN",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. kaart Noorden",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 232,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieVlak",
+            "code": "KELLBSG",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. Kelly Bushing",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 257,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieVlak",
+            "code": "LLWS1980",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. Laag Laag Water Spring 1980.0",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 258,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieVlak",
+            "code": "LLWS1985",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. Laag Laag Water Spring 1985.0",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 259,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieVlak",
+            "code": "LLWS1992",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. Laag Laag Water Spring 1992.0",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 252,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieVlak",
+            "code": "LAAGPL",
+            "begin_date": "2012-01-18",
+            "description": "t.o.v. laag peil",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 256,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieRichting",
+            "code": "LINKOVR",
+            "begin_date": "2012-01-18",
+            "description": "t.o.v. linkeroever",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 254,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieVlak",
+            "code": "LAT",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. Lowest Astronomical Tide",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 278,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieVlak",
+            "code": "MAAIVD",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. maaiveld",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 282,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieVlak",
+            "code": "MSL",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. Mean Sea Level",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 279,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidReferentieBasis",
+            "code": "METLN",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. metalen",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 280,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidReferentieBasis",
+            "code": "METLNG",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. metalen grijze lijst",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 281,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidReferentieBasis",
+            "code": "METLNZ",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. metalen zwarte lijst",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 387,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidReferentieBasis",
+            "code": "ng",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. natgewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 286,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieVlak",
+            "code": "NAP",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. Normaal Amsterdams Peil",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 389,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidReferentieBasis",
+            "code": "odg",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. organisch drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 301,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieVlak",
+            "code": "OLA",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. Overeengekomen Lage Afvoer",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 302,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieVlak",
+            "code": "OLR1982",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. Overeengekomen Lage Rivierstand 1982.0",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 303,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieVlak",
+            "code": "OLW1972",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. Overeengekomen Lage Waterstand 1972.0",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 304,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieVlak",
+            "code": "OLW1982",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. Overeengekomen Lage Waterstand 1982.0",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 305,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieVlak",
+            "code": "OLW1991",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. Overeengekomen Lage Waterstand 1991.0",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 311,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieVlak",
+            "code": "PBBK",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. peilbuis bovenkant",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 312,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieVlak",
+            "code": "PLAATSLR",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. plaatselijk referentievlak",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 321,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieRichting",
+            "code": "RAAIRTG",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. raairichting",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 322,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieRichting",
+            "code": "RECHTOVR",
+            "begin_date": "2012-01-18",
+            "description": "t.o.v. rechteroever",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 326,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieVlak",
+            "code": "SPRONGLG",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. spronglaag",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 334,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieVlak",
+            "code": "TAW",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. Tweede Algemene Waterpassing",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 341,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidReferentieBasis",
+            "code": "VETGWT",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. vetgewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 355,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieRichting",
+            "code": "WARNDN",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. ware Noorden",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 357,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "ReferentieVlak",
+            "code": "WATSGL",
+            "begin_date": "2011-06-10",
+            "description": "t.o.v. waterspiegel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 368,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidFractieBasis",
+            "code": "dTZV",
+            "begin_date": "2011-06-10",
+            "description": "TZV verwijderd",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 369,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "dTZVdg",
+            "begin_date": "2011-06-10",
+            "description": "TZV verwijderd / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 373,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "glucse",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt als glucose",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "136gTZV",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in 136 g TZV",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "136gTZVd",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in 136 g TZV / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "150gTZV",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in 150 g TZV",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 160,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "EEQ",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in 17b-estradiol equivalenten",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "180gTZV",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in 180 g TZV",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "180gTZVd",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in 180 g TZV / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 13,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "54gBZV",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in 54 g BZV",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 14,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "54gBZVdg",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in 54 g BZV / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 233,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "KL5",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in 5 klassen",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 222,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "HAc",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in azijnzuur",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 223,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "HCO3",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Bicarbonaat",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 19,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "BrO3",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Bromaat",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 21,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "Brnf",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Bromide na filtratie",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 18,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "BZVdg",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in BZV / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 73,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "CaCO3",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Calciumcarbonaat",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 74,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "CaCl2dg",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Calciumchloride / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 75,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "CaOdg",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Calciumoxide / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 361,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "cel",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in cellen",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 77,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "Cl",
+            "begin_date": "2011-08-27",
+            "description": "uitgedrukt in Chloor",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 78,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "Cldg",
+            "begin_date": "2011-08-27",
+            "description": "uitgedrukt in Chloor / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 79,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "Clnb",
+            "begin_date": "2011-08-27",
+            "description": "uitgedrukt in Chloor na beluchten",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 80,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "Clnf",
+            "begin_date": "2011-08-27",
+            "description": "uitgedrukt in Chloor na filtratie",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 362,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "coe",
+            "begin_date": "2011-08-27",
+            "description": "uitgedrukt in coenobia",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 72,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "CZVdg",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in CZV / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 161,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "EKR",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Ecologische Kwaliteitsratio",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 372,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "fil",
+            "begin_date": "2011-08-27",
+            "description": "uitgedrukt in filamenten",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 307,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "P",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Fosfor",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 315,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "Pdg",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Fosfor / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 316,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "Pndc",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Fosfor na decanteren",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 317,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "Pnf",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Fosfor na filtratie",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 318,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "Pos",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Fosfor / organische stof",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 319,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "Ppg",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Fosfor particulair gebonden",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 356,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "WATKLM",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in hoogte waterkolom",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 226,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "I-TEQ",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in I-TEQ",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 227,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "I-TEQdg",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in I-TEQ / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 231,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "KCldg",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Kaliumchloride / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 229,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "K2Odg",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Kaliumoxide / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 377,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "kol",
+            "begin_date": "2011-08-27",
+            "description": "uitgedrukt in kolonies",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 234,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "KVE",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in kolonie vormende eenheden",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 22,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "C",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Koolstof",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 70,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "CS2",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Koolstofdisulfide",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 71,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "CS2dg",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Koolstofdisulfide / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 76,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "Cdg",
+            "begin_date": "2011-08-26",
+            "description": "uitgedrukt in Koolstof / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 81,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "Cnf",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Koolstof na filtratie",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 82,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "Cpg",
+            "begin_date": "2011-08-26",
+            "description": "uitgedrukt in Koolstof particulair gebonden",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 284,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "MgOdg",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Magnesiumoxide / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 288,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "Na2Odg",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Natriumoxide / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 313,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "POlsendg",
+            "begin_date": "2011-09-01",
+            "description": "uitgedrukt in Olsen-P (fosfor) / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 308,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "P2O5dg",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in P2O5 / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 309,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "P2O5ng",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in P2O5 / natgewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 314,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "PVE",
+            "begin_date": "2011-06-11",
+            "description": "uitgedrukt in plaque vormende eenheden",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 310,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "PAF",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Potentieel Aangetaste Fractie",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 328,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "Si",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Silicium",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 329,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "Sinf",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Silicium na filtratie",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 330,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "Sipg",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Silicium particulair gebonden",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 285,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "N",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Stikstof",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 289,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "Ndg",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Stikstof / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 290,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "Nnbzndc",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Stikstof na bezinken na decanteren",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 291,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "Nndc",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Stikstof na decanteren",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 292,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "Nnf",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Stikstof na filtratie",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 293,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "Nnfdg",
+            "begin_date": "2011-08-26",
+            "description": "uitgedrukt in Stikstof na filtratie / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 294,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "Nodg",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Stikstof / organisch drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 295,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "Nos",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Stikstof / organische stof",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 296,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "Npg",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Stikstof particulair gebonden",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 325,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "SO4nf",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Sulfaat na filtratie",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 331,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "Sn",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Tin",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 332,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "Sndg",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Tin / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 335,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "TEQ",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Toxiciteit Equivalenten",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 336,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "TEQdg",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Toxiciteit Equivalenten / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 219,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "H3",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Tritium",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 358,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "WI",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Waterindex",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 297,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "O2",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Zuurstof",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 298,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "O2dg",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Zuurstof / drooggewicht",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 299,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "O2ndc",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Zuurstof na decanteren",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 300,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "O2nf",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Zuurstof na filtratie",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 323,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "S",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Zwavel",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 333,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidCombinatie",
+            "code": "Snf",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt in Zwavel na filtratie",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 20,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "BraunBS",
+            "begin_date": "2011-06-28",
+            "description": "uitgedrukt volgens Braun-Blanquet-Schaal",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 320,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "PtCo",
+            "begin_date": "2011-06-10",
+            "description": "uitgedrukt volgens PtCo-schaal",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 340,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "HoedanigheidEquivalent",
+            "code": "TansleyS",
+            "begin_date": "2011-06-28",
+            "description": "uitgedrukt volgens Tansley-schaal",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 352,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "VV-B",
+            "begin_date": "2011-06-10",
+            "description": "Verschijningsvorm-Behaard",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 353,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "VV-G",
+            "begin_date": "2011-06-10",
+            "description": "Verschijningsvorm-Gepantserd",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 354,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "VV-N",
+            "begin_date": "2011-06-10",
+            "description": "Verschijningsvorm-Naakt",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 342,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "VL-0",
+            "begin_date": "2011-06-10",
+            "description": "Vislengteklasse-0 (0+ cm)",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 343,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "VL-1",
+            "begin_date": "2011-06-10",
+            "description": "Vislengteklasse-1 (0 t/m 14 cm)",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 344,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "VL-2",
+            "begin_date": "2011-06-10",
+            "description": "Vislengteklasse-2 (15 t/m 24 cm)",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 345,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "VL-3",
+            "begin_date": "2011-06-10",
+            "description": "Vislengteklasse-3 (25 t/m 39 cm)",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 346,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "VL-4",
+            "begin_date": "2011-06-10",
+            "description": "Vislengteklasse-4 (groter dan 39 cm)",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 347,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "VLSK-1",
+            "begin_date": "2012-06-07",
+            "description": "Vislengte snoek klasse 1 (0 t/m 15 cm)",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 348,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "VLSK-2",
+            "begin_date": "2012-06-07",
+            "description": "Vislengte snoek klasse 2 (16 t/m 35 cm)",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 349,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "VLSK-3",
+            "begin_date": "2012-06-07",
+            "description": "Vislengte snoek klasse 3 (36 t/m 44 cm)",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 350,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "VLSK-4",
+            "begin_date": "2012-06-07",
+            "description": "Vislengte snoek klasse 4 (45 t/m 54 cm)",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 351,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "BiologischKenmerk",
+            "code": "VLSK-5",
+            "begin_date": "2012-06-07",
+            "description": "Vislengte snoek klasse 5 (groter dan 54 cm)",
+            "end_date": "2999-12-31"
+        }
+    }
+]
