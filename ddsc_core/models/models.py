@@ -1,20 +1,15 @@
-# (c) Nelen & Schuurmans.  MIT licensed, see LICENSE.rst.
+# (c) Nelen & Schuurmans. MIT licensed, see LICENSE.rst.
 from __future__ import unicode_literals
 
-from cassandralib.models import CassandraDataStore
 from datetime import datetime
+
 from dateutil.relativedelta import relativedelta
 from django.conf import settings
 from django.contrib.auth.models import User
-from django.contrib.contenttypes import generic
 from django.contrib.gis.db import models
-from lizard_security.models import UserGroup
-
-import jsonfield
-import pandas as pd
 import pytz
-import uuid
 
+from cassandralib.models import CassandraDataStore
 
 CASSANDRA = getattr(settings, 'CASSANDRA', {})
 COLNAME_FORMAT = '%Y-%m-%dT%H:%M:%SZ'
@@ -161,7 +156,6 @@ class Timeseries(models.Model):
             return self.latest_value_text
         return None
 
-
     def get_events(self, start=None, end=None, filter=None):
         if end is None:
             end = datetime.now()
@@ -172,7 +166,7 @@ class Timeseries(models.Model):
 
         start = INTERNAL_TIMEZONE.localize(start)
         end = INTERNAL_TIMEZONE.localize(end)
-        
+
         if start < self.first_value_timestamp:
             start = self.first_value_timestamp
         if end > self.latest_value_timestamp:
