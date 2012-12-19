@@ -7,13 +7,16 @@ from dateutil.relativedelta import relativedelta
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.gis.db import models
+from lizard_security.models import DataSet
+from ddsc_core import manager
+
 import pytz
 
 from cassandralib.models import CassandraDataStore
+from cassandralib.models import COLNAME_FORMAT, INTERNAL_TIMEZONE
 
 CASSANDRA = getattr(settings, 'CASSANDRA', {})
-COLNAME_FORMAT = '%Y-%m-%dT%H:%M:%SZ'
-INTERNAL_TIMEZONE = pytz.UTC
+APP_LABEL = 'ddsc_core'
 
 
 class DataStore(CassandraDataStore):
@@ -32,12 +35,20 @@ class DataStore(CassandraDataStore):
         )
 
 
-class Location(models.Model):
+class BaseModel(models.Model):
+    class Meta:
+        abstract = True
+        app_label = APP_LABEL
+
+
+class Location(BaseModel):
     """
     Location
     Location of timeseries
 
     """
+    objects = manager.LocationManager()
+
     code = models.CharField(
         primary_key=True,
         max_length=12,
@@ -61,7 +72,9 @@ class Location(models.Model):
     )
 
 
-class Timeseries(models.Model):
+class Timeseries(BaseModel):
+    objects = manager.TimeseriesManager()
+
     class ValueType:
         INTEGER = 0
         FLOAT = 1
@@ -107,6 +120,7 @@ class Timeseries(models.Model):
         default="",
         help_text='optional description for timeseries'
     )
+    data_set = models.ManyToManyField(DataSet)
 
     supplying_system = models.ForeignKey(
         User,
