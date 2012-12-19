@@ -8,12 +8,13 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.gis.db import models
 from lizard_security.models import DataSet
-from ddsc_core import manager
 
 import pytz
 
 from cassandralib.models import CassandraDataStore
 from cassandralib.models import COLNAME_FORMAT, INTERNAL_TIMEZONE
+from ddsc_core.models import aquo
+from ddsc_core import manager
 
 CASSANDRA = getattr(settings, 'CASSANDRA', {})
 APP_LABEL = 'ddsc_core'
@@ -139,6 +140,11 @@ class Timeseries(BaseModel):
         null=True,
         related_name='timeseries'
     )
+
+    parameter = models.ForeignKey(aquo.Parameter, null=True)
+    unit = models.ForeignKey(aquo.Unit, null=True)
+    reference_frame = models.ForeignKey(aquo.ReferenceFrame, null=True)
+    compartment = models.ForeignKey(aquo.Compartment, null=True)
 
     #observationType = models.ForeignKey(ObservationType)
     #instrument_type = models.ForeignKey(InstrumentType, null=True)
