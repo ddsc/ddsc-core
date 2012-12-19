@@ -46,6 +46,6 @@ class LocationManager(GeoManager):
         """
         query_set = super(LocationManager, self).get_query_set()
         data_sets = user_data_set_ids()
-        if data_set_ids is None:
+        if data_sets is None:
             return query_set
         return query_set.filter(timeseries__data_set__in=data_sets).distinct()
