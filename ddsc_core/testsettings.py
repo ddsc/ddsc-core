@@ -52,13 +52,10 @@ CASSANDRA = {
 SITE_ID = 1
 SECRET_KEY = 'This is not secret but that is ok.'
 INSTALLED_APPS = [
-    'ddsc_core',
-    'lizard_ui',
     'staticfiles',
     'compressor',
     'south',
     'django_nose',
-    'lizard_security',
     'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -66,6 +63,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.gis',
     'django.contrib.sites',
+    'lizard_security',  # before lizard_ui!
+    'lizard_ui',  # after lizard_security!
+    'ddsc_core',  # after lizard_security!
     ]
 ROOT_URLCONF = 'ddsc_core.urls'
 
@@ -92,6 +92,6 @@ STATICFILES_FINDERS = STATICFILES_FINDERS
 
 try:
     # Import local settings that aren't stored in svn/git.
-    from ddsc_core.local_testsettings import *
+    from ddsc_core.local_testsettings import *  # NOQA
 except ImportError:
     pass
