@@ -7,10 +7,12 @@ from dateutil.relativedelta import relativedelta
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.gis.db import models
+from treebeard.mp_tree import MP_Node
 import pytz
 
 from cassandralib.models import CassandraDataStore
 
+APP_LABEL = "ddsc_core"
 CASSANDRA = getattr(settings, 'CASSANDRA', {})
 COLNAME_FORMAT = '%Y-%m-%dT%H:%M:%SZ'
 INTERNAL_TIMEZONE = pytz.UTC
@@ -204,3 +206,18 @@ class Timeseries(models.Model):
         result = super(Timeseries, self).save(*args, **kwargs)
         self.commit_events()
         return result
+
+
+class LogicalGroup(MP_Node):
+    """A group of time series.
+
+    End-users may group time series in any meaningful way. Furthermore, groups
+    can be combined into new groups. The resulting tree structure is modeled
+    via a materialized path approach.
+
+    """
+    name = models.CharField(max_lenght=64)
+    description = models.TextField()
+
+    class Meta:
+        app_label = APP_LABEL
