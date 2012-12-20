@@ -8,14 +8,16 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.gis.db import models
 from treebeard.mp_tree import MP_Node
-import pytz
 
 from cassandralib.models import CassandraDataStore
+from cassandralib.models import INTERNAL_TIMEZONE
+from ddsc_core import manager
+from ddsc_core.models import aquo
+from lizard_security.models import DataSet
 
 APP_LABEL = "ddsc_core"
 CASSANDRA = getattr(settings, 'CASSANDRA', {})
-COLNAME_FORMAT = '%Y-%m-%dT%H:%M:%SZ'
-INTERNAL_TIMEZONE = pytz.UTC
+APP_LABEL = 'ddsc_core'
 
 
 class DataStore(CassandraDataStore):
@@ -34,12 +36,20 @@ class DataStore(CassandraDataStore):
         )
 
 
-class Location(models.Model):
+class BaseModel(models.Model):
+    class Meta:
+        abstract = True
+        app_label = APP_LABEL
+
+
+class Location(BaseModel):
     """
     Location
     Location of timeseries
 
     """
+    objects = manager.LocationManager()
+
     code = models.CharField(
         primary_key=True,
         max_length=12,
@@ -63,7 +73,9 @@ class Location(models.Model):
     )
 
 
-class Timeseries(models.Model):
+class Timeseries(BaseModel):
+    objects = manager.TimeseriesManager()
+
     class ValueType:
         INTEGER = 0
         FLOAT = 1
@@ -109,6 +121,7 @@ class Timeseries(models.Model):
         default="",
         help_text='optional description for timeseries'
     )
+    data_set = models.ManyToManyField(DataSet)
 
     supplying_system = models.ForeignKey(
         User,
@@ -127,6 +140,11 @@ class Timeseries(models.Model):
         null=True,
         related_name='timeseries'
     )
+
+    parameter = models.ForeignKey(aquo.Parameter, null=True)
+    unit = models.ForeignKey(aquo.Unit, null=True)
+    reference_frame = models.ForeignKey(aquo.ReferenceFrame, null=True)
+    compartment = models.ForeignKey(aquo.Compartment, null=True)
 
     #observationType = models.ForeignKey(ObservationType)
     #instrument_type = models.ForeignKey(InstrumentType, null=True)
