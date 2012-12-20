@@ -234,7 +234,7 @@ class LogicalGroup(MP_Node):
     via a materialized path approach.
 
     """
-    name = models.CharField(max_lenght=64)
+    name = models.CharField(max_length=64)
     description = models.TextField()
 
     class Meta:
