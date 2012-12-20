@@ -13,6 +13,7 @@ install_requires = [
     'django-extensions',
     'django-nose',
     'django-treebeard',
+    'lizard-security',
     'lizard-ui >= 4.0b5',
     'cassandralib',
     'pandas',
