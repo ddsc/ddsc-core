@@ -14,8 +14,14 @@ from django.db import models
 APP_LABEL = "ddsc_core"
 
 
+class AquoModelManager(models.Manager):
+    def get_by_natural_key(self, code):
+        return self.get(code=code)
+
+
 class AquoModel(models.Model):
     """Abstract base class for Aquo domain tables."""
+    objects = AquoModelManager()
     code = models.CharField(max_length=12, unique=True)
     description = models.CharField(max_length=60, unique=True)
     begin_date = models.DateField()
