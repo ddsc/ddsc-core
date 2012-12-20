@@ -141,15 +141,14 @@ class Timeseries(BaseModel):
         related_name='timeseries'
     )
 
+    # References to Aquo Domain Tables
     parameter = models.ForeignKey(aquo.Parameter, null=True)
     unit = models.ForeignKey(aquo.Unit, null=True)
     reference_frame = models.ForeignKey(aquo.ReferenceFrame, null=True)
     compartment = models.ForeignKey(aquo.Compartment, null=True)
-
-    #observationType = models.ForeignKey(ObservationType)
-    #instrument_type = models.ForeignKey(InstrumentType, null=True)
-    #valuation_method = models.ForeignKey(ValuationMethod, null=True)
-    #process_method = models.ForeignKey(ProcessMethod, null=True)
+    measuring_device = models.ForeignKey(aquo.MeasuringDevice, null=True)
+    measuring_method = models.ForeignKey(aquo.MeasuringMethod, null=True)
+    processing_method = models.ForeignKey(aquo.ProcessingMethod, null=True)
 
     first_value_timestamp = models.DateTimeField(
         null=True,
@@ -226,16 +225,16 @@ class Timeseries(BaseModel):
         return result
 
 
-class LogicalGroup(MP_Node):
-    """A group of time series.
-
-    End-users may group time series in any meaningful way. Furthermore, groups
-    can be combined into new groups. The resulting tree structure is modeled
-    via a materialized path approach.
-
-    """
-    name = models.CharField(max_length=64)
-    description = models.TextField()
-
-    class Meta:
-        app_label = APP_LABEL
+##class LogicalGroup(MP_Node):
+##    """A group of time series.
+##
+##    End-users may group time series in any meaningful way. Furthermore, groups
+##    can be combined into new groups. The resulting tree structure is modeled
+##    via a materialized path approach.
+##
+##    """
+##    name = models.CharField(max_length=64)
+##    description = models.TextField()
+##
+##    class Meta:
+##        app_label = APP_LABEL
