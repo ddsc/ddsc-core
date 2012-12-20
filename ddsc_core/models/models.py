@@ -61,14 +61,16 @@ class Location(BaseModel):
     )
     description = models.TextField(
         default="",
+        blank=True,
         help_text='optional description for timeseries'
     )
 
     #relative_location
-    point_geometry = models.PointField(dim=3, null=True)
-    real_geometry = models.GeometryField(dim=3, null=True)
+    point_geometry = models.PointField(dim=3, null=True, blank=True)
+    real_geometry = models.GeometryField(dim=3, null=True, blank=True)
     geometry_precision = models.FloatField(
         null=True,
+        blank=True,
         help_text='precision in meters of location'
     )
 
@@ -119,6 +121,7 @@ class Timeseries(BaseModel):
     )
     description = models.TextField(
         default="",
+        blank=True,
         help_text='optional description for timeseries'
     )
     data_set = models.ManyToManyField(DataSet)
@@ -138,31 +141,35 @@ class Timeseries(BaseModel):
     location = models.ForeignKey(
         Location,
         null=True,
+        blank=True,
         related_name='timeseries'
     )
 
     # References to Aquo Domain Tables
-    parameter = models.ForeignKey(aquo.Parameter, null=True)
-    unit = models.ForeignKey(aquo.Unit, null=True)
-    reference_frame = models.ForeignKey(aquo.ReferenceFrame, null=True)
-    compartment = models.ForeignKey(aquo.Compartment, null=True)
-    measuring_device = models.ForeignKey(aquo.MeasuringDevice, null=True)
-    measuring_method = models.ForeignKey(aquo.MeasuringMethod, null=True)
-    processing_method = models.ForeignKey(aquo.ProcessingMethod, null=True)
+    parameter = models.ForeignKey(aquo.Parameter, null=True, blank=True)
+    unit = models.ForeignKey(aquo.Unit, null=True, blank=True)
+    reference_frame = models.ForeignKey(aquo.ReferenceFrame, null=True, blank=True)
+    compartment = models.ForeignKey(aquo.Compartment, null=True, blank=True)
+    measuring_device = models.ForeignKey(aquo.MeasuringDevice, null=True, blank=True)
+    measuring_method = models.ForeignKey(aquo.MeasuringMethod, null=True, blank=True)
+    processing_method = models.ForeignKey(aquo.ProcessingMethod, null=True, blank=True)
 
     first_value_timestamp = models.DateTimeField(
         null=True,
+        blank=True,
         help_text='timestamp of first value'
     )
 
-    latest_value_number = models.FloatField(null=True)
+    latest_value_number = models.FloatField(null=True, blank=True)
     latest_value_text = models.TextField(
         null=True,
+        blank=True,
         help_text='latest value in case of a text, image or file type '
                   '(image and file is a reference to the file location'
     )
     latest_value_timestamp = models.DateTimeField(
         null=True,
+        blank=True,
         help_text='timestamp of latest value'
     )
 
