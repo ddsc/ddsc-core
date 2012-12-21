@@ -51,7 +51,7 @@ class Location(BaseModel):
     objects = manager.LocationManager()
 
     code = models.CharField(
-        primary_key=True,
+        unique=True,
         max_length=12,
         help_text="code for identification of location"
     )
@@ -109,7 +109,7 @@ class Timeseries(BaseModel):
     )
 
     code = models.CharField(
-        primary_key=True,
+        unique=True,
         max_length=64,
         help_text="generated code for timeseries identification"
     )
@@ -124,7 +124,7 @@ class Timeseries(BaseModel):
         blank=True,
         help_text='optional description for timeseries'
     )
-    data_set = models.ManyToManyField(DataSet)
+    data_set = models.ManyToManyField(DataSet, related_name='timeseries')
 
     supplying_system = models.ForeignKey(
         User,
