@@ -75,6 +75,9 @@ class Location(BaseModel, MP_Node):
         help_text='precision in meters of location'
     )
 
+    def __unicode__(self):
+        return self.name
+
 
 class Timeseries(BaseModel):
     objects = manager.TimeseriesManager()
