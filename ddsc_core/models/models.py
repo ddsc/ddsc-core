@@ -17,7 +17,6 @@ from lizard_security.models import DataSet
 
 APP_LABEL = "ddsc_core"
 CASSANDRA = getattr(settings, 'CASSANDRA', {})
-APP_LABEL = 'ddsc_core'
 
 
 class DataStore(CassandraDataStore):
