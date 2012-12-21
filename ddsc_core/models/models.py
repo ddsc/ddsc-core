@@ -42,10 +42,12 @@ class BaseModel(models.Model):
         app_label = APP_LABEL
 
 
-class Location(BaseModel):
-    """
-    Location
-    Location of timeseries
+class Location(BaseModel, MP_Node):
+    """Location of a timeseries.
+
+    Locations can be nested. The resulting tree is encoded via the materialized
+    path algorithm and is best managed via the API provided by treebeard or
+    the Django admin interface to keep it consistent.
 
     """
     objects = manager.LocationManager()

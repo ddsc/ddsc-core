@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'lizard_security',  # before lizard_ui!
     'lizard_ui',  # after lizard_security!
     'ddsc_core',  # after lizard_security!
+    'treebeard',
     ]
 ROOT_URLCONF = 'ddsc_core.urls'
 

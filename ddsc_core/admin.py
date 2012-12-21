@@ -3,8 +3,11 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
+from treebeard.admin import TreeAdmin
 
 from ddsc_core import models
+
+admin.site.register(models.Location, TreeAdmin)
 
 
 class AquoModelAdmin(admin.ModelAdmin):
