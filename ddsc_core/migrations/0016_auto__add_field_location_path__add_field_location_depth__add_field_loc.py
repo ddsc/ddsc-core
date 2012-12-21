@@ -4,15 +4,15 @@ from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
-from ddsc_core.models import Location
-
-
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
         # Start with an empty table since we cannot provide good defaults for
         # Location.path.
-        Location.objects.all().delete()
+        from django.db import connection, transaction
+        cursor = connection.cursor()
+        cursor.execute('TRUNCATE TABLE ddsc_core_location CASCADE;')
+        transaction.commit_unless_managed()
 
         # Adding field 'Location.path'
         db.add_column(u'ddsc_core_location', 'path',
