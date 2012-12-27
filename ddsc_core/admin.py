@@ -7,7 +7,10 @@ from treebeard.admin import TreeAdmin
 
 from ddsc_core import models
 
+admin.site.register(models.Folder)
+admin.site.register(models.IPAddress)
 admin.site.register(models.Location, TreeAdmin)
+admin.site.register(models.LocationGroup)
 
 
 class AquoModelAdmin(admin.ModelAdmin):
@@ -21,5 +24,3 @@ admin.site.register(models.Parameter, AquoModelAdmin)
 admin.site.register(models.ProcessingMethod, AquoModelAdmin)
 admin.site.register(models.ReferenceFrame, AquoModelAdmin)
 admin.site.register(models.Unit, AquoModelAdmin)
-admin.site.register(models.Folder, admin.ModelAdmin)
-admin.site.register(models.IPAddress, admin.ModelAdmin)

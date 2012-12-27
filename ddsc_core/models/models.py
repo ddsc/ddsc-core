@@ -51,6 +51,9 @@ class Location(BaseModel, MP_Node):
     """
     objects = manager.LocationManager()
 
+    # TODO: what's the purpose of this code field?
+    # Is it to be used for PI-XML's locationId?
+    # That does not make much sense to me...
     code = models.CharField(
         unique=True,
         max_length=12,
@@ -61,7 +64,7 @@ class Location(BaseModel, MP_Node):
         help_text="name of location"
     )
     description = models.TextField(
-        default="",
+        null=True,
         blank=True,
         help_text='optional description for timeseries'
     )
@@ -74,6 +77,14 @@ class Location(BaseModel, MP_Node):
         blank=True,
         help_text='precision in meters of location'
     )
+
+    def __unicode__(self):
+        return self.name
+
+
+class LocationGroup(BaseModel):
+    name = models.CharField(max_length=80)
+    locations = models.ManyToManyField(Location, blank=True)
 
     def __unicode__(self):
         return self.name
