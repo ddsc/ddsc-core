@@ -7,9 +7,6 @@ from django.contrib.gis.db import models
 from ddsc_core.models.models import BaseModel
 
 
-APP_LABEL = "ddsc_core"
-
-
 class Folder(BaseModel):
     path = models.CharField(max_length=64)
     user = models.ForeignKey(User)
