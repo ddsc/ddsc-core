@@ -84,7 +84,11 @@ class Location(BaseModel, MP_Node):
 
 class LocationGroup(BaseModel):
     name = models.CharField(max_length=80)
-    locations = models.ManyToManyField(Location, blank=True)
+    locations = models.ManyToManyField(
+        Location,
+        blank=True,
+        related_name='location_groups'
+    )
 
     def __unicode__(self):
         return self.name
@@ -201,7 +205,7 @@ class Timeseries(BaseModel):
         if end is None:
             end = datetime.now()
         if start is None:
-            start = end + relativedelta(years=-3)
+            start = end + relativedelta(years=-5)
         if filter is None:
             filter = ['value', 'flag']
 
