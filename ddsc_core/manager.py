@@ -38,7 +38,7 @@ class TimeseriesManager(Manager):
         return query_set.filter(data_set__in=data_set_ids)
 
 
-class LocationManager(GeoManager, MP_NodeManager):
+class LocationManager(MP_NodeManager, GeoManager):
     """Custom geomanager that filters out objects whose data set we can't
     access.
     """
