@@ -6,10 +6,8 @@ object manager: ``FilteredManager``. We have to set that object manager on our
 models.
 
 """
-from django.contrib.auth.decorators import permission_required
 from django.contrib.gis.db.models import GeoManager
 from django.db.models.manager import Manager
-from django.db.models import Q
 from tls import request
 from treebeard.mp_tree import MP_NodeManager
 
