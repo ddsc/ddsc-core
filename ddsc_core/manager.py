@@ -11,6 +11,7 @@ from django.contrib.gis.db.models import GeoManager
 from django.db.models.manager import Manager
 from django.db.models import Q
 from tls import request
+from treebeard.mp_tree import MP_NodeManager
 
 from lizard_security.middleware import ALLOWED_DATA_SET_IDS
 
@@ -37,7 +38,7 @@ class TimeseriesManager(Manager):
         return query_set.filter(data_set__in=data_set_ids)
 
 
-class LocationManager(GeoManager):
+class LocationManager(GeoManager, MP_NodeManager):
     """Custom geomanager that filters out objects whose data set we can't
     access.
     """
