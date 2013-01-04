@@ -66,7 +66,7 @@ class Location(BaseModel, MP_Node):
     description = models.TextField(
         null=True,
         blank=True,
-        help_text='optional description for timeseries'
+        help_text="optional description for timeseries"
     )
 
     #relative_location
@@ -75,7 +75,7 @@ class Location(BaseModel, MP_Node):
     geometry_precision = models.FloatField(
         null=True,
         blank=True,
-        help_text='precision in meters of location'
+        help_text="precision in meters of location"
     )
 
     def __unicode__(self):
@@ -87,7 +87,7 @@ class LocationGroup(BaseModel):
     locations = models.ManyToManyField(
         Location,
         blank=True,
-        related_name='location_groups'
+        related_name="location_groups"
     )
 
     def __unicode__(self):
@@ -136,12 +136,12 @@ class Timeseries(BaseModel):
         max_length=64,
         blank=True,
         null=True,
-        help_text='optional name for timeseries'
+        help_text="optional name for timeseries"
     )
     description = models.TextField(
         default="",
         blank=True,
-        help_text='optional description for timeseries'
+        help_text="optional description for timeseries"
     )
     data_set = models.ManyToManyField(DataSet, related_name='timeseries')
 
@@ -167,11 +167,27 @@ class Timeseries(BaseModel):
     # References to Aquo Domain Tables
     parameter = models.ForeignKey(aquo.Parameter, null=True, blank=True)
     unit = models.ForeignKey(aquo.Unit, null=True, blank=True)
-    reference_frame = models.ForeignKey(aquo.ReferenceFrame, null=True, blank=True)
+    reference_frame = models.ForeignKey(
+        aquo.ReferenceFrame,
+        null=True,
+        blank=True
+    )
     compartment = models.ForeignKey(aquo.Compartment, null=True, blank=True)
-    measuring_device = models.ForeignKey(aquo.MeasuringDevice, null=True, blank=True)
-    measuring_method = models.ForeignKey(aquo.MeasuringMethod, null=True, blank=True)
-    processing_method = models.ForeignKey(aquo.ProcessingMethod, null=True, blank=True)
+    measuring_device = models.ForeignKey(
+        aquo.MeasuringDevice,
+        null=True,
+        blank=True
+    )
+    measuring_method = models.ForeignKey(
+        aquo.MeasuringMethod,
+        null=True,
+        blank=True
+    )
+    processing_method = models.ForeignKey(
+        aquo.ProcessingMethod,
+        null=True,
+        blank=True
+    )
 
     first_value_timestamp = models.DateTimeField(
         null=True,
@@ -254,9 +270,9 @@ class Timeseries(BaseModel):
 ##class LogicalGroup(MP_Node):
 ##    """A group of time series.
 ##
-##    End-users may group time series in any meaningful way. Furthermore, groups
-##    can be combined into new groups. The resulting tree structure is modeled
-##    via a materialized path approach.
+##    End-users may group time series in any meaningful way. Furthermore,
+##    groups can be combined into new groups. The resulting tree
+##    structure is modeled via a materialized path approach.
 ##
 ##    """
 ##    name = models.CharField(max_length=64)

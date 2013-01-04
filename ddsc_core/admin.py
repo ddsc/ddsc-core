@@ -7,17 +7,21 @@ from treebeard.admin import TreeAdmin
 
 from ddsc_core import models
 
-admin.site.register(models.Folder)
-admin.site.register(models.IPAddress)
-admin.site.register(models.Location, TreeAdmin)
-admin.site.register(models.LocationGroup)
-
 
 class AquoModelAdmin(admin.ModelAdmin):
     """ModelAdmin that provides filtering by group."""
-    list_filter = ('group', )
+    list_filter = ("group", )
+
+
+class LocationGroupAdmin(admin.ModelAdmin):
+    filter_horizontal = ("locations", )
+
 
 admin.site.register(models.Compartment, AquoModelAdmin)
+admin.site.register(models.Folder)
+admin.site.register(models.IPAddress)
+admin.site.register(models.Location, TreeAdmin)
+admin.site.register(models.LocationGroup, LocationGroupAdmin)
 admin.site.register(models.MeasuringDevice, AquoModelAdmin)
 admin.site.register(models.MeasuringMethod, AquoModelAdmin)
 admin.site.register(models.Parameter, AquoModelAdmin)
