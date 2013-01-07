@@ -1,10 +1,20 @@
 # (c) Nelen & Schuurmans. MIT licensed, see LICENSE.rst.
 
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, patterns, url
 from django.contrib import admin
+
+from ddsc_core.views import LogicalGroupGraph
 
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^admin/', include(admin.site.urls)),
+    url(
+        r'^logical_groups/(?P<pk>\d+)/graph/$',
+        LogicalGroupGraph.as_view(),
+        name='logical_group_graph'
+    ),
+    url(
+        r'^admin/',
+        include(admin.site.urls)
+    ),
 )

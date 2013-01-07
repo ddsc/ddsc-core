@@ -17,11 +17,16 @@ class LocationGroupAdmin(admin.ModelAdmin):
     filter_horizontal = ("locations", )
 
 
+class LogicalGroupAdmin(admin.ModelAdmin):
+    readonly_fields = ("graph", )
+
 admin.site.register(models.Compartment, AquoModelAdmin)
 admin.site.register(models.Folder)
 admin.site.register(models.IPAddress)
 admin.site.register(models.Location, TreeAdmin)
 admin.site.register(models.LocationGroup, LocationGroupAdmin)
+admin.site.register(models.LogicalGroup, LogicalGroupAdmin)
+admin.site.register(models.LogicalGroupEdge)
 admin.site.register(models.MeasuringDevice, AquoModelAdmin)
 admin.site.register(models.MeasuringMethod, AquoModelAdmin)
 admin.site.register(models.Parameter, AquoModelAdmin)

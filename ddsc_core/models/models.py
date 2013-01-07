@@ -7,7 +7,10 @@ from dateutil.relativedelta import relativedelta
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.gis.db import models
+from django.core.urlresolvers import reverse
+from django.db import transaction
 from treebeard.mp_tree import MP_Node
+import networkx as nx
 
 from cassandralib.models import CassandraDataStore
 from cassandralib.models import INTERNAL_TIMEZONE
@@ -267,16 +270,53 @@ class Timeseries(BaseModel):
         return result
 
 
-##class LogicalGroup(MP_Node):
-##    """A group of time series.
-##
-##    End-users may group time series in any meaningful way. Furthermore,
-##    groups can be combined into new groups. The resulting tree
-##    structure is modeled via a materialized path approach.
-##
-##    """
-##    name = models.CharField(max_length=64)
-##    description = models.TextField()
-##
-##    class Meta:
-##        app_label = APP_LABEL
+class LogicalGroup(BaseModel):
+    """A group of time series.
+
+    End-users may group time series in any meaningful way. Furthermore,
+    groups can be combined into new groups.
+
+    """
+    name = models.CharField(max_length=64)
+
+    def graph(self):
+        return '<img src="{0}"/>'.format(
+            reverse('logical_group_graph', kwargs={'pk': self.pk})
+        )
+
+    # Do not escape HTML-output.
+    graph.allow_tags = True
+
+    def __unicode__(self):
+        return self.name
+
+
+class LogicalGroupEdge(BaseModel):
+    """An edge between two nodes in the graph of LogicalGroups.
+
+    Edges are directed: from child to parent. Cycles are not
+    allowed. In other words, a directed acyclic graph (DAG).
+
+    """
+    child = models.ForeignKey(LogicalGroup, related_name="childs")
+    parent = models.ForeignKey(LogicalGroup, related_name="parents")
+
+    @classmethod
+    def edges(cls):
+        """Return a list of edge-tuples."""
+        return [(obj.child, obj.parent) for obj in cls.objects.all()]
+
+    @transaction.commit_on_success
+    def save(self, *args, **kwargs):
+        """Rollback if not a DAG."""
+        super(LogicalGroupEdge, self).save(*args, **kwargs)
+        G = nx.DiGraph()
+        G.add_edges_from(self.edges())
+        if not nx.is_directed_acyclic_graph(G):
+            raise Exception("Not a directed acyclic graph.")
+
+    def __unicode__(self):
+        return "{0} -> {1}".format(self.child, self.parent)
+
+    class Meta(BaseModel.Meta):
+        unique_together = ("child", "parent")
