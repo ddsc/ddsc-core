@@ -4,9 +4,6 @@ from __future__ import division
 
 from django.http import HttpResponse
 from django.views.generic import View
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
 import networkx as nx
 
 from ddsc_core.models import LogicalGroup
@@ -18,13 +15,13 @@ class LogicalGroupGraph(View):
 
     def get(self, request, *args, **kwargs):
         """Return the graph as a png image."""
-        G = nx.DiGraph()
+        current = LogicalGroup.objects.get(pk=kwargs['pk'])
+        G = nx.DiGraph()  # NetworkX directed graph
         G.add_nodes_from(LogicalGroup.objects.all())
         G.add_edges_from(LogicalGroupEdge.edges())
-        #logical_group = LogicalGroup.objects.get(pk=kwargs['pk'])
-        nx.draw_networkx(G, pos=nx.graphviz_layout(G))
-        response = HttpResponse(content_type="image/png")
-        plt.axis('off')
-        plt.savefig(response, format="png")
-        plt.close()
-        return response
+        A = nx.to_agraph(G)  # Graphviz agraph
+        A.graph_attr.update(rankdir="BT")
+        A.node_attr.update(fontsize=9)
+        A.get_node(current).attr['color'] = "red"
+        A.layout(prog="dot")
+        return HttpResponse(A.draw(format="png"), mimetype="image/png")
