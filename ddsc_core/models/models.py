@@ -2,7 +2,6 @@
 from __future__ import unicode_literals
 
 from datetime import datetime
-
 from dateutil.relativedelta import relativedelta
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -16,6 +15,7 @@ from cassandralib.models import CassandraDataStore
 from cassandralib.models import INTERNAL_TIMEZONE
 from ddsc_core import manager
 from ddsc_core.models import aquo
+from lizard_security.models import DataOwner
 from lizard_security.models import DataSet
 
 APP_LABEL = "ddsc_core"
@@ -278,6 +278,8 @@ class LogicalGroup(BaseModel):
 
     """
     name = models.CharField(max_length=64)
+    owner = models.ForeignKey(DataOwner)
+    description = models.TextField(blank=True)
 
     def graph(self):
         return '<img src="{0}"/>'.format(
@@ -289,6 +291,10 @@ class LogicalGroup(BaseModel):
 
     def __unicode__(self):
         return self.name
+
+    class Meta(BaseModel.Meta):
+        ordering = ["owner", "name"]
+        unique_together = ("owner", "name")
 
 
 class LogicalGroupEdge(BaseModel):
@@ -308,7 +314,16 @@ class LogicalGroupEdge(BaseModel):
 
     @transaction.commit_on_success
     def save(self, *args, **kwargs):
-        """Rollback if not a DAG."""
+        """Create an edge between 2 logical groups.
+
+        Rollback if:
+
+        1) the groups have different owners.
+        2) the graph is not a DAG.
+
+        """
+        if self.child.owner != self.parent.owner:
+            raise Exception("Nodes have different owners.")
         super(LogicalGroupEdge, self).save(*args, **kwargs)
         G = nx.DiGraph()
         G.add_edges_from(self.edges())

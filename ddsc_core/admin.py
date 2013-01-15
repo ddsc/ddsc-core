@@ -18,7 +18,25 @@ class LocationGroupAdmin(admin.ModelAdmin):
 
 
 class LogicalGroupAdmin(admin.ModelAdmin):
+    list_display = ("name", "owner")
+    list_filter = ("owner", )
     readonly_fields = ("graph", )
+
+    def get_readonly_fields(self, request, obj=None):
+        """Return a tuple of read-only fields.
+
+        Allowing one to change the owner of a logical group opens a can of
+        worms, because this may result in illegal edges (i.e. edges that
+        connect nodes having different owners). For that reason, the
+        owner cannot be changed afterwards.
+
+        """
+        if obj is None:
+            # Adding a LogicalGroup
+            return self.readonly_fields
+        else:
+            # Changing a LogicalGroup
+            return ("owner", ) + self.readonly_fields
 
 admin.site.register(models.Compartment, AquoModelAdmin)
 admin.site.register(models.Folder)
