@@ -168,8 +168,8 @@ class Timeseries(BaseModel):
     )
 
     # References to Aquo Domain Tables
-    parameter = models.ForeignKey(aquo.Parameter, null=True, blank=True)
-    unit = models.ForeignKey(aquo.Unit, null=True, blank=True)
+    parameter = models.ForeignKey(aquo.Parameter)
+    unit = models.ForeignKey(aquo.Unit)
     reference_frame = models.ForeignKey(
         aquo.ReferenceFrame,
         null=True,
