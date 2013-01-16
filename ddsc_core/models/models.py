@@ -158,8 +158,7 @@ class Timeseries(BaseModel):
     #type information
     value_type = models.SmallIntegerField(default=1, choices=VALUE_TYPE)
 
-    #references to other models
-    #owner = models.ForeignKey('DataOwner')
+    owner = models.ForeignKey(DataOwner)
     location = models.ForeignKey(
         Location,
         null=True,
