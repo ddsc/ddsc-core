@@ -12,6 +12,15 @@ class AquoModelAdmin(admin.ModelAdmin):
     """ModelAdmin that provides filtering by group."""
     list_filter = ("group", )
 
+    def has_add_permission(self, request, obj=None):
+        """Forbid adding any new objects via the Django admin.
+
+        Currently, only one-way sync is supported. This is just a simple
+        reminder of that fact and by no means a hack-proof solution.
+
+        """
+        return False
+
 
 class LocationGroupAdmin(admin.ModelAdmin):
     filter_horizontal = ("locations", )
