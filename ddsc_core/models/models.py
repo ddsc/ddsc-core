@@ -119,6 +119,8 @@ class Timeseries(BaseModel):
         (ValueType.FILE, 'file'),
     )
 
+    # TODO: TimeseriesType is not used at the moment.
+    # Delete it or add a timeseries_type attribute?
     class TimeseriesType:
         HISTORICAL = 0
         SIMULATED_FORECAST = 1
