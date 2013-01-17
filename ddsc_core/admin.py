@@ -27,6 +27,7 @@ class LocationGroupAdmin(admin.ModelAdmin):
 
 
 class LogicalGroupAdmin(admin.ModelAdmin):
+    filter_horizontal = ("timeseries", )
     list_display = ("name", "owner")
     list_filter = ("owner", )
     readonly_fields = ("graph", )
