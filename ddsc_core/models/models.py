@@ -167,6 +167,7 @@ class Timeseries(BaseModel):
     #type information
     value_type = models.SmallIntegerField(default=1, choices=VALUE_TYPE)
 
+    source = models.ForeignKey('Source')
     owner = models.ForeignKey(DataOwner)
     location = models.ForeignKey(
         Location,
@@ -343,3 +344,44 @@ class LogicalGroupEdge(BaseModel):
 
     class Meta(BaseModel.Meta):
         unique_together = ("child", "parent")
+
+
+class Manufacturer(BaseModel):
+    """Manufacturer of a sensor."""
+    name = models.CharField(max_length=64, unique=True)
+
+
+class Source(BaseModel):
+    """A source of data, e.g. a sensor."""
+
+    CALCULATED = 0
+    SENSOR = 1
+    SIMULATED = 2
+
+    SOURCE_TYPES = (
+        (CALCULATED, 'Calculated'),
+        (SENSOR, 'Sensor'),
+        (SIMULATED, 'Simulated'),
+    )
+
+    name = models.CharField(max_length=64)
+    source_type = models.SmallIntegerField(
+        choices=SOURCE_TYPES,
+        default=SENSOR,
+    )
+    manufacturer = models.ForeignKey(Manufacturer)
+    details = models.TextField(blank=True, null=True)
+
+    class Meta(BaseModel.Meta):
+        unique_together = ("manufacturer", "name")
+
+
+class TimeseriesGroup(BaseModel):
+    """???
+
+    Bastiaan (and only Bastiaan) knows.
+
+    """
+    name = models.CharField(max_length=64)
+    sources = models.ManyToManyField(Source)
+    parameters = models.ManyToManyField(aquo.Parameter)
