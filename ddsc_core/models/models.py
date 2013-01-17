@@ -39,6 +39,13 @@ class DataStore(CassandraDataStore):
 
 
 class BaseModel(models.Model):
+    """Super class of ddsc_core models.
+
+    Instead of having a single models.py, ddsc_core models have been split
+    over multiple modules. This approach, however, has some issues with
+    South, which have been solved by explicitly setting the app_label.
+
+    """
     class Meta:
         abstract = True
         app_label = APP_LABEL
