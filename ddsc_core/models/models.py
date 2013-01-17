@@ -8,13 +8,13 @@ from django.contrib.auth.models import User
 from django.contrib.gis.db import models
 from django.core.urlresolvers import reverse
 from django.db import transaction
+from django.db.models.manager import Manager
 from treebeard.mp_tree import MP_Node
 import networkx as nx
 
 from cassandralib.models import CassandraDataStore
 from cassandralib.models import INTERNAL_TIMEZONE
 from ddsc_core import manager
-from ddsc_core.models import aquo
 from lizard_security.models import DataOwner
 from lizard_security.models import DataSet
 
@@ -105,6 +105,7 @@ class LocationGroup(BaseModel):
 
 
 class Timeseries(BaseModel):
+    objects_nosecurity = Manager()
     objects = manager.TimeseriesManager()
 
     class ValueType:
@@ -176,26 +177,26 @@ class Timeseries(BaseModel):
     )
 
     # References to Aquo Domain Tables
-    parameter = models.ForeignKey(aquo.Parameter)
-    unit = models.ForeignKey(aquo.Unit)
+    parameter = models.ForeignKey('Parameter')
+    unit = models.ForeignKey('Unit')
     reference_frame = models.ForeignKey(
-        aquo.ReferenceFrame,
+        'ReferenceFrame',
         null=True,
         blank=True
     )
-    compartment = models.ForeignKey(aquo.Compartment, null=True, blank=True)
+    compartment = models.ForeignKey('Compartment', null=True, blank=True)
     measuring_device = models.ForeignKey(
-        aquo.MeasuringDevice,
+        'MeasuringDevice',
         null=True,
         blank=True
     )
     measuring_method = models.ForeignKey(
-        aquo.MeasuringMethod,
+        'MeasuringMethod',
         null=True,
         blank=True
     )
     processing_method = models.ForeignKey(
-        aquo.ProcessingMethod,
+        'ProcessingMethod',
         null=True,
         blank=True
     )
@@ -384,7 +385,7 @@ class TimeseriesGroup(BaseModel):
     """
     name = models.CharField(max_length=64)
     sources = models.ManyToManyField(Source)
-    parameters = models.ManyToManyField(aquo.Parameter)
+    parameters = models.ManyToManyField('Parameter')
 
 
 class IdMapping(BaseModel):
