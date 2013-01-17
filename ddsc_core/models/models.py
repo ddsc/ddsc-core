@@ -157,11 +157,10 @@ class Timeseries(BaseModel):
     )
     data_set = models.ManyToManyField(DataSet, related_name='timeseries')
 
-    supplying_system = models.ForeignKey(
+    supplying_systems = models.ManyToManyField(
         User,
-        null=True,
         blank=True,
-        related_name='timeseries'
+        through='IdMapping',
     )
 
     #type information
@@ -385,3 +384,10 @@ class TimeseriesGroup(BaseModel):
     name = models.CharField(max_length=64)
     sources = models.ManyToManyField(Source)
     parameters = models.ManyToManyField(aquo.Parameter)
+
+
+class IdMapping(BaseModel):
+    """Maps an internal timeseries ID on an external one."""
+    timeseries = models.ForeignKey(Timeseries)
+    user = models.ForeignKey(User)
+    remote_id = models.IntegerField()
