@@ -92,16 +92,16 @@ class Location(BaseModel, MP_Node):
         return self.name
 
 
-class LocationGroup(BaseModel):
-    name = models.CharField(max_length=80)
-    locations = models.ManyToManyField(
-        Location,
-        blank=True,
-        related_name="location_groups"
-    )
-
-    def __unicode__(self):
-        return self.name
+#class LocationGroup(BaseModel):
+#    name = models.CharField(max_length=80)
+#    locations = models.ManyToManyField(
+#        Location,
+#        blank=True,
+#        related_name="location_groups"
+#    )
+#
+#    def __unicode__(self):
+#        return self.name
 
 
 class Timeseries(BaseModel):
