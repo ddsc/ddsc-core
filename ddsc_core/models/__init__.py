@@ -1,5 +1,5 @@
 from ddsc_core.models.models import Location
-#from ddsc_core.models.models import LocationGroup
+from ddsc_core.models.models import LocationType
 from ddsc_core.models.models import LogicalGroup
 from ddsc_core.models.models import LogicalGroupEdge
 from ddsc_core.models.models import Timeseries
