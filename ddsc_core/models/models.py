@@ -388,6 +388,17 @@ class TimeseriesGroup(BaseModel):
     parameters = models.ManyToManyField('Parameter')
 
 
+class SourceGroup(BaseModel):
+    """???
+
+    Bastiaan (and only Bastiaan) knows.
+
+    """
+    name = models.CharField(max_length=64)
+    sources = models.ManyToManyField(Source)
+    description = models.TextField(blank=True)
+
+
 class IdMapping(BaseModel):
     """Maps an internal timeseries ID on an external one."""
     timeseries = models.ForeignKey(Timeseries)
