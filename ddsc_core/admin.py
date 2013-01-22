@@ -22,7 +22,7 @@ class AquoModelAdmin(admin.ModelAdmin):
         return False
 
 
-class LocationGroupAdmin(admin.ModelAdmin):
+class LocationTypeAdmin(admin.ModelAdmin):
     filter_horizontal = ("locations", )
 
 
@@ -52,7 +52,7 @@ admin.site.register(models.Compartment, AquoModelAdmin)
 admin.site.register(models.Folder)
 admin.site.register(models.IPAddress)
 admin.site.register(models.Location, TreeAdmin)
-admin.site.register(models.LocationGroup, LocationGroupAdmin)
+admin.site.register(models.LocationType, LocationTypeAdmin)
 admin.site.register(models.LogicalGroup, LogicalGroupAdmin)
 admin.site.register(models.LogicalGroupEdge)
 admin.site.register(models.MeasuringDevice, AquoModelAdmin)
