@@ -351,6 +351,8 @@ class Manufacturer(BaseModel):
     """Manufacturer of a sensor."""
     name = models.CharField(max_length=64, unique=True)
 
+    def __unicode__(self):
+        return '{}'.format(self.name)
 
 class Source(BaseModel):
     """A source of data, e.g. a sensor."""
