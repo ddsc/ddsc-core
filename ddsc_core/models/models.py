@@ -167,8 +167,8 @@ class Timeseries(BaseModel):
     #type information
     value_type = models.SmallIntegerField(default=1, choices=VALUE_TYPE)
 
-    source = models.ForeignKey('Source')
-    owner = models.ForeignKey(DataOwner)
+    source = models.ForeignKey('Source', null=True, blank=True)
+    owner = models.ForeignKey(DataOwner, null=True, blank=True)
     location = models.ForeignKey(
         Location,
         null=True,
