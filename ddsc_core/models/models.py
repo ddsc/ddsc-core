@@ -221,13 +221,12 @@ class Timeseries(BaseModel):
     )
 
     def latest_value(self):
-        if self.value_type == Timeseries.ValueType.INTEGER \
-                or self.value_type == Timeseries.ValueType.FLOAT:
+        if self.value_type in (Timeseries.ValueType.INTEGER,
+                Timeseries.ValueType.FLOAT):
             return self.latest_value_number
-        if self.value_type == Timeseries.ValueType.TEXT \
-                or self.value_type == Timeseries.ValueType.IMAGE:
+        if self.value_type in (Timeseries.ValueType.TEXT,
+                Timeseries.ValueType.IMAGE):
             return self.latest_value_text
-        return None
 
     def get_events(self, start=None, end=None, filter=None):
         if end is None:
