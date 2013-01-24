@@ -201,6 +201,11 @@ class Timeseries(BaseModel):
         blank=True
     )
 
+    validate_max_hard = models.FloatField(default=9999)
+    validate_min_hard = models.FloatField(default=9999)
+    validate_max_soft = models.FloatField(default=9999)
+    validate_min_soft = models.FloatField(default=9999)
+    validate_max_diff = models.FloatField(default=9999)
     first_value_timestamp = models.DateTimeField(
         null=True,
         blank=True,
