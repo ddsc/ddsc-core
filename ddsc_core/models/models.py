@@ -404,4 +404,4 @@ class IdMapping(BaseModel):
     """Maps an internal timeseries ID on an external one."""
     timeseries = models.ForeignKey(Timeseries)
     user = models.ForeignKey(User)
-    remote_id = models.IntegerField()
+    remote_id = models.CharFieldField(max_length=64)
