@@ -80,8 +80,8 @@ class Location(BaseModel, MP_Node):
     )
 
     #relative_location
-    point_geometry = models.PointField(dim=3, null=True, blank=True)
-    real_geometry = models.GeometryField(dim=3, null=True, blank=True)
+    point_geometry = models.PointField(srid=4326, null=True, blank=True)
+    real_geometry = models.GeometryField(srid=4326, null=True, blank=True)
     geometry_precision = models.FloatField(
         null=True,
         blank=True,
