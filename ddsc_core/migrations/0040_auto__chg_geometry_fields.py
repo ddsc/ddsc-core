@@ -116,7 +116,7 @@ class Migration(SchemaMigration):
         u'ddsc_core.idmapping': {
             'Meta': {'object_name': 'IdMapping'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'remote_id': ('django.db.models.fields.IntegerField', [], {}),
+            'remote_id': ('django.db.models.fields.CharField', [], {'max_length': '64'}),
             'timeseries': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['ddsc_core.Timeseries']"}),
             'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"})
         },
@@ -249,6 +249,11 @@ class Migration(SchemaMigration):
             'source': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['ddsc_core.Source']", 'null': 'True', 'blank': 'True'}),
             'supplying_systems': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.User']", 'symmetrical': 'False', 'through': u"orm['ddsc_core.IdMapping']", 'blank': 'True'}),
             'unit': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['ddsc_core.Unit']"}),
+            'validate_max_diff': ('django.db.models.fields.FloatField', [], {'default': '9999'}),
+            'validate_max_hard': ('django.db.models.fields.FloatField', [], {'default': '9999'}),
+            'validate_max_soft': ('django.db.models.fields.FloatField', [], {'default': '9999'}),
+            'validate_min_hard': ('django.db.models.fields.FloatField', [], {'default': '9999'}),
+            'validate_min_soft': ('django.db.models.fields.FloatField', [], {'default': '9999'}),
             'value_type': ('django.db.models.fields.SmallIntegerField', [], {'default': '1'})
         },
         u'ddsc_core.timeseriesgroup': {
