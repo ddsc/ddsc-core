@@ -15,8 +15,7 @@ import networkx as nx
 from cassandralib.models import CassandraDataStore
 from cassandralib.models import INTERNAL_TIMEZONE
 from ddsc_core import manager
-from lizard_security.models import DataOwner
-from lizard_security.models import DataSet
+from lizard_security.models import DataOwner, DataSet
 
 APP_LABEL = "ddsc_core"
 CASSANDRA = getattr(settings, 'CASSANDRA', {})
@@ -244,10 +243,17 @@ class Timeseries(BaseModel):
         start = INTERNAL_TIMEZONE.localize(start)
         end = INTERNAL_TIMEZONE.localize(end)
 
-        if start < self.first_value_timestamp:
-            start = self.first_value_timestamp
-        if end > self.latest_value_timestamp:
-            end = self.latest_value_timestamp
+        if (self.first_value_timestamp is None or
+                self.latest_value_timestamp is None):
+            # If there's no first or last timestamp, there's no data.
+            # So make sure Cassandra returns nothing with no hard work.
+            start = INTERNAL_TIMEZONE.localize(datetime.now())
+            end = start + relativedelta(years=-10)
+        else:
+            if start < self.first_value_timestamp:
+                start = self.first_value_timestamp
+            if end > self.latest_value_timestamp:
+                end = self.latest_value_timestamp
 
         store = DataStore()
         return store.read('events', self.code, start, end, params=filter)
