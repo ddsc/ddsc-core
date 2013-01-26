@@ -393,6 +393,9 @@ class Source(BaseModel):
     manufacturer = models.ForeignKey(Manufacturer)
     details = models.TextField(blank=True, null=True)
 
+    def __unicode__(self):
+        return "{}".format(self.name)
+
 
 class TimeseriesGroup(BaseModel):
     """???
