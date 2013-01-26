@@ -58,6 +58,7 @@ class Location(BaseModel, MP_Node):
     the Django admin interface to keep it consistent.
 
     """
+    objects_nosecurity = Manager()
     objects = manager.LocationManager()
 
     # TODO: what's the purpose of this code field?
