@@ -365,17 +365,20 @@ class Manufacturer(BaseModel):
     def __unicode__(self):
         return '{}'.format(self.name)
 
+
 class Source(BaseModel):
     """A source of data, e.g. a sensor."""
 
     CALCULATED = 0
     SENSOR = 1
     SIMULATED = 2
+    DERIVED = 3
 
     SOURCE_TYPES = (
         (CALCULATED, 'Calculated'),
         (SENSOR, 'Sensor'),
         (SIMULATED, 'Simulated'),
+        (DERIVED, 'Derived'),
     )
 
     name = models.CharField(max_length=64)
