@@ -393,9 +393,6 @@ class Source(BaseModel):
     manufacturer = models.ForeignKey(Manufacturer)
     details = models.TextField(blank=True, null=True)
 
-    class Meta(BaseModel.Meta):
-        unique_together = ("manufacturer", "name")
-
 
 class TimeseriesGroup(BaseModel):
     """???
