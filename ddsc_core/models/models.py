@@ -96,7 +96,7 @@ class Location(BaseModel, MP_Node):
 
 
 class LocationType(BaseModel):
-    name = models.CharField(max_length=80)
+    name = models.CharField(max_length=80, unique=True)
     locations = models.ManyToManyField(
         Location,
         blank=True,
