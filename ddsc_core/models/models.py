@@ -78,13 +78,17 @@ class Location(BaseModel, MP_Node):
         help_text="optional description for timeseries"
     )
 
-    #relative_location
+    # The location described in words (exact location is unknown):
+    relative_location = models.TextField(null=True, blank=True)
+    # A single point that represents the real geometry (e.g. the center):
     point_geometry = models.PointField(srid=4326, null=True, blank=True)
+    # The real geometry (point, linestring, polygon, etc):
     real_geometry = models.GeometryField(srid=4326, null=True, blank=True)
+    # Precision in meters with respect to point_geometry:
     geometry_precision = models.FloatField(
         null=True,
         blank=True,
-        help_text="precision in meters of location"
+        help_text="precision in meters with respect to point geometry"
     )
 
     def __unicode__(self):
