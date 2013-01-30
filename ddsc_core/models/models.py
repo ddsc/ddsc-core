@@ -9,6 +9,7 @@ from django.contrib.gis.db import models
 from django.core.urlresolvers import reverse
 from django.db import transaction
 from django.db.models.manager import Manager
+from django_extensions.db.fields import UUIDField
 from treebeard.mp_tree import MP_Node
 import networkx as nx
 
@@ -60,22 +61,20 @@ class Location(BaseModel, MP_Node):
     """
     objects = manager.LocationManager()
 
-    # TODO: what's the purpose of this code field?
-    # Is it to be used for PI-XML's locationId?
-    # That does not make much sense to me...
-    code = models.CharField(
+    uuid = UUIDField(
+        version=4,
         unique=True,
-        max_length=12,
-        help_text="code for identification of location"
+        help_text="universally unique identifier",
+        verbose_name="UUID",
     )
     name = models.CharField(
         max_length=80,
-        help_text="name of location"
+        help_text="name of location",
     )
     description = models.TextField(
-        null=True,
         blank=True,
-        help_text="optional description for timeseries"
+        null=True,
+        help_text="optional description"
     )
 
     # The location described in words (exact location is unknown):
@@ -96,6 +95,7 @@ class Location(BaseModel, MP_Node):
 
 
 class LocationType(BaseModel):
+    code = models.CharField(max_length=3, unique=True)
     name = models.CharField(max_length=80, unique=True)
     locations = models.ManyToManyField(
         Location,
@@ -143,10 +143,11 @@ class Timeseries(BaseModel):
         (TimeseriesType.SIMULATED_HISTORICAL, 'simulated historical'),
     )
 
-    code = models.CharField(
+    uuid = UUIDField(
+        version=4,
         unique=True,
-        max_length=64,
-        help_text="generated code for timeseries identification"
+        help_text="universally unique identifier",
+        verbose_name="UUID",
     )
     name = models.CharField(
         max_length=64,
@@ -364,6 +365,7 @@ class LogicalGroupEdge(BaseModel):
 
 class Manufacturer(BaseModel):
     """Manufacturer of a sensor."""
+    code = models.CharField(max_length=3, unique=True)
     name = models.CharField(max_length=64, unique=True)
 
     def __unicode__(self):
@@ -385,6 +387,12 @@ class Source(BaseModel):
         (DERIVED, 'Derived'),
     )
 
+    uuid = UUIDField(
+        version=4,
+        unique=True,
+        help_text="universally unique identifier",
+        verbose_name="UUID",
+    )
     name = models.CharField(max_length=64)
     source_type = models.SmallIntegerField(
         choices=SOURCE_TYPES,
