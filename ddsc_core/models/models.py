@@ -263,7 +263,7 @@ class Timeseries(BaseModel):
                 end = self.latest_value_timestamp
 
         store = DataStore()
-        return store.read('events', self.code, start, end, params=filter)
+        return store.read('events', self.uuid, start, end, params=filter)
 
     def set_events(self, df):
         for timestamp, row in df.iterrows():
@@ -271,7 +271,7 @@ class Timeseries(BaseModel):
 
     def set_event(self, timestamp, row):
         store = DataStore()
-        store.write_row('events', self.code, timestamp, row)
+        store.write_row('events', self.uuid, timestamp, row)
         if 'value' in row:
             if not self.latest_value_timestamp \
                     or self.latest_value_timestamp < timestamp:
