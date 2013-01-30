@@ -59,6 +59,7 @@ class Location(BaseModel, MP_Node):
     the Django admin interface to keep it consistent.
 
     """
+    objects_nosecurity = Manager()
     objects = manager.LocationManager()
 
     uuid = UUIDField(
@@ -400,6 +401,9 @@ class Source(BaseModel):
     )
     manufacturer = models.ForeignKey(Manufacturer)
     details = models.TextField(blank=True, null=True)
+
+    def __unicode__(self):
+        return "{}".format(self.name)
 
 
 class TimeseriesGroup(BaseModel):
