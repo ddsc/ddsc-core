@@ -94,6 +94,12 @@ class Location(BaseModel, MP_Node):
     def __unicode__(self):
         return self.name
 
+    def superlocation(self):
+        return self.get_parent()
+
+    def sublocations(self):
+        return self.get_children()
+
 
 class LocationType(BaseModel):
     code = models.CharField(max_length=3, unique=True)
