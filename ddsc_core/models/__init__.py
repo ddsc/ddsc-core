@@ -5,6 +5,7 @@ from ddsc_core.models.models import LogicalGroupEdge
 from ddsc_core.models.models import Timeseries
 from ddsc_core.models.models import Source
 from ddsc_core.models.models import Manufacturer
+from ddsc_core.models.models import IdMapping
 
 from ddsc_core.models.aquo import Compartment
 from ddsc_core.models.aquo import MeasuringDevice
