@@ -118,6 +118,9 @@ class Timeseries(BaseModel):
     objects_nosecurity = Manager()
     objects = manager.TimeseriesManager()
 
+    def __unicode__(self):
+        return "{}".format(self.name)
+
     class ValueType:
         INTEGER = 0
         FLOAT = 1
