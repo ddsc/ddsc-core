@@ -321,6 +321,12 @@ class LogicalGroup(BaseModel):
 
     # Do not escape HTML-output.
     graph.allow_tags = True
+    
+    def parents(self):
+        return []
+
+    def children(self):
+        return []
 
     def __unicode__(self):
         return self.name
