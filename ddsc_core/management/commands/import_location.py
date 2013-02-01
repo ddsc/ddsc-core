@@ -84,9 +84,10 @@ class Command(BaseCommand):
                         parentnode = Location.objects.get(uuid=st)
                         currentnode.save_under(parentnode.pk)
                     except :
-                        currentnode.path = 'N/A'
-                        currentnode.depth = -999
-                        currentnode.numchild = -999
+                        currentnode.path = 'N/A' + str(i)
+                        currentnode.depth = 9999
+                        currentnode.numchild = 9999
+                        currentnode.save()
                 i+=1
                                 
                     
