@@ -63,7 +63,6 @@ class Location(BaseModel, MP_Node_ByInstance):
     the Django admin interface to keep it consistent.
 
     """
-    objects_nosecurity = Manager()
     objects = manager.LocationManager()
 
     uuid = UUIDField(
@@ -109,32 +108,33 @@ class Location(BaseModel, MP_Node_ByInstance):
         Apparently Treebeard makes normal tree operations, like
         moving to a different parent node, really really hard...
         '''
+        instance = self
 
-        if self.pk is None:
+        if instance.pk is None:
             # creating a new instance
             if parent_pk is not None:
                 # this is a new leaf node
-                parent = self.__class__.objects_nosecurity.get(pk=parent_pk)
-                new_self = parent.add_child_by_instance(self)
-                new_self.move(parent, pos='first-child')
+                parent = instance.__class__.objects.get(pk=parent_pk)
+                instance = parent.add_child_by_instance(instance)
+                instance.move(parent, pos='first-child')
             else:
                 # this is a new tree root
-                new_self = self.__class__.add_root_by_instance(self)
+                instance = instance.__class__.add_root_by_instance(instance)
         else:
             # need to save first before we can operate on the parent
-            self.save()
+            instance.save()
 
             if parent_pk is not None:
                 # node (and all children) have been moved somewhere in the tree
-                parent = self.__class__.objects_nosecurity.get(pk=parent_pk)
-                self.move(parent, pos='first-child')
+                parent = instance.__class__.objects.get(pk=parent_pk)
+                instance.move(parent, pos='first-child')
             else:
                 # node has become a new root node
-                self.move(self.__class__.get_first_root_node(), pos='first-sibling')
+                instance.move(instance.__class__.get_first_root_node(), pos='first-sibling')
 
         # Reload the instance
-        new_self = self.__class__.objects_nosecurity.get(pk=self.pk)
-        return new_self
+        instance = instance.__class__.objects.get(pk=instance.pk)
+        return instance
 
 
 class LocationType(BaseModel):
