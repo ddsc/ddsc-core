@@ -11,7 +11,6 @@ from django.core.urlresolvers import reverse
 from django.db import transaction
 from django.db.models.manager import Manager
 from django_extensions.db.fields import UUIDField
-from treebeard.mp_tree import MP_Node
 import networkx as nx
 
 from cassandralib.models import CassandraDataStore
@@ -84,9 +83,9 @@ class Location(BaseModel, MP_Node_ByInstance):
     # The location described in words (exact location is unknown):
     relative_location = models.TextField(null=True, blank=True)
     # A single point that represents the real geometry (e.g. the center):
-    point_geometry = models.PointField(srid=4326, null=True, blank=True)
+    point_geometry = models.PointField(srid=4258, null=True, blank=True)
     # The real geometry (point, linestring, polygon, etc):
-    real_geometry = models.GeometryField(srid=4326, null=True, blank=True)
+    real_geometry = models.GeometryField(srid=4258, null=True, blank=True)
     # Precision in meters with respect to point_geometry:
     geometry_precision = models.FloatField(
         null=True,
@@ -130,7 +129,10 @@ class Location(BaseModel, MP_Node_ByInstance):
                 instance.move(parent, pos='first-child')
             else:
                 # node has become a new root node
-                instance.move(instance.__class__.get_first_root_node(), pos='first-sibling')
+                instance.move(
+                    instance.__class__.get_first_root_node(),
+                    pos='first-sibling'
+                )
 
         # Reload the instance
         instance = instance.__class__.objects.get(pk=instance.pk)
@@ -360,7 +362,7 @@ class LogicalGroup(BaseModel):
 
     # Do not escape HTML-output.
     graph.allow_tags = True
-    
+
     def parents(self):
         return []
 
