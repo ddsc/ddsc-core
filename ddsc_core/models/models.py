@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from datetime import datetime
+import logging
 from dateutil.relativedelta import relativedelta
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -16,7 +17,10 @@ import networkx as nx
 from cassandralib.models import CassandraDataStore
 from cassandralib.models import INTERNAL_TIMEZONE
 from ddsc_core import manager
+from ddsc_core.models.treebeard_overrides import MP_Node_ByInstance
 from lizard_security.models import DataOwner, DataSet
+
+logger = logging.getLogger(__name__)
 
 APP_LABEL = "ddsc_core"
 CASSANDRA = getattr(settings, 'CASSANDRA', {})
@@ -51,7 +55,7 @@ class BaseModel(models.Model):
         app_label = APP_LABEL
 
 
-class Location(BaseModel, MP_Node):
+class Location(BaseModel, MP_Node_ByInstance):
     """Location of a timeseries.
 
     Locations can be nested. The resulting tree is encoded via the materialized
@@ -99,6 +103,38 @@ class Location(BaseModel, MP_Node):
 
     def sublocations(self):
         return self.get_children()
+
+    def save_under(self, parent_pk=None):
+        '''
+        Apparently Treebeard makes normal tree operations, like
+        moving to a different parent node, really really hard...
+        '''
+
+        if self.pk is None:
+            # creating a new instance
+            if parent_pk is not None:
+                # this is a new leaf node
+                parent = self.__class__.objects_nosecurity.get(pk=parent_pk)
+                new_self = parent.add_child_by_instance(self)
+                new_self.move(parent, pos='first-child')
+            else:
+                # this is a new tree root
+                new_self = self.__class__.add_root_by_instance(self)
+        else:
+            # need to save first before we can operate on the parent
+            self.save()
+
+            if parent_pk is not None:
+                # node (and all children) have been moved somewhere in the tree
+                parent = self.__class__.objects_nosecurity.get(pk=parent_pk)
+                self.move(parent, pos='first-child')
+            else:
+                # node has become a new root node
+                self.move(self.__class__.get_first_root_node(), pos='first-sibling')
+
+        # Reload the instance
+        new_self = self.__class__.objects_nosecurity.get(pk=self.pk)
+        return new_self
 
 
 class LocationType(BaseModel):
