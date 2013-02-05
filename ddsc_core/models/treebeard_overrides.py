@@ -4,10 +4,23 @@ from __future__ import unicode_literals
 from django.db import models, transaction, connection
 from treebeard.mp_tree import MP_Node
 
+# Disabled due to this being integrated in the LocationManager
+'''
+# fix a bug in django-treebeard, by monkeypatching it
+# see https://github.com/tabo/django-treebeard/pull/5
+def get_root_nodes(cls):
+    ":returns: A queryset containing the root nodes in the tree."
+    return cls.objects.filter(depth=1).order_by("path")
+
+MP_Node.get_root_nodes = classmethod(get_root_nodes)
+'''
 
 class MP_Node_ByInstance(MP_Node):
     '''
     Fix Treebeard not supporting some operations on Model instances.
+    Most are directly copied from the default mp_tree.py, with **kwargs
+    dicts containing instance values replaced by the actual uncommitted
+    instance.
     '''
 
     class Meta:
