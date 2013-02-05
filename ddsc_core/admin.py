@@ -65,3 +65,9 @@ admin.site.register(models.ProcessingMethod, AquoModelAdmin)
 admin.site.register(models.ReferenceFrame, AquoModelAdmin)
 admin.site.register(models.Source)
 admin.site.register(models.Unit, AquoModelAdmin)
+admin.site.register(models.alarms.Alarm)
+admin.site.register(models.alarms.Alarm_Iterm)
+admin.site.register(models.alarms.Alarm_Property)
+admin.site.register(models.alarms.Alarm_Iterm_Details)
+
+
