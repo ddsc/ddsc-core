@@ -1,6 +1,6 @@
 #from adaptor.model import CsvDbModel
 from django.core.management.base import BaseCommand
-from ddsc_core.models.models import Timeseries, Source
+from ddsc_core.models.models import Timeseries, Source, Location
 from ddsc_core.models.aquo import Unit, Parameter, Compartment, MeasuringDevice, MeasuringMethod
 from ddsc_core.models.aquo import ReferenceFrame, ProcessingMethod
 import string
@@ -12,7 +12,7 @@ class Command(BaseCommand):
     help = 'Imports a CSV file of timeseries into the database.'
 
     def handle(self, *args, **options):
-        i = 1
+
         with open(args[0], 'rb') as f:
             reader = csv.reader(f)
             for row in reader:
@@ -93,7 +93,7 @@ class Command(BaseCommand):
                                               location_id=location_id, parameter_id=parameter_id,
                                               unit_id=unit_id, reference_frame_id = reference_f_id,
                                               compartment_id=compartment_id, measuring_device_id=measuring_device_id,
-                                              measuring_method_id=measuring_method_id, id=i,
+                                              measuring_method_id=measuring_method_id, 
                                               processing_method_id=processing_method_id, source_id=source_id)
-                    i += 1
+                    
         print "completeted~!"
