@@ -21,10 +21,6 @@ class Alarm(BaseModel):
     LOGIC_TYPES = (
         (AND, 'And'),
         (OR, 'OR'),
-        (EQUAL, '=='),
-        (NOT_EQUAL, '!='),
-        (GRATER, '>'),
-        (LESS, '<'),
     )
 
     EMAIL = 1
@@ -33,18 +29,21 @@ class Alarm(BaseModel):
 
     MESSAGE_TYPE = (
         (EMAIL, 'Email'),
-        (SMS, 'Sms'),
+        (SMS, 'SMS'),
         (EMAIL_AND_SMS, 'Email and SMS'),
     )
 
     name = models.CharField(max_length=80)
-    owner_id = models.ForeignKey(User)
-    owner_group = models.ForeignKey(UserGroup)
+    
+    owner = models.ForeignKey(User, null=True)
+    group = models.ForeignKey(UserGroup, null=True)
+    
     description = models.CharField(max_length=20)
     frequency = models.IntegerField(default=5)
     template = models.TextField(
           default='this is a alarm message template',
     )
+
     urgency = models.IntegerField(default = 1)
     logical_check = models.SmallIntegerField(
         choices = LOGIC_TYPES,
@@ -54,7 +53,7 @@ class Alarm(BaseModel):
         choices = MESSAGE_TYPE,
         default=EMAIL,
     )
-    previous_id = models.IntegerField(default=1)
+    previous_id = models.IntegerField(default='', null=True)
     active_stutus = models.BooleanField(default=False)
     date_created = models.CharField(max_length=30)
 
@@ -62,7 +61,7 @@ class Alarm(BaseModel):
         return self.name
 
 
-class Alarm_Iterm(BaseModel):
+class Alarm_Item(BaseModel):
 
     EQUAL = 1
     NOT_EQUAL = 2
@@ -95,8 +94,8 @@ class Alarm_Property(BaseModel):
     def __unicode__(self):
         return self.name
     
-class Alarm_Iterm_Details(BaseModel):
-    alarm_details = models.OneToOneField(Alarm_Iterm, primary_key=True)
+class Alarm_Item_Details(BaseModel):
+    alarm_details = models.OneToOneField(Alarm_Item, primary_key=True)
     timeseries = models.ForeignKey(Timeseries)
     logicalgroup = models.ForeignKey(LogicalGroup)
     location = models.ForeignKey(Location)    
