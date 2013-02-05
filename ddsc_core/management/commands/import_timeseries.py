@@ -7,13 +7,12 @@ import string
 #from ddsc_core.models import Location
 import csv
 
-
 class Command(BaseCommand):
     args = '<CSV/sql file>'
     help = 'Imports a CSV file of timeseries into the database.'
 
     def handle(self, *args, **options):
-
+        i = 1
         with open(args[0], 'rb') as f:
             reader = csv.reader(f)
             for row in reader:
@@ -37,65 +36,64 @@ class Command(BaseCommand):
                     
                     try: 
                         lc = Location.objects.get(uuid=row[8])
-                        location_id = lc.id
                     except:
-                        location_id = 1 # not matching
+                        lc = Location.objects.get(name='unknown')
+                    location_id = lc.id
                     
                     try: 
                         pr = Parameter.objects.get(code=row[9])
-                        parameter_id = pr.id
                     except:
-                        parameter_id = 1 # not matching
-                        
+                        pr = Parameter.objects.get(code='unknown')
+                    parameter_id = pr.id 
+                    
                     try: 
                         ut = Unit.objects.get(code=row[10])
-                        unit_id = ut.id
                     except:
-                        unit_id = 1 # not matching
-                        
+                        ut = Unit.objects.get(code='unknown')
+                    unit_id = ut.id
+                    
                     try: 
                         rf = ReferenceFrame.objects.get(code=row[11])
-                        reference_f_id = rf.id
                     except:
-                        reference_f_id = 1 # not matching
-                        
+                        rf = ReferenceFrame.objects.get(code='unknown')
+                    reference_f_id = rf.id
+                     
                     try: 
                         cp = Compartment.objects.get(code=row[12])
-                        compartment_id = cp.id
                     except:
-                        compartment_id = 1 # not matching
-                        
+                        cp = Compartment.objects.get(code='unknown')
+                    compartment_id = cp.id
+                    
                     try: 
                         md = MeasuringDevice.objects.get(code=row[13])
-                        measuring_device_id = md.id
                     except:
-                        measuring_device_id = 1 # not matching
+                        md = MeasuringDevice.objects.get(code='unknown')
+                    measuring_device_id = md.id
                         
                     try: 
                         mm = MeasuringMethod.objects.get(code=row[14])
-                        measuring_method_id = mm.id
                     except:
-                        measuring_method_id = 1 # not matching
+                        mm = MeasuringMethod.objects.get(code='unknown')
+                    measuring_method_id = mm.id
                     
                     try: 
                         pm = ProcessingMethod.objects.get(code=row[15])
-                        processing_method_id = pm.id
                     except:
-                        processing_method_id = 1 # not matching
+                        pm = ProcessingMethod.objects.get(code='unknown')
+                    processing_method_id = pm.id
                         
                     try: 
                         src = Source.objects.get(uuid=row[7])
-                        source_id = src.id
                     except:
-                        source_id = 31 # not matching
-                        
+                        src = Source.objects.get(uuid='unknown')
+                    source_id = src.id    
                         
                     
                     Timeseries.objects.create(name=name, description=description, value_type=value_type,
                                               location_id=location_id, parameter_id=parameter_id,
                                               unit_id=unit_id, reference_frame_id = reference_f_id,
                                               compartment_id=compartment_id, measuring_device_id=measuring_device_id,
-                                              measuring_method_id=measuring_method_id, 
+                                              measuring_method_id=measuring_method_id, id=i,
                                               processing_method_id=processing_method_id, source_id=source_id)
-                    
+                    i += 1
         print "completeted~!"
