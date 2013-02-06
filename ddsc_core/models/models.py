@@ -278,13 +278,20 @@ class Timeseries(BaseModel):
         help_text='timestamp of latest value'
     )
 
+    def get_value_type(self):
+        value_type = dict(self.VALUE_TYPE)
+        return value_type[self.value_type]
+
     def latest_value(self):
         if self.value_type in (Timeseries.ValueType.INTEGER,
-                Timeseries.ValueType.FLOAT):
+                               Timeseries.ValueType.FLOAT):
             return self.latest_value_number
-        if self.value_type in (Timeseries.ValueType.TEXT,
-                Timeseries.ValueType.IMAGE):
-            return self.latest_value_text
+        if self.value_type in (Timeseries.ValueType.IMAGE,
+                               Timeseries.ValueType.GEO_REMOTE_SENSING,
+                               Timeseries.ValueType.MOVIE,
+                               Timeseries.ValueType.FILE):
+            return "file://" + self.latest_value_text
+        return self.latest_value_text
 
     def get_events(self, start=None, end=None, filter=None):
         if end is None:
@@ -321,7 +328,7 @@ class Timeseries(BaseModel):
         store.write_row('events', self.uuid, timestamp, row)
         if 'value' in row:
             if not self.latest_value_timestamp \
-                    or self.latest_value_timestamp < timestamp:
+                    or self.latest_value_timestamp <= timestamp:
                 if self.value_type == Timeseries.ValueType.INTEGER \
                         or self.value_type == Timeseries.ValueType.FLOAT:
                     self.latest_value_number = row['value']
