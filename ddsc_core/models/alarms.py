@@ -146,4 +146,5 @@ class Alarm_Item(BaseModel):
         null = True,
         blank = True,
     )
+    last_checked = models.DateTimeField(default='1900-01-01T00:00:00Z')
 
