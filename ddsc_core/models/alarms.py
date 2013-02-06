@@ -1,4 +1,4 @@
-# (c) Nelen & Schuurmans. MIT licensed, see LICENSE.rst.
+# (c) Fugro Geoservices. MIT licensed, see LICENSE.rst.
 from __future__ import unicode_literals
 
 from django.db import models
@@ -10,7 +10,7 @@ from ddsc_core.models.models import Timeseries
 from ddsc_core.models.models import Location
 from ddsc_core.models.models import LogicalGroup
 from django.utils import timezone
-from datetime import date
+
 # Create your models here.
 class Alarm(BaseModel):
     AND = 0
@@ -84,16 +84,7 @@ class Alarm(BaseModel):
 
     def __unicode__(self):
         return self.name
-    
 
-class Alarm_Property(BaseModel):
-
-    name = models.CharField(max_length = 80)
-    value_type = models.SmallIntegerField(default=1)
-    
-    def __unicode__(self):
-        return self.name
-    
 
 class Alarm_Item(BaseModel):
 
@@ -108,18 +99,52 @@ class Alarm_Item(BaseModel):
         (GRATER, '>'),
         (LESS, '<'),
     )
+    
+    VALUE_TYPE = (
+        (1, 'a. Waarde'),
+        (2, 'b. Status - Aantal metingen'),
+        (3, 'c. Status - Percentage betrouwbare waarden'),
+        (4, 'd. Status - Percentage twijfelachtige waarden'),
+        (5, 'e. Status - Percentage onbetrouwbare waarden'),
+        (6, 'f. Status - Minimum meetwaarde'),
+        (7, 'g. Status - Maximum meetwaarde'),
+        (8, 'h. Status - Gemiddelde meetwaarde'),
+        (9, 'i. Status - Standaard deviatie'),
+        (10, 'j. Status - Tijd sinds laatste meting'),
+        (11, 'k. Status - Procentuele afwijking van het aantal te verwachten metingen'),
+    )
 
     alarm = models.ForeignKey(Alarm)
-    property = models.ForeignKey(Alarm_Property)
     comparision = models.SmallIntegerField(
         choices = COMPARISION_TYPE,
         default = EQUAL,
     )
-    value = models.FloatField(default=0.0)
+    value_type = models.IntegerField(
+        choices = VALUE_TYPE,
+        default = 1,
+    )
+    value_double = models.FloatField(null=True, blank=True)
+    value_text = models.CharField(
+        max_length=32, 
+        null=True,
+        blank=True,
+    )
+    value_int = models.IntegerField(null=True, blank=True)
+    value_bool = models.NullBooleanField(null=True, blank=True)
+    timeseries = models.ForeignKey(
+        Timeseries,
+        null = True,
+        blank = True,
+    )
+    logicalgroup = models.ForeignKey(
+        LogicalGroup,
+        null = True,
+        blank = True,
+    )
+    location = models.ForeignKey(
+        Location,
+        null = True,
+        blank = True,
+    )
+    last_checked = models.DateTimeField(default='1900-01-01T00:00:00Z')
 
-
-class Alarm_Item_Details(BaseModel):
-    alarm_details = models.OneToOneField(Alarm_Item, primary_key=True)
-    timeseries = models.ForeignKey(Timeseries)
-    logicalgroup = models.ForeignKey(LogicalGroup)
-    location = models.ForeignKey(Location)

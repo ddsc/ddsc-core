@@ -1,0 +1,93 @@
+[
+    {
+        "pk": 1,
+        "model": "ddsc_core.manufacturer",
+        "fields": {
+            "name": "unknown",
+            "code": "na"
+        }
+    },
+    {
+        "pk": 28,
+        "model": "ddsc_core.compartment",
+        "fields": {
+            "code": "unknown",
+            "group": "na",
+            "description": "na",
+            "end_date": "2999-12-31",
+            "numeric_code": "na",
+            "begin_date": "2011-06-10"
+        }
+    },
+    {
+        "pk": 57,
+        "model": "ddsc_core.measuringdevice",
+        "fields": {
+            "group": "na",
+            "code": "unknown",
+            "begin_date": "2012-05-15",
+            "description": "na",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 613,
+        "model": "ddsc_core.measuringmethod",
+        "fields": {
+            "code": "unknown",
+            "group": "na",
+            "description": "na",
+            "end_date": "2999-12-31",
+            "begin_date": "2011-06-11",
+            "titel": "na"
+        }
+    },
+    {
+        "pk": 3190,
+        "model": "ddsc_core.parameter",
+        "fields": {
+            "code": "unknown",
+            "group": "na",
+            "description": "na",
+            "end_date": "2999-12-31",
+            "sikb_id": null,
+            "cas_number": "na",
+            "begin_date": "2011-06-08"
+        }
+    },
+    {
+        "pk": 50,
+        "model": "ddsc_core.processingmethod",
+        "fields": {
+            "group": "unknown",
+            "code": "unknown",
+            "begin_date": "2011-06-11",
+            "description": "na",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 393,
+        "model": "ddsc_core.referenceframe",
+        "fields": {
+            "group": "na",
+            "code": "unknown",
+            "begin_date": "2011-08-26",
+            "description": "na",
+            "end_date": "2999-12-31"
+        }
+    },
+    {
+        "pk": 158,
+        "model": "ddsc_core.unit",
+        "fields": {
+            "code": "unknown",
+            "group": "na",
+            "description": "na",
+            "end_date": "2999-12-31",
+            "conversion_factor": "na",
+            "begin_date": "2011-06-10",
+            "dimension": "na"
+        }
+    }  
+]
