@@ -27,7 +27,7 @@ class Migration(SchemaMigration):
         db.create_table(u'ddsc_core_alarm_item', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('alarm', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['ddsc_core.Alarm'])),
-            ('property_id', self.gf('django.db.models.fields.IntegerField')(default=1)),
+            ('property', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['ddsc_core.Alarm_Property'])),
             ('comparision', self.gf('django.db.models.fields.SmallIntegerField')(default=1)),
             ('value', self.gf('django.db.models.fields.FloatField')(default=0.0)),
         ))
@@ -36,17 +36,25 @@ class Migration(SchemaMigration):
         # Deleting field 'Alarm.owner_group'
         db.delete_column(u'ddsc_core_alarm', 'owner_group_id')
 
+        # Deleting field 'Alarm.date_created'
+        db.delete_column(u'ddsc_core_alarm', 'date_created')
+
         # Deleting field 'Alarm.owner_id'
         db.delete_column(u'ddsc_core_alarm', 'owner_id_id')
 
-        # Adding field 'Alarm.owner'
-        db.add_column(u'ddsc_core_alarm', 'owner',
-                      self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'], null=True),
+        # Adding field 'Alarm.single_owner'
+        db.add_column(u'ddsc_core_alarm', 'single_owner',
+                      self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'], null=True, blank=True),
                       keep_default=False)
 
-        # Adding field 'Alarm.group'
-        db.add_column(u'ddsc_core_alarm', 'group',
-                      self.gf('django.db.models.fields.related.ForeignKey')(to=orm['lizard_security.UserGroup'], null=True),
+        # Adding field 'Alarm.group_owner'
+        db.add_column(u'ddsc_core_alarm', 'group_owner',
+                      self.gf('django.db.models.fields.related.ForeignKey')(to=orm['lizard_security.UserGroup'], null=True, blank=True),
+                      keep_default=False)
+
+        # Adding field 'Alarm.date_cr'
+        db.add_column(u'ddsc_core_alarm', 'date_cr',
+                      self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now),
                       keep_default=False)
 
 
@@ -81,19 +89,27 @@ class Migration(SchemaMigration):
 
         # Adding field 'Alarm.owner_group'
         db.add_column(u'ddsc_core_alarm', 'owner_group',
-                      self.gf('django.db.models.fields.related.ForeignKey')(default=None, to=orm['lizard_security.UserGroup']),
+                      self.gf('django.db.models.fields.related.ForeignKey')(default=2, to=orm['lizard_security.UserGroup']),
+                      keep_default=False)
+
+        # Adding field 'Alarm.date_created'
+        db.add_column(u'ddsc_core_alarm', 'date_created',
+                      self.gf('django.db.models.fields.CharField')(default=2, max_length=30),
                       keep_default=False)
 
         # Adding field 'Alarm.owner_id'
         db.add_column(u'ddsc_core_alarm', 'owner_id',
-                      self.gf('django.db.models.fields.related.ForeignKey')(default=None, to=orm['auth.User']),
+                      self.gf('django.db.models.fields.related.ForeignKey')(default=2, to=orm['auth.User']),
                       keep_default=False)
 
-        # Deleting field 'Alarm.owner'
-        db.delete_column(u'ddsc_core_alarm', 'owner_id')
+        # Deleting field 'Alarm.single_owner'
+        db.delete_column(u'ddsc_core_alarm', 'single_owner_id')
 
-        # Deleting field 'Alarm.group'
-        db.delete_column(u'ddsc_core_alarm', 'group_id')
+        # Deleting field 'Alarm.group_owner'
+        db.delete_column(u'ddsc_core_alarm', 'group_owner_id')
+
+        # Deleting field 'Alarm.date_cr'
+        db.delete_column(u'ddsc_core_alarm', 'date_cr')
 
 
         # Changing field 'Alarm.previous_id'
@@ -139,25 +155,25 @@ class Migration(SchemaMigration):
         u'ddsc_core.alarm': {
             'Meta': {'object_name': 'Alarm'},
             'active_stutus': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'date_created': ('django.db.models.fields.CharField', [], {'max_length': '30'}),
+            'date_cr': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
             'description': ('django.db.models.fields.CharField', [], {'max_length': '20'}),
             'frequency': ('django.db.models.fields.IntegerField', [], {'default': '5'}),
-            'group': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['lizard_security.UserGroup']", 'null': 'True'}),
+            'group_owner': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['lizard_security.UserGroup']", 'null': 'True', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'logical_check': ('django.db.models.fields.SmallIntegerField', [], {'default': '0'}),
             'message_type': ('django.db.models.fields.IntegerField', [], {'default': '1'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '80'}),
-            'owner': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']", 'null': 'True'}),
-            'previous_id': ('django.db.models.fields.IntegerField', [], {'default': "u''", 'null': 'True'}),
+            'previous_id': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'single_owner': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']", 'null': 'True', 'blank': 'True'}),
             'template': ('django.db.models.fields.TextField', [], {'default': "u'this is a alarm message template'"}),
-            'urgency': ('django.db.models.fields.IntegerField', [], {'default': '1'})
+            'urgency': ('django.db.models.fields.IntegerField', [], {'default': '2'})
         },
         u'ddsc_core.alarm_item': {
             'Meta': {'object_name': 'Alarm_Item'},
             'alarm': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['ddsc_core.Alarm']"}),
             'comparision': ('django.db.models.fields.SmallIntegerField', [], {'default': '1'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'property_id': ('django.db.models.fields.IntegerField', [], {'default': '1'}),
+            'property': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['ddsc_core.Alarm_Property']"}),
             'value': ('django.db.models.fields.FloatField', [], {'default': '0.0'})
         },
         u'ddsc_core.alarm_item_details': {

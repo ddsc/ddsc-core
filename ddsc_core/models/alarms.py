@@ -9,6 +9,8 @@ from ddsc_core.models.models import BaseModel
 from ddsc_core.models.models import Timeseries
 from ddsc_core.models.models import Location
 from ddsc_core.models.models import LogicalGroup
+from django.utils import timezone
+from datetime import date
 # Create your models here.
 class Alarm(BaseModel):
     AND = 0
@@ -33,18 +35,41 @@ class Alarm(BaseModel):
         (EMAIL_AND_SMS, 'Email and SMS'),
     )
 
+    URGENCY_TYPE = (
+        (1, 'High'),
+        (2, 'Low'),
+    )
+
+    FREQUENCY_TYPE = (
+        (5, '5 min'),
+        (10, '10 min'),
+        (15, '15 min'),
+        (30, '30 min'),
+        (60, '1 hr'),
+        (360, '6 hr'),
+        (720, '12 hr'),
+        (1440, '24 hr'),
+    )
+
     name = models.CharField(max_length=80)
     
-    owner = models.ForeignKey(User, null=True)
-    group = models.ForeignKey(UserGroup, null=True)
+    single_owner = models.ForeignKey(User, null=True, blank=True)
+    group_owner = models.ForeignKey(UserGroup, null=True, blank=True)
     
     description = models.CharField(max_length=20)
-    frequency = models.IntegerField(default=5)
+    frequency = models.IntegerField(
+        choices = FREQUENCY_TYPE,
+        default = 5,
+    )
     template = models.TextField(
           default='this is a alarm message template',
     )
 
-    urgency = models.IntegerField(default = 1)
+    urgency = models.IntegerField(
+        choices = URGENCY_TYPE,
+        default = 2,
+    )
+
     logical_check = models.SmallIntegerField(
         choices = LOGIC_TYPES,
         default = AND,
@@ -53,13 +78,22 @@ class Alarm(BaseModel):
         choices = MESSAGE_TYPE,
         default=EMAIL,
     )
-    previous_id = models.IntegerField(default='', null=True)
+    previous_id = models.IntegerField(blank=True, null=True)
     active_stutus = models.BooleanField(default=False)
-    date_created = models.CharField(max_length=30)
+    date_cr = models.DateTimeField(default=timezone.now)
 
     def __unicode__(self):
         return self.name
+    
 
+class Alarm_Property(BaseModel):
+
+    name = models.CharField(max_length = 80)
+    value_type = models.SmallIntegerField(default=1)
+    
+    def __unicode__(self):
+        return self.name
+    
 
 class Alarm_Item(BaseModel):
 
@@ -76,29 +110,16 @@ class Alarm_Item(BaseModel):
     )
 
     alarm = models.ForeignKey(Alarm)
-    property_id = models.IntegerField(default=1)
+    property = models.ForeignKey(Alarm_Property)
     comparision = models.SmallIntegerField(
         choices = COMPARISION_TYPE,
         default = EQUAL,
     )
     value = models.FloatField(default=0.0)
-    
-    def __unicode__(self):
-        return self.name
 
-class Alarm_Property(BaseModel):
 
-    name = models.CharField(max_length = 80)
-    value_type = models.SmallIntegerField(default=1)
-    
-    def __unicode__(self):
-        return self.name
-    
 class Alarm_Item_Details(BaseModel):
     alarm_details = models.OneToOneField(Alarm_Item, primary_key=True)
     timeseries = models.ForeignKey(Timeseries)
     logicalgroup = models.ForeignKey(LogicalGroup)
-    location = models.ForeignKey(Location)    
-
-    def __unicode__(self):
-        return self.name
+    location = models.ForeignKey(Location)
