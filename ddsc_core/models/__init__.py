@@ -20,6 +20,6 @@ from ddsc_core.models.system import IPAddress
 
 from ddsc_core.models.alarms import Alarm
 from ddsc_core.models.alarms import Alarm_Item
-from ddsc_core.models.alarms import Alarm_Property
-from ddsc_core.models.alarms import Alarm_Item_Details
+#from ddsc_core.models.alarms import Alarm_Property
+#from ddsc_core.models.alarms import Alarm_Item_Details
 
