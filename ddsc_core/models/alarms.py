@@ -101,9 +101,17 @@ class Alarm_Item(BaseModel):
     )
     
     VALUE_TYPE = (
-        (1, 'Number'),
-        (2, 'Status'),
-        (3, 'Percentage'),
+        (1, 'a. Waarde'),
+        (2, 'b. Status - Aantal metingen'),
+        (3, 'c. Status - Percentage betrouwbare waarden'),
+        (4, 'd. Status - Percentage twijfelachtige waarden'),
+        (5, 'e. Status - Percentage onbetrouwbare waarden'),
+        (6, 'f. Status - Minimum meetwaarde'),
+        (7, 'g. Status - Maximum meetwaarde'),
+        (8, 'h. Status - Gemiddelde meetwaarde'),
+        (9, 'i. Status - Standaard deviatie'),
+        (10, 'j. Status - Tijd sinds laatste meting'),
+        (11, 'k. Status - Procentuele afwijking van het aantal te verwachten metingen'),
     )
 
     alarm = models.ForeignKey(Alarm)
@@ -115,12 +123,14 @@ class Alarm_Item(BaseModel):
         choices = VALUE_TYPE,
         default = 1,
     )
-    value_number = models.FloatField(null=True, blank=True)
+    value_double = models.FloatField(null=True, blank=True)
     value_text = models.CharField(
         max_length=32, 
         null=True,
         blank=True,
     )
+    value_int = models.IntegerField(null=True, blank=True)
+    value_bool = models.NullBooleanField(null=True, blank=True)
     timeseries = models.ForeignKey(
         Timeseries,
         null = True,
@@ -128,6 +138,11 @@ class Alarm_Item(BaseModel):
     )
     logicalgroup = models.ForeignKey(
         LogicalGroup,
+        null = True,
+        blank = True,
+    )
+    location = models.ForeignKey(
+        Location,
         null = True,
         blank = True,
     )
