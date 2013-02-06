@@ -93,7 +93,7 @@ class Command(BaseCommand):
                                               location_id=location_id, parameter_id=parameter_id,
                                               unit_id=unit_id, reference_frame_id = reference_f_id,
                                               compartment_id=compartment_id, measuring_device_id=measuring_device_id,
-                                              measuring_method_id=measuring_method_id, id=i,
+                                              measuring_method_id=measuring_method_id, id=i, uuid=uuid,
                                               processing_method_id=processing_method_id, source_id=source_id)
                     i += 1
         print "completeted~!"
