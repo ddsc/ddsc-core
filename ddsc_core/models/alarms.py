@@ -16,10 +16,6 @@ from datetime import datetime
 class Alarm(BaseModel):
     AND = 0
     OR = 1
-    EQUAL = 2
-    NOT_EQUAL = 3
-    GRATER = 4
-    LESS = 5
 
     LOGIC_TYPES = (
         (AND, 'And'),
