@@ -79,7 +79,7 @@ class Alarm(BaseModel):
         default=EMAIL,
     )
     previous_id = models.IntegerField(blank=True, null=True)
-    active_stutus = models.BooleanField(default=False)
+    active_status = models.BooleanField(default=False)
     date_cr = models.DateTimeField(default=timezone.now)
 
     def __unicode__(self):
