@@ -370,12 +370,6 @@ class LogicalGroup(BaseModel):
     # Do not escape HTML-output.
     graph.allow_tags = True
 
-    def parents(self):
-        return []
-
-    def children(self):
-        return []
-
     def __unicode__(self):
         return self.name
 
@@ -391,8 +385,8 @@ class LogicalGroupEdge(BaseModel):
     allowed. In other words, a directed acyclic graph (DAG).
 
     """
-    child = models.ForeignKey(LogicalGroup, related_name="childs")
-    parent = models.ForeignKey(LogicalGroup, related_name="parents")
+    child = models.ForeignKey(LogicalGroup, related_name="parents")
+    parent = models.ForeignKey(LogicalGroup, related_name="childs")
 
     @classmethod
     def edges(cls):
