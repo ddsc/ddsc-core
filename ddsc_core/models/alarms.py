@@ -10,6 +10,7 @@ from ddsc_core.models.models import Timeseries
 from ddsc_core.models.models import Location
 from ddsc_core.models.models import LogicalGroup
 from django.utils import timezone
+from datetime import datetime
 
 # Create your models here.
 class Alarm(BaseModel):
@@ -146,5 +147,5 @@ class Alarm_Item(BaseModel):
         null = True,
         blank = True,
     )
-    last_checked = models.DateTimeField(default='1900-01-01T00:00:00Z')
+    last_checked = models.DateTimeField(default=datetime(1900,1,1,0,0))
 
