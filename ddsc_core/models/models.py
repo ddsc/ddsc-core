@@ -1,8 +1,12 @@
 # (c) Nelen & Schuurmans. MIT licensed, see LICENSE.rst.
 from __future__ import unicode_literals
 
-from datetime import datetime
 import logging
+import magic
+import networkx as nx
+import os.path
+
+from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -11,7 +15,7 @@ from django.core.urlresolvers import reverse
 from django.db import transaction
 from django.db.models.manager import Manager
 from django_extensions.db.fields import UUIDField
-import networkx as nx
+from StringIO import StringIO
 
 from cassandralib.models import CassandraDataStore
 from cassandralib.models import INTERNAL_TIMEZONE
@@ -23,6 +27,7 @@ logger = logging.getLogger(__name__)
 
 APP_LABEL = "ddsc_core"
 CASSANDRA = getattr(settings, 'CASSANDRA', {})
+FILENAME_FORMAT = '%Y-%m-%dT%H.%M.%SZ'
 
 
 class DataStore(CassandraDataStore):
@@ -286,12 +291,20 @@ class Timeseries(BaseModel):
         if self.value_type in (Timeseries.ValueType.INTEGER,
                                Timeseries.ValueType.FLOAT):
             return self.latest_value_number
-        if self.value_type in (Timeseries.ValueType.IMAGE,
-                               Timeseries.ValueType.GEO_REMOTE_SENSING,
-                               Timeseries.ValueType.MOVIE,
-                               Timeseries.ValueType.FILE):
-            return "file://" + self.latest_value_text
-        return self.latest_value_text
+        if self.value_type == Timeseries.ValueType.TEXT:
+            return self.latest_value_text
+        return None
+
+    def is_file(self):
+        return self.value_type in (Timeseries.ValueType.IMAGE,
+                                   Timeseries.ValueType.GEO_REMOTE_SENSING,
+                                   Timeseries.ValueType.MOVIE,
+                                   Timeseries.ValueType.FILE)
+
+    def latest_value_file(self):
+        if self.latest_value_timestamp:
+            return self.latest_value_timestamp.strftime(FILENAME_FORMAT)
+        return None
 
     def get_events(self, start=None, end=None, filter=None):
         if end is None:
@@ -339,6 +352,25 @@ class Timeseries(BaseModel):
             if not self.first_value_timestamp \
                     or timestamp < self.first_value_timestamp:
                 self.first_value_timestamp = timestamp
+
+    def _file_path(self, timestamp):
+        dt = timestamp.strftime(FILENAME_FORMAT)
+        file_dir = getattr(settings, 'FILE_DIR')
+        return '%s/%s/%s' % (file_dir, self.uuid, dt)
+        
+    def set_file(self, timestamp, file):
+        file_path = self._file_path(timestamp)
+        # TODO: actually put the file on the path
+        self.set_event(timestamp, {})
+
+    def get_file(self, timestamp):
+        file_path = self._file_path(INTERNAL_TIMEZONE.localize(timestamp))
+        # TODO: get the file from the actual path
+        file_path = getattr(settings, 'FILE_DIR') + '/logo_nelenschuurmans'
+        file_mime = magic.from_file(file_path, mime=True)
+        io = StringIO(file(file_path, "rb").read())
+        file_size = os.path.getsize(file_path)
+        return (io.read(), file_mime, file_size)
 
     def commit_events(self):
         store = DataStore()
