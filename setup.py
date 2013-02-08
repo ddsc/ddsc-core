@@ -18,6 +18,7 @@ install_requires = [
     'lizard-security',
     'lizard-ui >= 4.0b5',
     'pandas',
+    'python-magic',
     'networkx',
     ],
 
