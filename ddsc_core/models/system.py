@@ -12,6 +12,9 @@ class Folder(BaseModel):
     path = models.CharField(max_length=64)
     user = models.ForeignKey(User)
 
+    def __unicode__(self):
+        return self.path
+
 
 class IPAddress(BaseModel):
     label = models.GenericIPAddressField()
