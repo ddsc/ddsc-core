@@ -392,7 +392,8 @@ class LogicalGroup(BaseModel):
     name = models.CharField(max_length=64)
     owner = models.ForeignKey(DataOwner)
     description = models.TextField(blank=True)
-    timeseries = models.ManyToManyField(Timeseries, blank=True)
+    timeseries = models.ManyToManyField(Timeseries, blank=True,
+                                        related_name="logical_groups")
 
     def graph(self):
         return '<img src="{0}"/>'.format(
