@@ -330,7 +330,12 @@ class Timeseries(BaseModel):
                 end = self.latest_value_timestamp + relativedelta(seconds=1)
 
         store = DataStore()
-        return store.read('events', self.uuid, start, end, params=filter)
+        value_type_map = {
+            Timeseries.ValueType.FLOAT: 'float',
+            Timeseries.ValueType.INTEGER: 'integer',
+        }
+        convert_values_to = value_type_map.get(self.value_type)
+        return store.read('events', self.uuid, start, end, params=filter, convert_values_to=convert_values_to)
 
     def set_events(self, df):
         for timestamp, row in df.iterrows():
