@@ -327,7 +327,7 @@ class Timeseries(BaseModel):
             if start < self.first_value_timestamp:
                 start = self.first_value_timestamp
             if end > self.latest_value_timestamp:
-                end = self.latest_value_timestamp
+                end = self.latest_value_timestamp + relativedelta(seconds=1)
 
         store = DataStore()
         return store.read('events', self.uuid, start, end, params=filter)
