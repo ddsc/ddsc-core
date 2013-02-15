@@ -4,24 +4,30 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes import generic
+from django.db.models import Q
+from django.utils import timezone
+
 from lizard_security.models import UserGroup
 from ddsc_core.models.models import BaseModel
 from ddsc_core.models.models import Timeseries
 from ddsc_core.models.models import Location
 from ddsc_core.models.models import LogicalGroup
-from django.utils import timezone
+
 from datetime import datetime
+
+
+AND = 0
+OR = 1
+    
+LOGIC_TYPES = (
+    (AND, 'And'),
+    (OR, 'OR'),
+)
 
 # Create your models here.
 class Alarm(BaseModel):
-    AND = 0
-    OR = 1
-
-    LOGIC_TYPES = (
-        (AND, 'And'),
-        (OR, 'OR'),
-    )
-
     EMAIL = 1
     SMS = 2
     EMAIL_AND_SMS = 3
@@ -49,11 +55,19 @@ class Alarm(BaseModel):
     )
 
     name = models.CharField(max_length=80)
-    
-    single_owner = models.ForeignKey(User, null=True, blank=True)
-    group_owner = models.ForeignKey(UserGroup, null=True, blank=True)
-    
-    description = models.CharField(max_length=20)
+    single_or_group = models.ForeignKey(ContentType, 
+        limit_choices_to = {"model__in": ("user", "usergroup")},
+        default = 1,
+    )
+    object_id = models.PositiveIntegerField()
+#    single_owner = models.ForeignKey(User, null=True, blank=True)
+#    group_owner = models.ForeignKey(UserGroup, null=True, blank=True)
+    description = models.TextField(
+        null=True, 
+        blank=True,
+        default='', 
+        help_text="optional description"
+    )
     frequency = models.IntegerField(
         choices = FREQUENCY_TYPE,
         default = 5,
@@ -78,8 +92,20 @@ class Alarm(BaseModel):
     previous_id = models.IntegerField(blank=True, null=True)
     active_status = models.BooleanField(default=False)
     date_cr = models.DateTimeField(default=timezone.now)
+    
+    object_id = models.PositiveIntegerField()
+    
+    content_object = generic.GenericForeignKey('single_or_group', 'object_id')
+
 
     def __unicode__(self):
+#        if self.single_or_group.name == 'user':
+#            self.object_id = self.single_owner.id
+#            self.group_owner_id = ''
+#        else:
+#            self.object_id = self.group_owner.id
+#            self.single_owner_id = ''
+#        self.save()
         return self.name
 
 
@@ -128,20 +154,32 @@ class Alarm_Item(BaseModel):
     )
     value_int = models.IntegerField(null=True, blank=True)
     value_bool = models.NullBooleanField(null=True, blank=True)
-    timeseries = models.ForeignKey(
-        Timeseries,
-        null = True,
-        blank = True,
+    alarm_type = models.ForeignKey(ContentType, 
+        limit_choices_to = {"model__in": ("timeseries", "logicalgroup","location")},
+        default = 1,
     )
-    logicalgroup = models.ForeignKey(
-        LogicalGroup,
-        null = True,
-        blank = True,
-    )
-    location = models.ForeignKey(
-        Location,
-        null = True,
-        blank = True,
+    object_id = models.PositiveIntegerField()
+#    timeseries = models.ForeignKey(
+#        Timeseries,
+#        null = True,
+#        blank = True,
+#    )
+#    logicalgroup = models.ForeignKey(
+#        LogicalGroup,
+#        null = True,
+#        blank = True,
+#    )
+#    location = models.ForeignKey(
+#        Location,
+#        null = True,
+#        blank = True,
+#    )
+    logical_check = models.SmallIntegerField(
+        choices = LOGIC_TYPES,
+        default = AND,
     )
     last_checked = models.DateTimeField(default=datetime(1900,1,1,0,0))
+      
+    content_object = generic.GenericForeignKey('alarm_type', 'object_id')
 
+#
