@@ -72,7 +72,8 @@ class Command(BaseCommand):
                 description='{} description'.format(TEST_TIMESERIES_NAME),
                 source=source,
                 parameter=parameter,
-                unit=unit
+                unit=unit,
+                locations=location
             )
             timeseries.save()
             timeseries.data_sets = [data_set]
@@ -85,3 +86,5 @@ class Command(BaseCommand):
             vals = np.sin(vals)
             df = pd.DataFrame(vals, index=dates, columns=['value'])
             timeseries.set_events(df)
+
+        timeseries.save()
