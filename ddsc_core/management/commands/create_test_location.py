@@ -11,6 +11,7 @@ from django.contrib.gis.geos import Point
 import pandas as pd
 import numpy as np
 import datetime
+import pytz
 
 TEST_LOCATION_NAME = 'Test Location'
 TEST_TIMESERIES_NAME = 'Test Timeseries'
@@ -79,7 +80,7 @@ class Command(BaseCommand):
 
         events = timeseries.get_events()
         if len(events) == 0:
-            dates = pd.date_range('1/1/2011', periods=20000, freq='1Min')
+            dates = pd.date_range('1/1/2011', periods=20000, freq='1Min', tz=pytz.UTC)
             vals = np.linspace(-np.pi, np.pi, len(dates))
             vals = np.sin(vals)
             df = pd.DataFrame(vals, index=dates, columns=['value'])
