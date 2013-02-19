@@ -73,7 +73,7 @@ class Command(BaseCommand):
                 source=source,
                 parameter=parameter,
                 unit=unit,
-                locations=location
+                location=location
             )
             timeseries.save()
             timeseries.data_sets = [data_set]
