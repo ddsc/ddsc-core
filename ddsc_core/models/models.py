@@ -19,8 +19,8 @@ from StringIO import StringIO
 
 from cassandralib.models import CassandraDataStore
 from cassandralib.models import INTERNAL_TIMEZONE
-from ddsc_core import manager
 from ddsc_core.models.treebeard_overrides import MP_Node_ByInstance
+from lizard_security import manager
 from lizard_security.models import DataOwner, DataSet
 
 logger = logging.getLogger(__name__)
@@ -394,6 +394,8 @@ class LogicalGroup(BaseModel):
     groups can be combined into new groups.
 
     """
+    objects = manager.LogicalGroupManager()
+
     name = models.CharField(max_length=64)
     owner = models.ForeignKey(DataOwner)
     description = models.TextField(blank=True)
