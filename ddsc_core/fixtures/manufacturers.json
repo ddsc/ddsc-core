@@ -1,0 +1,55 @@
+ [
+    {
+        "pk": 2,
+        "model": "ddsc_core.manufacturer",
+        "fields": {
+            "name": "Alert Solutions",
+            "code": "ALS"
+        }
+    },
+	
+	{
+        "pk": 3,
+        "model": "ddsc_core.manufacturer",
+        "fields": {
+            "name": "StabiAlert",
+            "code": "SBA"
+        }
+    },
+	
+	{
+        "pk": 4,
+        "model": "ddsc_core.manufacturer",
+        "fields": {
+            "name": "TNO",
+            "code": "TNO"
+        }
+    },
+	
+	{
+        "pk": 5,
+        "model": "ddsc_core.manufacturer",
+        "fields": {
+            "name": "Koenders",
+            "code": "KDS"
+        }
+    },
+	
+	{
+        "pk": 6,
+        "model": "ddsc_core.manufacturer",
+        "fields": {
+            "name": "Ten Cate",
+            "code": "TCT"
+        }
+    },
+	
+	{
+        "pk": 7,
+        "model": "ddsc_core.manufacturer",
+        "fields": {
+            "name": "Deltares",
+            "code": "DTR"
+        }
+    }
+]
