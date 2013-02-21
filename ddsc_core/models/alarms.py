@@ -91,6 +91,7 @@ class Alarm(BaseModel):
     )
     previous_id = models.IntegerField(blank=True, null=True)
     active_status = models.BooleanField(default=False)
+    last_checked = models.DateTimeField(default=datetime(1900,1,1,0,0))
     date_cr = models.DateTimeField(default=timezone.now)
     
     object_id = models.PositiveIntegerField()
@@ -178,7 +179,7 @@ class Alarm_Item(BaseModel):
         choices = LOGIC_TYPES,
         default = AND,
     )
-    last_checked = models.DateTimeField(default=datetime(1900,1,1,0,0))
+#    last_checked = models.DateTimeField(default=datetime(1900,1,1,0,0))
       
     content_object = generic.GenericForeignKey('alarm_type', 'object_id')
 
