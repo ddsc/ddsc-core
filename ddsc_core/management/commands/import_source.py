@@ -15,7 +15,7 @@ from django.contrib.gis.geos import GEOSGeometry
 
 class Command(BaseCommand):
     args = '<CSV file>'
-    help = 'Imports a CSV file of locations into the database.'
+    help = 'Imports a CSV file of source into the database.'
 
     def handle(self, *args, **options):
 
@@ -27,9 +27,11 @@ class Command(BaseCommand):
                     uuid = row[1]
                     name = row[2]
                     manufacturer = row[3]
+                    print manufacturer  # for testing
                     try: 
                         manufacturer = Manufacturer.objects.get(name=manufacturer)
                         manufacturer_id = manufacturer.id
+                        print manufacturer_id  # for testing
                         type = string.lower(row[4])
                         def f(x):
                             return {
@@ -37,7 +39,7 @@ class Command(BaseCommand):
                                 'sensor': 1,
                                 'simulated': 2,
                                 'derived': 3,
-                            }.get(x, -1)
+                            }.get(x, 1)
                         source_type = f(type)
                         details = row[5]                        
                         Source.objects.create(name=name, id=str(i), 

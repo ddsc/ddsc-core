@@ -120,7 +120,7 @@ class Location(BaseModel, MP_Node_ByInstance):
                 # this is a new leaf node
                 parent = instance.__class__.objects.get(pk=parent_pk)
                 instance = parent.add_child_by_instance(instance)
-                instance.move(parent, pos='first-child')
+                instance.move(parent, pos='last-child')
             else:
                 # this is a new tree root
                 instance = instance.__class__.add_root_by_instance(instance)
@@ -131,12 +131,12 @@ class Location(BaseModel, MP_Node_ByInstance):
             if parent_pk is not None:
                 # node (and all children) have been moved somewhere in the tree
                 parent = instance.__class__.objects.get(pk=parent_pk)
-                instance.move(parent, pos='first-child')
+                instance.move(parent, pos='last-child')
             else:
                 # node has become a new root node
                 instance.move(
                     instance.__class__.get_first_root_node(),
-                    pos='first-sibling'
+                    pos='last-sibling'
                 )
 
         # Reload the instance
