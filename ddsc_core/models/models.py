@@ -114,6 +114,12 @@ class Location(BaseModel, MP_Node_ByInstance):
         '''
         instance = self
 
+        # Note that moving a node as `first-child` will trigger
+        # a cascade update on all siblings and their childs,
+        # with dramatic consequences for performance; so,
+        # if the order is unimportant, append them as
+        # `last-child`.
+
         if instance.pk is None:
             # creating a new instance
             if parent_pk is not None:
@@ -335,7 +341,8 @@ class Timeseries(BaseModel):
             Timeseries.ValueType.INTEGER: 'integer',
         }
         convert_values_to = value_type_map.get(self.value_type)
-        return store.read('events', self.uuid, start, end, params=filter, convert_values_to=convert_values_to)
+        return store.read('events', self.uuid, start, end, params=filter,
+            convert_values_to=convert_values_to)
 
     def set_events(self, df):
         for timestamp, row in df.iterrows():
@@ -362,7 +369,7 @@ class Timeseries(BaseModel):
         dt = timestamp.strftime(FILENAME_FORMAT)
         file_dir = getattr(settings, 'FILE_DIR')
         return '%s/%s/%s' % (file_dir, self.uuid, dt)
-        
+
     def set_file(self, timestamp, file):
         file_path = self._file_path(timestamp)
         # TODO: actually put the file on the path
