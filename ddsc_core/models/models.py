@@ -164,8 +164,9 @@ class LocationType(BaseModel):
 
 
 class Timeseries(BaseModel):
-    objects_nosecurity = Manager()
     objects = manager.TimeseriesManager()
+    # The admin manager should be below the secured manager!!
+    objects_nosecurity = Manager()
 
     def __unicode__(self):
         return "{}".format(self.name)
