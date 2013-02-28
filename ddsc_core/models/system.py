@@ -9,7 +9,12 @@ from ddsc_core.models.models import BaseModel
 
 
 class Folder(BaseModel):
-    path = models.CharField(max_length=64)
+    """Maps an FTP to a Django user via his home directory.
+
+    In fact, it's not necessarily his home directory, but
+    any directory monitored by incron for this user.
+    """
+    path = models.CharField(max_length=64, unique=True)
     user = models.ForeignKey(User)
 
     def __unicode__(self):
