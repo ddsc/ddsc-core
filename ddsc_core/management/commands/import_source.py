@@ -19,7 +19,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        i = 1
+        i = Source.objects.count() + 1
         with open(args[0], 'rb') as f:
             reader = csv.reader(f)
             for row in reader:
@@ -42,7 +42,7 @@ class Command(BaseCommand):
                             }.get(x, 1)
                         source_type = f(type)
                         details = row[5]                        
-                        Source.objects.create(name=name, id=str(i), 
+                        Source.objects.create(name=name, # id=str(i), 
                                               source_type=source_type, ## hard code because currently TYPE and source_type are 2 different stories
                                               manufacturer_id = manufacturer_id,  ## for now, dummy since no data
                                               details = details,

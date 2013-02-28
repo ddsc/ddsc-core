@@ -12,7 +12,7 @@ class Command(BaseCommand):
     help = 'Imports a CSV file of timeseries into the database.'
 
     def handle(self, *args, **options):
-        i = 1
+        i = Timeseries.objects.count() + 1
         with open(args[0], 'rb') as f:
             reader = csv.reader(f)
             for row in reader:

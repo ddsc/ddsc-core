@@ -19,7 +19,8 @@ class Command(BaseCommand):
     
 
     def handle(self, *args, **options):
-        i = 1
+        i = Location.objects.count() + 1
+        second_loop_start = i
         maintain_list=[]
         nr_0 = 0
         with open(args[0], 'rb') as f:
@@ -36,7 +37,7 @@ class Command(BaseCommand):
                     
                     if parentuuid == 'N/A':
                         maintain_list.append(0)
-                        nr_0+=1
+                        nr_0 += 1
                     else :
                         maintain_list.append(parentuuid)
                     
@@ -74,21 +75,24 @@ class Command(BaseCommand):
             print 'first loop completed!'
             print 'nr. of root nodes are: ' + str(nr_0)
             
-            i = 1
+            i = second_loop_start
 #            while sum(maintain_list) is not 0 :
+            print i 
             for st in maintain_list:
                 if st != 0 :
-                    currentnode = Location.objects.get(pk=i)
-                    #print stad
+                    #print st  # for debuging
+                    currentnode = Location.objects.get(id=i)
+#                    print currentnode
                     try :
                         parentnode = Location.objects.get(uuid=st)
+#                        print parentnode
                         currentnode.save_under(parentnode.pk)
                     except :
                         currentnode.path = 'N/A' + str(i)
                         currentnode.depth = 9999
                         currentnode.numchild = 9999
                         currentnode.save()
-                i+=1
+                i += 1
                                 
                     
         print "all completeted~!"
