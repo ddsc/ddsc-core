@@ -1,12 +1,12 @@
 # (c) Nelen & Schuurmans. MIT licensed, see LICENSE.rst.
+from __future__ import absolute_import
 from __future__ import unicode_literals
 
+from StringIO import StringIO
+from datetime import datetime
 import logging
-import magic
-import networkx as nx
 import os.path
 
-from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -15,7 +15,8 @@ from django.core.urlresolvers import reverse
 from django.db import transaction
 from django.db.models.manager import Manager
 from django_extensions.db.fields import UUIDField
-from StringIO import StringIO
+import magic
+import networkx as nx
 
 from cassandralib.models import CassandraDataStore
 from cassandralib.models import INTERNAL_TIMEZONE
