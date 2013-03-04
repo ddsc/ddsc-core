@@ -183,4 +183,9 @@ class Alarm_Item(BaseModel):
       
     content_object = generic.GenericForeignKey('alarm_type', 'object_id')
 
-#
+class Alarm_Active(BaseModel):
+    alarm = models.ForeignKey(Alarm)
+    first_triggered_on = models.DateTimeField(default=datetime(1900,1,1,0,0))
+    message = models.TextField()
+    deactivated_on = models.DateTimeField(default=datetime(1900,1,1,0,0))
+    
