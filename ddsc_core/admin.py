@@ -48,13 +48,37 @@ class LogicalGroupAdmin(admin.ModelAdmin):
             # Changing a LogicalGroup
             return ("owner", ) + self.readonly_fields
 
+
+class LogRecordAdmin(admin.ModelAdmin):
+
+    exclude = (
+        "time",
+    )
+
+    readonly_fields = (
+        "ftime",
+        "host",
+        "level",
+        "message",
+        "source",
+        "line",
+    )
+
+    def ftime(self, obj):
+        return obj.time.strftime('%Y-%M-%dT%H:%M:%S.%f')
+
+    ftime.short_description = 'Time'
+
+
+admin.site.register(models.Alarm)
+admin.site.register(models.Alarm_Item)
 admin.site.register(models.Compartment, AquoModelAdmin)
 admin.site.register(models.Folder)
 admin.site.register(models.IPAddress)
-admin.site.register(models.Location, TreeAdmin)
 admin.site.register(models.IdMapping)
+admin.site.register(models.Location, TreeAdmin)
 admin.site.register(models.LocationType, LocationTypeAdmin)
-admin.site.register(models.Timeseries)
+admin.site.register(models.LogRecord, LogRecordAdmin)
 admin.site.register(models.LogicalGroup, LogicalGroupAdmin)
 admin.site.register(models.LogicalGroupEdge)
 admin.site.register(models.Manufacturer)
@@ -64,10 +88,5 @@ admin.site.register(models.Parameter, AquoModelAdmin)
 admin.site.register(models.ProcessingMethod, AquoModelAdmin)
 admin.site.register(models.ReferenceFrame, AquoModelAdmin)
 admin.site.register(models.Source)
+admin.site.register(models.Timeseries)
 admin.site.register(models.Unit, AquoModelAdmin)
-admin.site.register(models.alarms.Alarm)
-admin.site.register(models.alarms.Alarm_Item)
-#admin.site.register(models.alarms.Alarm_Property)
-#admin.site.register(models.alarms.Alarm_Item_Details)
-
-

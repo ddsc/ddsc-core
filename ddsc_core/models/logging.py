@@ -17,7 +17,7 @@ class LogRecord(BaseModel):
     line = models.SmallIntegerField(help_text="line number")
 
     def __unicode__(self):
-        return "{0} - {1} - {2} - {3}".format(
+        return "{:%Y-%m-%dT%H:%M:%S.%f} - {} - {} - {}".format(
             self.time,
             self.host,
             self.level,
