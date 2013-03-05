@@ -188,4 +188,5 @@ class Alarm_Active(BaseModel):
     first_triggered_on = models.DateTimeField(default=datetime(1900,1,1,0,0))
     message = models.TextField()
     deactivated_on = models.DateTimeField(default=datetime(1900,1,1,0,0))
+    active = models.BooleanField(default=True)
     
