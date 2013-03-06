@@ -17,6 +17,8 @@ from django.db.models.manager import Manager
 from django_extensions.db.fields import UUIDField
 import magic
 import networkx as nx
+import shutil
+import tempfile
 
 from cassandralib.models import CassandraDataStore
 from cassandralib.models import INTERNAL_TIMEZONE
@@ -367,20 +369,27 @@ class Timeseries(BaseModel):
                     or timestamp < self.first_value_timestamp:
                 self.first_value_timestamp = timestamp
 
-    def _file_path(self, timestamp):
-        dt = timestamp.strftime(FILENAME_FORMAT)
+    def _data_dir(self, timestamp):
         file_dir = getattr(settings, 'FILE_DIR')
-        return '%s/%s/%s' % (file_dir, self.uuid, dt)
+        return '%s/%s/' % (file_dir, self.uuid)
 
-    def set_file(self, timestamp, file):
-        file_path = self._file_path(timestamp)
-        # TODO: actually put the file on the path
-        self.set_event(timestamp, {})
+    def set_file(self, timestamp, content):
+        utc_stamp = INTERNAL_TIMEZONE.localize(timestamp)
+        dt = utc_stamp.strftime(FILENAME_FORMAT)
+        data_dir = self._data_dir(utc_stamp)
+        file_path = data_dir + dt
+        temp = tempfile.NamedTemporaryFile(delete=False)
+        temp.write(content)
+        if not os.path.exists(data_dir):
+            os.makedirs(data_dir)
+        shutil.move(temp.name, file_path)
+        row = {"datetime" : dt, "value" : file_path}
+        self.set_event(utc_stamp, row)
 
     def get_file(self, timestamp):
-        file_path = self._file_path(INTERNAL_TIMEZONE.localize(timestamp))
-        # TODO: get the file from the actual path
-        file_path = getattr(settings, 'FILE_DIR') + '/logo_nelenschuurmans'
+        utc_stamp = INTERNAL_TIMEZONE.localize(timestamp)
+        dt = utc_stamp.strftime(FILENAME_FORMAT)
+        file_path = self._data_dir(utc_stamp) + dt
         file_mime = magic.from_file(file_path, mime=True)
         io = StringIO(file(file_path, "rb").read())
         file_size = os.path.getsize(file_path)
