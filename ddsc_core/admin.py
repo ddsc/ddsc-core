@@ -51,6 +51,8 @@ class LogicalGroupAdmin(admin.ModelAdmin):
 
 class LogRecordAdmin(admin.ModelAdmin):
 
+    list_filter = ("host", "level")
+
     exclude = (
         "time",
     )
