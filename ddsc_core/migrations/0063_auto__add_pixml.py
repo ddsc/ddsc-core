@@ -78,6 +78,7 @@ class Migration(SchemaMigration):
         },
         u'ddsc_core.alarm_active': {
             'Meta': {'object_name': 'Alarm_Active'},
+            'active': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'alarm': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['ddsc_core.Alarm']"}),
             'deactivated_on': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(1900, 1, 1, 0, 0)'}),
             'first_triggered_on': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(1900, 1, 1, 0, 0)'}),
