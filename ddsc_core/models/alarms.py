@@ -78,7 +78,7 @@ class Alarm(BaseModel):
         choices=MESSAGE_TYPE,
         default=EMAIL,
     )
-    previous_id = models.IntegerField(blank=True, null=True)
+    previous_alarm = models.ForeignKey('self', null=True, blank=True)
     active_status = models.BooleanField(default=False)
     last_checked = models.DateTimeField(default=datetime(1900, 1, 1, 0, 0))
     date_cr = models.DateTimeField(default=timezone.now)
