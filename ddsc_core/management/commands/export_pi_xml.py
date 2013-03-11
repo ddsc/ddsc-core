@@ -1,4 +1,4 @@
-import sys
+from optparse import make_option
 
 from django.core.management.base import BaseCommand
 import pandas as pd
@@ -11,15 +11,39 @@ from ddsc_core.models import Timeseries
 
 class Command(BaseCommand):
     args = "<pi.xml>"
-    help = "help"
+    help = (
+        "Create pi.xml from a template. A template is a valid pi.xml file " +
+        "without events (they are ignored if present) and per series a " +
+        "`comment` element containing a ddsc timeseries uuid."
+    )
+    option_list = BaseCommand.option_list + (
+        make_option(
+            '-f',
+            '--file',
+            dest='file',
+            help='write to file instead of stdout'
+        ),
+    )
 
     def handle(self, *args, **options):
+
+        # source is a pi.xml file that serves as a template: its headers are
+        # used, but any events are ignored. The `comment` element of each
+        # series is expected to contain a ddsc uuid.
 
         try:
             source = args[0]
         except IndexError:
-            self.stdout.write(self.help)
+            self.stderr.write(self.help)
             return
+
+        # destination is the resulting pi.xml file. If no destination is
+        # given, output is written to stdout.
+
+        try:
+            destination = open(options.get('file'), 'w')
+        except TypeError:
+            destination = self.stdout
 
         reader = PiXmlReader(source)
         writer = PiXmlWriter(reader.get_tz())
@@ -37,4 +61,4 @@ class Command(BaseCommand):
             except:
                 pass
 
-        writer.write(sys.stdout)
+        writer.write(destination)
