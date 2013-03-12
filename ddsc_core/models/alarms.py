@@ -84,9 +84,22 @@ class Alarm(BaseModel):
     date_cr = models.DateTimeField(default=timezone.now)
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey('single_or_group', 'object_id')
+    first_born = models.BooleanField(default=True)
 
     def __unicode__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if self.first_born is True:
+            self.first_born = False
+            super(Alarm, self).save(*args, **kwargs)
+        else:
+            self.active_status = False
+            super(Alarm, self).save(*args, **kwargs)
+            self.previous_alarm = self
+            self.pk = None
+            self.active_status = True
+            super(Alarm, self).save(*args, **kwargs)
 
 
 class Alarm_Item(BaseModel):
@@ -146,6 +159,26 @@ class Alarm_Item(BaseModel):
         default=AND,
     )
     content_object = generic.GenericForeignKey('alarm_type', 'object_id')
+    first_born = models.BooleanField(default=True)
+
+    def save(self, *args, **kwargs):
+        if self.first_born is True:
+            self.first_born = False
+            super(Alarm_Item, self).save(*args, **kwargs)
+        else:
+            alm = self.alarm
+            alm_itm_list = Alarm_Item.objects.filter(alarm_id=alm.id)
+            alm.active_status = False
+            super(Alarm, alm).save(*args, **kwargs)
+            alm.pk = None
+            alm.first_born = False
+            alm.active_status = True
+            super(Alarm, alm).save(*args, **kwargs)
+
+            for alm_itm in alm_itm_list:
+                alm_itm.pk = None
+                alm_itm.alarm = alm
+                super(Alarm_Item, alm_itm).save(*args, **kwargs)
 
 
 class Alarm_Active(BaseModel):
