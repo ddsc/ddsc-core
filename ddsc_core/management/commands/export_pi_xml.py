@@ -1,6 +1,8 @@
+from datetime import datetime
 from optparse import make_option
 
 from django.core.management.base import BaseCommand
+from pytz import timezone
 import pandas as pd
 
 from tslib.readers import PiXmlReader
@@ -23,6 +25,12 @@ class Command(BaseCommand):
             dest='file',
             help='write to file instead of stdout'
         ),
+        make_option(
+            '-z',
+            '--timezone',
+            default='UTC',
+            dest='tz',
+        ),
     )
 
     def handle(self, *args, **options):
@@ -38,10 +46,15 @@ class Command(BaseCommand):
             return
 
         # destination is the resulting pi.xml file. If no destination is
-        # given, output is written to stdout.
+        # given, output is written to stdout. Allow for strftime based
+        # formatting of the filename. See: http://docs.python.org/2/
+        # library/datetime.html#strftime-strptime-behavior
 
         try:
-            destination = open(options.get('file'), 'w')
+            utcnow = timezone('UTC').localize(datetime.utcnow())
+            tznow = utcnow.astimezone(timezone(options.get('tz')))
+            filename = tznow.strftime(options.get('file'))
+            destination = open(filename, 'w')
         except TypeError:
             destination = self.stdout
 

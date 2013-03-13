@@ -19,6 +19,7 @@ install_requires = [
     'networkx',
     'pandas',
     'python-magic',
+    'pytz',
     'tslib',
     ],
 
