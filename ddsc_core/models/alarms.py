@@ -79,7 +79,7 @@ class Alarm(BaseModel):
         default=EMAIL,
     )
     previous_alarm = models.ForeignKey('self', null=True, blank=True)
-    active_status = models.BooleanField(default=False)
+    active_status = models.BooleanField(default=True)
     last_checked = models.DateTimeField(default=datetime(1900, 1, 1, 0, 0))
     date_cr = models.DateTimeField(default=timezone.now)
     object_id = models.PositiveIntegerField()
@@ -97,9 +97,16 @@ class Alarm(BaseModel):
             self.active_status = False
             super(Alarm, self).save(*args, **kwargs)
             self.previous_alarm = self
+            alm_itm_list = Alarm_Item.objects.filter(alarm_id=self.id)
             self.pk = None
             self.active_status = True
+            self.last_checked = datetime(1900, 1, 1, 0, 0)
+            self.date_cr = timezone.now()
             super(Alarm, self).save(*args, **kwargs)
+            for alm_itm in alm_itm_list:
+                alm_itm.pk = None
+                alm_itm.alarm = self
+                super(Alarm_Item, alm_itm).save(*args, **kwargs)
 
 
 class Alarm_Item(BaseModel):
@@ -166,19 +173,29 @@ class Alarm_Item(BaseModel):
             self.first_born = False
             super(Alarm_Item, self).save(*args, **kwargs)
         else:
+            alm_itm_self = self
             alm = self.alarm
+            alm_prev_id = alm.id
             alm_itm_list = Alarm_Item.objects.filter(alarm_id=alm.id)
             alm.active_status = False
             super(Alarm, alm).save(*args, **kwargs)
             alm.pk = None
             alm.first_born = False
             alm.active_status = True
+            alm.last_checked = datetime(1900, 1, 1, 0, 0)
+            alm.date_cr = timezone.now()
+            alm.previous_alarm_id = alm_prev_id
             super(Alarm, alm).save(*args, **kwargs)
 
             for alm_itm in alm_itm_list:
-                alm_itm.pk = None
-                alm_itm.alarm = alm
-                super(Alarm_Item, alm_itm).save(*args, **kwargs)
+                if alm_itm.id != alm_itm_self.id:
+                    alm_itm.pk = None
+                    alm_itm.alarm = alm
+                    super(Alarm_Item, alm_itm).save(*args, **kwargs)
+                else:
+                    alm_itm_self.pk = None
+                    alm_itm_self.alarm = alm
+                    super(Alarm_Item, alm_itm_self).save(*args, **kwargs)
 
 
 class Alarm_Active(BaseModel):
