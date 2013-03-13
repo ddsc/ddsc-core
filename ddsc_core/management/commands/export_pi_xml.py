@@ -29,7 +29,7 @@ class Command(BaseCommand):
             '-z',
             '--timezone',
             default='UTC',
-            dest='tz',
+            dest='timezone',
         ),
     )
 
@@ -52,7 +52,7 @@ class Command(BaseCommand):
 
         try:
             utcnow = timezone('UTC').localize(datetime.utcnow())
-            tznow = utcnow.astimezone(timezone(options.get('tz')))
+            tznow = utcnow.astimezone(timezone(options.get('timezone')))
             filename = tznow.strftime(options.get('file'))
             destination = open(filename, 'w')
         except TypeError:
