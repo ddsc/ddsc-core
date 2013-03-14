@@ -545,3 +545,43 @@ class IdMapping(BaseModel):
     timeseries = models.ForeignKey(Timeseries)
     user = models.ForeignKey(User)
     remote_id = models.CharField(max_length=64)
+
+
+class StatusCache(BaseModel):
+    """statistics for each timeseries among a certain time period"""
+    timeseries = models.ForeignKey(Timeseries)
+    nr_of_measurements_total = models.IntegerField(null=True, blank=True)
+    nr_of_measurements_reliable = models.IntegerField(null=True, blank=True)
+    nr_of_measurements_doubtful = models.IntegerField(null=True, blank=True)
+    nr_of_measurements_unreliable = models.IntegerField(null=True, blank=True)
+    first_measurement_timestamp = models.DateTimeField(
+                                      default=datetime(1900, 1, 1, 0, 0))
+    min_val = models.FloatField(null=True, blank=True)
+    max_val = models.FloatField(null=True, blank=True)
+    mean_val = models.FloatField(null=True, blank=True)
+    std_val = models.FloatField(null=True, blank=True)
+    # should I add a type like month or year or day?
+
+    def set_ts_status(self, start=None, end=None):
+        ts = self.timeseries
+        df = ts.get_events(start, end)
+        self.nr_of_measurements_total = df['value'].count()
+        histo = df['flag'].value_counts()
+        try:
+            self.nr_of_measurements_reliable = histo['0']
+        except:
+            self.nr_of_measurements_reliable = 0
+        try:
+            self.nr_of_measurements_doubtful = histo['3']
+        except:
+            self.nr_of_measurements_doubtful = 0
+        try:
+            self.nr_of_measurements_unreliable = histo['6']
+        except:
+            self.nr_of_measurements_unreliable = 0
+        self.first_measurement_timestamp = ts.first_value_timestamp
+        self.mean_val = df['value'].mean(0)
+        self.max_val = df['value'].max(0)
+        self.min_val = df['value'].min(0)
+        self.std_val = df['value'].std(0)
+        self.save()
