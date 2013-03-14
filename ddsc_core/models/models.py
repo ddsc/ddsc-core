@@ -317,27 +317,29 @@ class Timeseries(BaseModel):
         return None
 
     def get_events(self, start=None, end=None, filter=None):
-        if end is None:
-            end = datetime.now()
-        if start is None:
-            start = end + relativedelta(years=-5)
         if filter is None:
             filter = ['value', 'flag']
 
-        start = INTERNAL_TIMEZONE.localize(start)
-        end = INTERNAL_TIMEZONE.localize(end)
+        if start and \
+                (start.tzinfo is None or start.tzinfo.utcoffset(start) is None):
+            start = INTERNAL_TIMEZONE.localize(start)
+        if end and (end.tzinfo is None or end.tzinfo.utcoffset(end) is None):
+            end = INTERNAL_TIMEZONE.localize(end)
 
         if (self.first_value_timestamp is None or
                 self.latest_value_timestamp is None):
             # If there's no first or last timestamp, there's no data.
             # So make sure Cassandra returns nothing with no hard work.
-            start = INTERNAL_TIMEZONE.localize(datetime.now())
-            end = start + relativedelta(years=-10)
+            start = None
+            end = None
         else:
-            if start < self.first_value_timestamp:
+            if start is None or start < self.first_value_timestamp:
                 start = self.first_value_timestamp
-            if end > self.latest_value_timestamp:
+            if end is None or end > self.latest_value_timestamp:
                 end = self.latest_value_timestamp + relativedelta(seconds=1)
+            if start > end:
+                start = None
+                end = None
 
         store = DataStore()
         value_type_map = {
@@ -353,6 +355,9 @@ class Timeseries(BaseModel):
             self.set_event(timestamp, row)
 
     def set_event(self, timestamp, row):
+        if timestamp.tzinfo is None or \
+                timestamp.tzinfo.utcoffset(timestamp) is None:
+            timestamp = INTERNAL_TIMEZONE.localize(timestamp)
         store = DataStore()
         store.write_row('events', self.uuid, timestamp, row)
         if 'value' in row:
@@ -374,9 +379,11 @@ class Timeseries(BaseModel):
         return '%s/%s/' % (file_dir, self.uuid)
 
     def set_file(self, timestamp, content):
-        utc_stamp = INTERNAL_TIMEZONE.localize(timestamp)
-        dt = utc_stamp.strftime(FILENAME_FORMAT)
-        data_dir = self._data_dir(utc_stamp)
+        if timestamp.tzinfo is None or \
+                timestamp.tzinfo.utcoffset(timestamp) is None:
+            timestamp = INTERNAL_TIMEZONE.localize(timestamp)
+        dt = timestamp.strftime(FILENAME_FORMAT)
+        data_dir = self._data_dir(timestamp)
         file_path = data_dir + dt
         temp = tempfile.NamedTemporaryFile(delete=False)
         temp.write(content)
@@ -384,12 +391,14 @@ class Timeseries(BaseModel):
             os.makedirs(data_dir)
         shutil.move(temp.name, file_path)
         row = {"datetime" : dt, "value" : file_path}
-        self.set_event(utc_stamp, row)
+        self.set_event(timestamp, row)
 
     def get_file(self, timestamp):
-        utc_stamp = INTERNAL_TIMEZONE.localize(timestamp)
-        dt = utc_stamp.strftime(FILENAME_FORMAT)
-        file_path = self._data_dir(utc_stamp) + dt
+        if timestamp.tzinfo is None or \
+                timestamp.tzinfo.utcoffset(timestamp) is None:
+            timestamp = INTERNAL_TIMEZONE.localize(timestamp)
+        dt = timestamp.strftime(FILENAME_FORMAT)
+        file_path = self._data_dir(timestamp) + dt
         file_mime = magic.from_file(file_path, mime=True)
         io = StringIO(file(file_path, "rb").read())
         file_size = os.path.getsize(file_path)
