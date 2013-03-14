@@ -3,11 +3,10 @@ from __future__ import absolute_import
 from __future__ import unicode_literals
 
 from StringIO import StringIO
-from datetime import datetime
+from datetime import datetime, timedelta
 import logging
 import os.path
 
-from dateutil.relativedelta import relativedelta
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.gis.db import models
@@ -30,7 +29,7 @@ logger = logging.getLogger(__name__)
 
 APP_LABEL = "ddsc_core"
 CASSANDRA = getattr(settings, 'CASSANDRA', {})
-FILENAME_FORMAT = '%Y-%m-%dT%H.%M.%SZ'
+FILENAME_FORMAT = '%Y-%m-%dT%H.%M.%S.%fZ'
 
 
 class DataStore(CassandraDataStore):
@@ -336,7 +335,7 @@ class Timeseries(BaseModel):
             if start is None or start < self.first_value_timestamp:
                 start = self.first_value_timestamp
             if end is None or end > self.latest_value_timestamp:
-                end = self.latest_value_timestamp + relativedelta(seconds=1)
+                end = self.latest_value_timestamp + timedelta(seconds=1)
             if start > end:
                 start = None
                 end = None
