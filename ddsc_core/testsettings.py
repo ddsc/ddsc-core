@@ -7,7 +7,8 @@ from lizard_ui.settingshelper import STATICFILES_FINDERS
 
 DEBUG = True
 TEMPLATE_DEBUG = True
-TIME_ZONE = None  # Use system settings
+TIME_ZONE = 'UTC'
+USE_TZ = True
 
 # SETTINGS_DIR allows media paths and so to be relative to this settings file
 # instead of hardcoded to c:\only\on\my\computer.

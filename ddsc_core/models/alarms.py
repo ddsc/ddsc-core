@@ -2,31 +2,23 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
-from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
-from django.db.models import Q
 from django.utils import timezone
 
-from lizard_security.models import UserGroup
 from ddsc_core.models.models import BaseModel
-from ddsc_core.models.models import Timeseries
-from ddsc_core.models.models import Location
-from ddsc_core.models.models import LogicalGroup
 
 from datetime import datetime
 
 
 AND = 0
 OR = 1
-    
 LOGIC_TYPES = (
     (AND, 'And'),
     (OR, 'OR'),
 )
 
-# Create your models here.
+
 class Alarm(BaseModel):
     EMAIL = 1
     SMS = 2
@@ -53,61 +45,68 @@ class Alarm(BaseModel):
         (720, '12 hr'),
         (1440, '24 hr'),
     )
-
     name = models.CharField(max_length=80)
-    single_or_group = models.ForeignKey(ContentType, 
-        limit_choices_to = {"model__in": ("user", "usergroup")},
-        default = 1,
+    single_or_group = models.ForeignKey(
+        ContentType,
+        limit_choices_to={"model__in": ("user", "usergroup")},
+        default=1,
     )
-    object_id = models.PositiveIntegerField()
-#    single_owner = models.ForeignKey(User, null=True, blank=True)
-#    group_owner = models.ForeignKey(UserGroup, null=True, blank=True)
     description = models.TextField(
-        null=True, 
+        null=True,
         blank=True,
-        default='', 
-        help_text="optional description"
+        default='',
+        help_text="optional description",
     )
     frequency = models.IntegerField(
-        choices = FREQUENCY_TYPE,
-        default = 5,
+        choices=FREQUENCY_TYPE,
+        default=5,
     )
     template = models.TextField(
-          default='this is a alarm message template',
+        default='this is a alarm message template',
     )
 
     urgency = models.IntegerField(
-        choices = URGENCY_TYPE,
-        default = 2,
+        choices=URGENCY_TYPE,
+        default=2,
     )
 
     logical_check = models.SmallIntegerField(
-        choices = LOGIC_TYPES,
-        default = AND,
+        choices=LOGIC_TYPES,
+        default=AND,
     )
     message_type = models.IntegerField(
-        choices = MESSAGE_TYPE,
+        choices=MESSAGE_TYPE,
         default=EMAIL,
     )
-    previous_id = models.IntegerField(blank=True, null=True)
-    active_status = models.BooleanField(default=False)
-    last_checked = models.DateTimeField(default=datetime(1900,1,1,0,0))
+    previous_alarm = models.ForeignKey('self', null=True, blank=True)
+    active_status = models.BooleanField(default=True)
+    last_checked = models.DateTimeField(default=datetime(1900, 1, 1, 0, 0))
     date_cr = models.DateTimeField(default=timezone.now)
-    
     object_id = models.PositiveIntegerField()
-    
     content_object = generic.GenericForeignKey('single_or_group', 'object_id')
-
+    first_born = models.BooleanField(default=True)
 
     def __unicode__(self):
-#        if self.single_or_group.name == 'user':
-#            self.object_id = self.single_owner.id
-#            self.group_owner_id = ''
-#        else:
-#            self.object_id = self.group_owner.id
-#            self.single_owner_id = ''
-#        self.save()
         return self.name
+
+    def save(self, *args, **kwargs):
+        if self.first_born is True:
+            self.first_born = False
+            super(Alarm, self).save(*args, **kwargs)
+        else:
+            self.active_status = False
+            super(Alarm, self).save(*args, **kwargs)
+            self.previous_alarm = self
+            alm_itm_list = Alarm_Item.objects.filter(alarm_id=self.id)
+            self.pk = None
+            self.active_status = True
+            self.last_checked = datetime(1900, 1, 1, 0, 0)
+            self.date_cr = timezone.now()
+            super(Alarm, self).save(*args, **kwargs)
+            for alm_itm in alm_itm_list:
+                alm_itm.pk = None
+                alm_itm.alarm = self
+                super(Alarm_Item, alm_itm).save(*args, **kwargs)
 
 
 class Alarm_Item(BaseModel):
@@ -123,7 +122,6 @@ class Alarm_Item(BaseModel):
         (GRATER, '>'),
         (LESS, '<'),
     )
-    
     VALUE_TYPE = (
         (1, 'a. Waarde'),
         (2, 'b. Status - Aantal metingen'),
@@ -135,58 +133,76 @@ class Alarm_Item(BaseModel):
         (8, 'h. Status - Gemiddelde meetwaarde'),
         (9, 'i. Status - Standaard deviatie'),
         (10, 'j. Status - Tijd sinds laatste meting'),
-        (11, 'k. Status - Procentuele afwijking van het aantal te verwachten metingen'),
+        (11, 'k. Status - Procentuele afwijking van' +
+            'het aantal te verwachten metingen'),
     )
 
     alarm = models.ForeignKey(Alarm)
     comparision = models.SmallIntegerField(
-        choices = COMPARISION_TYPE,
-        default = EQUAL,
+        choices=COMPARISION_TYPE,
+        default=EQUAL,
     )
     value_type = models.IntegerField(
-        choices = VALUE_TYPE,
-        default = 1,
+        choices=VALUE_TYPE,
+        default=1,
     )
     value_double = models.FloatField(null=True, blank=True)
     value_text = models.CharField(
-        max_length=32, 
+        max_length=32,
         null=True,
         blank=True,
     )
     value_int = models.IntegerField(null=True, blank=True)
     value_bool = models.NullBooleanField(null=True, blank=True)
-    alarm_type = models.ForeignKey(ContentType, 
-        limit_choices_to = {"model__in": ("timeseries", "logicalgroup","location")},
-        default = 1,
+    alarm_type = models.ForeignKey(
+        ContentType,
+        limit_choices_to={"model__in": ("timeseries", "logical"
+                                        + "group", "location", )},
+        default=1,
     )
     object_id = models.PositiveIntegerField()
-#    timeseries = models.ForeignKey(
-#        Timeseries,
-#        null = True,
-#        blank = True,
-#    )
-#    logicalgroup = models.ForeignKey(
-#        LogicalGroup,
-#        null = True,
-#        blank = True,
-#    )
-#    location = models.ForeignKey(
-#        Location,
-#        null = True,
-#        blank = True,
-#    )
     logical_check = models.SmallIntegerField(
-        choices = LOGIC_TYPES,
-        default = AND,
+        choices=LOGIC_TYPES,
+        default=AND,
     )
-#    last_checked = models.DateTimeField(default=datetime(1900,1,1,0,0))
-      
     content_object = generic.GenericForeignKey('alarm_type', 'object_id')
+    first_born = models.BooleanField(default=True)
+
+    def save(self, *args, **kwargs):
+        if self.first_born is True:
+            self.first_born = False
+            super(Alarm_Item, self).save(*args, **kwargs)
+        else:
+            alm_itm_self = self
+            alm = self.alarm
+            alm_prev_id = alm.id
+            alm_itm_list = Alarm_Item.objects.filter(alarm_id=alm.id)
+            alm.active_status = False
+            super(Alarm, alm).save(*args, **kwargs)
+            alm.pk = None
+            alm.first_born = False
+            alm.active_status = True
+            alm.last_checked = datetime(1900, 1, 1, 0, 0)
+            alm.date_cr = timezone.now()
+            alm.previous_alarm_id = alm_prev_id
+            super(Alarm, alm).save(*args, **kwargs)
+
+            for alm_itm in alm_itm_list:
+                if alm_itm.id != alm_itm_self.id:
+                    alm_itm.pk = None
+                    alm_itm.alarm = alm
+                    super(Alarm_Item, alm_itm).save(*args, **kwargs)
+                else:
+                    alm_itm_self.pk = None
+                    alm_itm_self.alarm = alm
+                    super(Alarm_Item, alm_itm_self).save(*args, **kwargs)
+
 
 class Alarm_Active(BaseModel):
     alarm = models.ForeignKey(Alarm)
-    first_triggered_on = models.DateTimeField(default=datetime(1900,1,1,0,0))
+    first_triggered_on = models.DateTimeField(
+        default=datetime(1900, 1, 1, 0, 0)
+    )
     message = models.TextField()
-    deactivated_on = models.DateTimeField(default=datetime(1900,1,1,0,0))
+    deactivated_on = models.DateTimeField(default=datetime(1900, 1, 1, 0, 0))
     active = models.BooleanField(default=True)
-    

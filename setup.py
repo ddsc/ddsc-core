@@ -11,15 +11,16 @@ long_description = '\n\n'.join([
 install_requires = [
     'Django',
     'cassandralib',
-    'pycassa',
     'django-extensions',
     'django-nose',
     'django-treebeard',
     'lizard-security',
     'lizard-ui >= 4.0b5',
+    'networkx',
     'pandas',
     'python-magic',
-    'networkx',
+    'pytz',
+    'tslib',
     ],
 
 tests_require = [
