@@ -3,11 +3,10 @@ from __future__ import absolute_import
 from __future__ import unicode_literals
 
 from StringIO import StringIO
-from datetime import datetime
+from datetime import datetime, timedelta
 import logging
 import os.path
 
-from dateutil.relativedelta import relativedelta
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.gis.db import models
@@ -30,7 +29,7 @@ logger = logging.getLogger(__name__)
 
 APP_LABEL = "ddsc_core"
 CASSANDRA = getattr(settings, 'CASSANDRA', {})
-FILENAME_FORMAT = '%Y-%m-%dT%H.%M.%SZ'
+FILENAME_FORMAT = '%Y-%m-%dT%H.%M.%S.%fZ'
 
 
 class DataStore(CassandraDataStore):
@@ -105,10 +104,16 @@ class Location(BaseModel, MP_Node_ByInstance):
         return self.name
 
     def superlocation(self):
-        return self.get_parent()
+        try:
+            return self.get_parent()
+        except:
+            pass
 
     def sublocations(self):
-        return self.get_children()
+        try:
+            return self.get_children()
+        except:
+            return []
 
     def save_under(self, parent_pk=None):
         '''
@@ -317,27 +322,29 @@ class Timeseries(BaseModel):
         return None
 
     def get_events(self, start=None, end=None, filter=None):
-        if end is None:
-            end = datetime.now()
-        if start is None:
-            start = end + relativedelta(years=-5)
         if filter is None:
             filter = ['value', 'flag']
 
-        start = INTERNAL_TIMEZONE.localize(start)
-        end = INTERNAL_TIMEZONE.localize(end)
+        if start and \
+                (start.tzinfo is None or start.tzinfo.utcoffset(start) is None):
+            start = INTERNAL_TIMEZONE.localize(start)
+        if end and (end.tzinfo is None or end.tzinfo.utcoffset(end) is None):
+            end = INTERNAL_TIMEZONE.localize(end)
 
         if (self.first_value_timestamp is None or
                 self.latest_value_timestamp is None):
             # If there's no first or last timestamp, there's no data.
             # So make sure Cassandra returns nothing with no hard work.
-            start = INTERNAL_TIMEZONE.localize(datetime.now())
-            end = start + relativedelta(years=-10)
+            start = None
+            end = None
         else:
-            if start < self.first_value_timestamp:
+            if start is None or start < self.first_value_timestamp:
                 start = self.first_value_timestamp
-            if end > self.latest_value_timestamp:
-                end = self.latest_value_timestamp + relativedelta(seconds=1)
+            if end is None or end > self.latest_value_timestamp:
+                end = self.latest_value_timestamp + timedelta(seconds=1)
+            if start > end:
+                start = None
+                end = None
 
         store = DataStore()
         value_type_map = {
@@ -353,6 +360,9 @@ class Timeseries(BaseModel):
             self.set_event(timestamp, row)
 
     def set_event(self, timestamp, row):
+        if timestamp.tzinfo is None or \
+                timestamp.tzinfo.utcoffset(timestamp) is None:
+            timestamp = INTERNAL_TIMEZONE.localize(timestamp)
         store = DataStore()
         store.write_row('events', self.uuid, timestamp, row)
         if 'value' in row:
@@ -374,9 +384,11 @@ class Timeseries(BaseModel):
         return '%s/%s/' % (file_dir, self.uuid)
 
     def set_file(self, timestamp, content):
-        utc_stamp = INTERNAL_TIMEZONE.localize(timestamp)
-        dt = utc_stamp.strftime(FILENAME_FORMAT)
-        data_dir = self._data_dir(utc_stamp)
+        if timestamp.tzinfo is None or \
+                timestamp.tzinfo.utcoffset(timestamp) is None:
+            timestamp = INTERNAL_TIMEZONE.localize(timestamp)
+        dt = timestamp.strftime(FILENAME_FORMAT)
+        data_dir = self._data_dir(timestamp)
         file_path = data_dir + dt
         temp = tempfile.NamedTemporaryFile(delete=False)
         temp.write(content)
@@ -384,12 +396,14 @@ class Timeseries(BaseModel):
             os.makedirs(data_dir)
         shutil.move(temp.name, file_path)
         row = {"datetime" : dt, "value" : file_path}
-        self.set_event(utc_stamp, row)
+        self.set_event(timestamp, row)
 
     def get_file(self, timestamp):
-        utc_stamp = INTERNAL_TIMEZONE.localize(timestamp)
-        dt = utc_stamp.strftime(FILENAME_FORMAT)
-        file_path = self._data_dir(utc_stamp) + dt
+        if timestamp.tzinfo is None or \
+                timestamp.tzinfo.utcoffset(timestamp) is None:
+            timestamp = INTERNAL_TIMEZONE.localize(timestamp)
+        dt = timestamp.strftime(FILENAME_FORMAT)
+        file_path = self._data_dir(timestamp) + dt
         file_mime = magic.from_file(file_path, mime=True)
         io = StringIO(file(file_path, "rb").read())
         file_size = os.path.getsize(file_path)
@@ -545,3 +559,43 @@ class IdMapping(BaseModel):
     timeseries = models.ForeignKey(Timeseries)
     user = models.ForeignKey(User)
     remote_id = models.CharField(max_length=64)
+
+
+class StatusCache(BaseModel):
+    """statistics for each timeseries among a certain time period"""
+    timeseries = models.ForeignKey(Timeseries)
+    nr_of_measurements_total = models.IntegerField(null=True, blank=True)
+    nr_of_measurements_reliable = models.IntegerField(null=True, blank=True)
+    nr_of_measurements_doubtful = models.IntegerField(null=True, blank=True)
+    nr_of_measurements_unreliable = models.IntegerField(null=True, blank=True)
+    first_measurement_timestamp = models.DateTimeField(
+                                      default=datetime(1900, 1, 1, 0, 0))
+    min_val = models.FloatField(null=True, blank=True)
+    max_val = models.FloatField(null=True, blank=True)
+    mean_val = models.FloatField(null=True, blank=True)
+    std_val = models.FloatField(null=True, blank=True)
+    # should I add a type like month or year or day?
+
+    def set_ts_status(self, start=None, end=None):
+        ts = self.timeseries
+        df = ts.get_events(start, end)
+        self.nr_of_measurements_total = df['value'].count()
+        histo = df['flag'].value_counts()
+        try:
+            self.nr_of_measurements_reliable = histo['0']
+        except:
+            self.nr_of_measurements_reliable = 0
+        try:
+            self.nr_of_measurements_doubtful = histo['3']
+        except:
+            self.nr_of_measurements_doubtful = 0
+        try:
+            self.nr_of_measurements_unreliable = histo['6']
+        except:
+            self.nr_of_measurements_unreliable = 0
+        self.first_measurement_timestamp = ts.first_value_timestamp
+        self.mean_val = df['value'].mean(0)
+        self.max_val = df['value'].max(0)
+        self.min_val = df['value'].min(0)
+        self.std_val = df['value'].std(0)
+        self.save()
