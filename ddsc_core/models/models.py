@@ -104,10 +104,16 @@ class Location(BaseModel, MP_Node_ByInstance):
         return self.name
 
     def superlocation(self):
-        return self.get_parent()
+        try:
+            return self.get_parent()
+        except:
+            pass
 
     def sublocations(self):
-        return self.get_children()
+        try:
+            return self.get_children()
+        except:
+            return []
 
     def save_under(self, parent_pk=None):
         '''
