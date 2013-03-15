@@ -68,7 +68,6 @@ class Command(BaseCommand):
 
         try:
             utcnow = timezone('UTC').localize(datetime.utcnow())
-            utcnow = timezone('UTC').localize(datetime(2012, 9, 6, 15, 3, 0))
             tznow = utcnow.astimezone(timezone(options.get('timezone')))
             filename = tznow.strftime(options.get('file'))
             destination = open(filename, 'w')
