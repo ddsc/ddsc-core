@@ -1,4 +1,6 @@
+from ast import literal_eval
 from datetime import datetime
+from datetime import timedelta
 from optparse import make_option
 
 from django.core.management.base import BaseCommand
@@ -31,6 +33,16 @@ class Command(BaseCommand):
             default='UTC',
             dest='timezone',
         ),
+        make_option(
+            '-s',
+            '--start',
+            dest='start',
+        ),
+        make_option(
+            '-e',
+            '--end',
+            dest='end',
+        ),
     )
 
     def handle(self, *args, **options):
@@ -57,6 +69,18 @@ class Command(BaseCommand):
             destination = open(filename, 'w')
         except TypeError:
             destination = self.stdout
+
+        # start and end may be used to limit the events to be returned.
+
+        start = options.get('start')
+        if start is not None:
+            start = timedelta(**literal_eval(start))
+            start += utcnow
+
+        end = options.get('end')
+        if end is not None:
+            end = timedelta(**literal_eval(end))
+            end += utcnow
 
         reader = PiXmlReader(source)
         writer = PiXmlWriter(reader.get_tz())
