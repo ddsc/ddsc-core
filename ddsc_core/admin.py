@@ -68,7 +68,7 @@ class LogRecordAdmin(admin.ModelAdmin):
     )
 
     def ftime(self, obj):
-        return obj.time.strftime('%Y-%M-%dT%H:%M:%S.%f')
+        return obj.time.strftime('%Y-%m-%dT%H:%M:%S.%f')
 
     ftime.short_description = 'Time'
 
