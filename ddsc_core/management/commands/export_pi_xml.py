@@ -78,7 +78,7 @@ class Command(BaseCommand):
         # They can either be expressed as an ISO 8601 UTC datetime string
         # or as a timedelta relative to now, for example:
         #
-        # --start="2012-01-01T00:00:00Z" --end="2013-01-01T00:00:00Z"
+        # --start=2012-01-01T00:00:00Z --end=2013-01-01T00:00:00Z
         # --start="{'days': -7}" --end="{}"
 
         start = options.get('start')
