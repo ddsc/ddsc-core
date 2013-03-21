@@ -6,6 +6,8 @@ from StringIO import StringIO
 from datetime import datetime, timedelta
 import logging
 import os.path
+import shutil
+import tempfile
 
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -16,8 +18,6 @@ from django.db.models.manager import Manager
 from django_extensions.db.fields import UUIDField
 import magic
 import networkx as nx
-import shutil
-import tempfile
 
 from cassandralib.models import CassandraDataStore
 from cassandralib.models import INTERNAL_TIMEZONE
@@ -325,10 +325,11 @@ class Timeseries(BaseModel):
         if filter is None:
             filter = ['value', 'flag']
 
-        if start and \
-                (start.tzinfo is None or start.tzinfo.utcoffset(start) is None):
+        if start and (
+            start.tzinfo is None or start.tzinfo.utcoffset(start) is None):
             start = INTERNAL_TIMEZONE.localize(start)
-        if end and (end.tzinfo is None or end.tzinfo.utcoffset(end) is None):
+        if end and (
+            end.tzinfo is None or end.tzinfo.utcoffset(end) is None):
             end = INTERNAL_TIMEZONE.localize(end)
 
         if (self.first_value_timestamp is None or
@@ -395,7 +396,7 @@ class Timeseries(BaseModel):
         if not os.path.exists(data_dir):
             os.makedirs(data_dir)
         shutil.move(temp.name, file_path)
-        row = {"datetime" : dt, "value" : file_path}
+        row = {"datetime": dt, "value": file_path}
         self.set_event(timestamp, row)
 
     def get_file(self, timestamp):
