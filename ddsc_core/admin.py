@@ -26,11 +26,17 @@ class LocationTypeAdmin(admin.ModelAdmin):
     filter_horizontal = ("locations", )
 
 
+class SelectionRuleInline(admin.TabularInline):
+    model = models.SelectionRule
+    extra = 1
+
+
 class LogicalGroupAdmin(admin.ModelAdmin):
     filter_horizontal = ("timeseries", )
     list_display = ("name", "owner")
     list_filter = ("owner", )
     readonly_fields = ("graph", )
+    inlines = [SelectionRuleInline]
 
     def get_readonly_fields(self, request, obj=None):
         """Return a tuple of read-only fields.

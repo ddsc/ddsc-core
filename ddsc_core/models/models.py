@@ -14,6 +14,7 @@ from django.contrib.auth.models import User
 from django.contrib.gis.db import models
 from django.core.urlresolvers import reverse
 from django.db import transaction
+from django.db.models import Q
 from django.db.models.manager import Manager
 from django_extensions.db.fields import UUIDField
 import magic
@@ -435,6 +436,29 @@ class LogicalGroup(BaseModel):
     timeseries = models.ManyToManyField(Timeseries, blank=True,
                                         related_name="logical_groups")
 
+    class Meta(BaseModel.Meta):
+        ordering = ["owner", "name"]
+        unique_together = ("owner", "name")
+
+    def get_timeseries(self):
+        """Return a list of timeseries based on selection rules."""
+
+        rules = self.selectionrule_set.all()
+
+        for rule in rules:
+            k, v = rule.criterion.split("=", 1)
+            if rule.operator is None:
+                q = Q(**{k: v})
+            elif rule.operator == "&":
+                q = q & Q(**{k: v})
+            elif rule.operator == "|":
+                q = q | Q(**{k: v})
+
+        if rules:
+            return Timeseries.objects.filter(q)
+        else:
+            return []
+
     def graph(self):
         return '<img src="{0}"/>'.format(
             reverse('logical_group_graph', kwargs={'pk': self.pk})
@@ -446,10 +470,6 @@ class LogicalGroup(BaseModel):
     def __unicode__(self):
         return self.name
 
-    class Meta(BaseModel.Meta):
-        ordering = ["owner", "name"]
-        unique_together = ("owner", "name")
-
 
 class LogicalGroupEdge(BaseModel):
     """An edge between two nodes in the graph of LogicalGroups.
@@ -460,6 +480,9 @@ class LogicalGroupEdge(BaseModel):
     """
     child = models.ForeignKey(LogicalGroup, related_name="parents")
     parent = models.ForeignKey(LogicalGroup, related_name="childs")
+
+    class Meta(BaseModel.Meta):
+        unique_together = ("child", "parent")
 
     @classmethod
     def edges(cls):
@@ -487,8 +510,30 @@ class LogicalGroupEdge(BaseModel):
     def __unicode__(self):
         return "{0} -> {1}".format(self.child, self.parent)
 
+
+class SelectionRule(BaseModel):
+    """A simple, Django-like selection rule for timeseries.
+
+    For example: source__manufacturer__code__exact='ALS'.
+
+    Multiple rules can be chained together using the
+    logical `AND` or `OR` operators.
+
+    """
+    group = models.ForeignKey(LogicalGroup)
+    operator = models.CharField(
+        blank=True,
+        choices=(('&', 'AND'), ('|', 'OR')),
+        max_length=1,
+        null=True,
+    )
+    criterion = models.CharField(max_length=128)
+
     class Meta(BaseModel.Meta):
-        unique_together = ("child", "parent")
+        ordering = ["pk"]
+
+    def __unicode__(self):
+        return self.criterion
 
 
 class Manufacturer(BaseModel):
