@@ -374,7 +374,8 @@ class Timeseries(BaseModel):
                         or self.value_type == Timeseries.ValueType.FLOAT:
                     self.latest_value_number = row['value']
                 elif self.value_type == Timeseries.ValueType.TEXT \
-                        or self.value_type == Timeseries.ValueType.IMAGE:
+                        or self.value_type == Timeseries.ValueType.IMAGE \
+                        or self.value_type == Timeseries.ValueType.GEO_REMOTE_SENSING:
                     self.latest_value_text = row['value']
                 self.latest_value_timestamp = timestamp
             if not self.first_value_timestamp \
