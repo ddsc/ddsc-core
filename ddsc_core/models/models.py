@@ -34,13 +34,16 @@ CASSANDRA = getattr(settings, 'CASSANDRA', {})
 FILENAME_FORMAT = '%Y-%m-%dT%H.%M.%S.%fZ'
 
 
-class DataStore(CassandraDataStore):
-    _instance = None
+class Singleton(type):
+    _instances = {}
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+        return cls._instances[cls]
 
-    def __new__(cls, *args, **kwargs):
-        if cls._instance is None:
-            cls._instance = super(DataStore, cls).__new__(cls, *args, **kwargs)
-        return cls._instance
+
+class DataStore(CassandraDataStore):
+    __metaclass__ = Singleton
 
     def __init__(self, *args, **kw):
         super(DataStore, self).__init__(
@@ -199,6 +202,11 @@ class Timeseries(BaseModel):
         (ValueType.MOVIE, 'movie'),
         (ValueType.FILE, 'file'),
     )
+
+    class ValidationFlag:
+        OK = '0'
+        DOUBTFUL = '3'
+        UNRELIABLE = '6'
 
     # TODO: TimeseriesType is not used at the moment.
     # Delete it or add a timeseries_type attribute?
@@ -366,22 +374,43 @@ class Timeseries(BaseModel):
         if timestamp.tzinfo is None or \
                 timestamp.tzinfo.utcoffset(timestamp) is None:
             timestamp = INTERNAL_TIMEZONE.localize(timestamp)
-        store = DataStore()
-        store.write_row('events', self.uuid, timestamp, row)
+
+        # Update first and latest value. Also validate.
         if 'value' in row:
             if not self.latest_value_timestamp \
                     or self.latest_value_timestamp <= timestamp:
-                if self.value_type == Timeseries.ValueType.INTEGER \
-                        or self.value_type == Timeseries.ValueType.FLOAT:
-                    self.latest_value_number = row['value']
-                elif self.value_type == Timeseries.ValueType.TEXT \
-                        or self.value_type == Timeseries.ValueType.IMAGE \
-                        or self.value_type == Timeseries.ValueType.GEO_REMOTE_SENSING:
+                if self.value_type in (Timeseries.ValueType.INTEGER,
+                        Timeseries.ValueType.FLOAT):
+                    latest_value = self.latest_value_number
+                    value = row['value']
+                    if not 'flag' in row \
+                            and self.latest_value_timestamp < timestamp:
+                        diff = abs(latest_value - value)
+                        if latest_value and (
+                                self.validate_diff_hard < diff
+                                or value > self.validate_max_hard
+                                or value < self.validate_min_hard):
+                            row['flag'] = Timeseries.ValidationFlag.UNRELIABLE
+                        elif latest_value and (
+                                self.validate_diff_soft < diff
+                                or value > self.validate_max_soft
+                                or value < self.validate_min_soft):
+                            row['flag'] = Timeseries.ValidationFlag.DOUBTFUL
+                        else:
+                            row['flag'] = Timeseries.ValidationFlag.OK
+                    self.latest_value_number = value
+                elif self.value_type in (
+                        Timeseries.ValueType.TEXT,
+                        Timeseries.ValueType.IMAGE,
+                        Timeseries.ValueType.GEO_REMOTE_SENSING):
                     self.latest_value_text = row['value']
                 self.latest_value_timestamp = timestamp
             if not self.first_value_timestamp \
                     or timestamp < self.first_value_timestamp:
                 self.first_value_timestamp = timestamp
+
+        store = DataStore()
+        store.write_row('events', self.uuid, timestamp, row)
 
     def _data_dir(self, timestamp):
         file_dir = getattr(settings, 'FILE_DIR')
