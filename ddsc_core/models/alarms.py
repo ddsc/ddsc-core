@@ -5,7 +5,7 @@ from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.utils import timezone
-
+from django.core.exceptions import ObjectDoesNotExist
 from ddsc_core.models.models import BaseModel
 
 from datetime import datetime
@@ -94,19 +94,32 @@ class Alarm(BaseModel):
             self.first_born = False
             super(Alarm, self).save(*args, **kwargs)
         else:
-            self.active_status = False
-            super(Alarm, self).save(*args, **kwargs)
-            self.previous_alarm = self
-            alm_itm_list = Alarm_Item.objects.filter(alarm_id=self.id)
-            self.pk = None
+            try:
+                Alarm.objects.get(previous_alarm_id=self.pk)
+                raise Exception('you can not change the history!')
+            except ObjectDoesNotExist:
+                self.previous_alarm = self
+                alm_itm_list = Alarm_Item.objects.filter(alarm_id=self.pk)
+                self.pk = None
+                self.active_status = True
+                self.last_checked = datetime(1900, 1, 1, 0, 0)
+                self.date_cr = timezone.now()
+                super(Alarm, self).save(*args, **kwargs)
+                for alm_itm in alm_itm_list:
+                    alm_itm.pk = None
+                    alm_itm.alarm = self
+                    super(Alarm_Item, alm_itm).save(*args, **kwargs)
+                pre_alm = Alarm.objects.get(pk=self.previous_alarm_id)
+                pre_alm.active_status = False
+                super(Alarm, pre_alm).save(*args, **kwargs)
+
+    def make_active(self, *args, **kwargs):
+        if self.active_status is False:
+            alm = Alarm.objects.get(active_status=True, name=self.name)
+            alm.active_status = False
             self.active_status = True
-            self.last_checked = datetime(1900, 1, 1, 0, 0)
-            self.date_cr = timezone.now()
+            super(Alarm, alm).save(*args, **kwargs)
             super(Alarm, self).save(*args, **kwargs)
-            for alm_itm in alm_itm_list:
-                alm_itm.pk = None
-                alm_itm.alarm = self
-                super(Alarm_Item, alm_itm).save(*args, **kwargs)
 
 
 class Alarm_Item(BaseModel):
@@ -137,7 +150,8 @@ class Alarm_Item(BaseModel):
             'het aantal te verwachten metingen'),
     )
 
-    alarm = models.ForeignKey(Alarm)
+    alarm = models.ForeignKey(
+        Alarm, limit_choices_to={'active_status': [True]})
     comparision = models.SmallIntegerField(
         choices=COMPARISION_TYPE,
         default=EQUAL,
@@ -173,29 +187,34 @@ class Alarm_Item(BaseModel):
             self.first_born = False
             super(Alarm_Item, self).save(*args, **kwargs)
         else:
-            alm_itm_self = self
-            alm = self.alarm
-            alm_prev_id = alm.id
-            alm_itm_list = Alarm_Item.objects.filter(alarm_id=alm.id)
-            alm.active_status = False
-            super(Alarm, alm).save(*args, **kwargs)
-            alm.pk = None
-            alm.first_born = False
-            alm.active_status = True
-            alm.last_checked = datetime(1900, 1, 1, 0, 0)
-            alm.date_cr = timezone.now()
-            alm.previous_alarm_id = alm_prev_id
-            super(Alarm, alm).save(*args, **kwargs)
+            try:
+                Alarm.objects.get(previous_alarm_id=self.alarm_id)
+                raise Exception(
+                    "This is a historical alarm item which can not be edited!")
+            except ObjectDoesNotExist:
+                alm_itm_self = self
+                alm = self.alarm
+                alm_prev_id = alm.pk
+                alm_itm_list = Alarm_Item.objects.filter(alarm_id=alm.pk)
+                alm.active_status = False
+                super(Alarm, alm).save(*args, **kwargs)
+                alm.pk = None
+                alm.first_born = False
+                alm.active_status = True
+                alm.last_checked = datetime(1900, 1, 1, 0, 0)
+                alm.date_cr = timezone.now()
+                alm.previous_alarm_id = alm_prev_id
+                super(Alarm, alm).save(*args, **kwargs)
 
-            for alm_itm in alm_itm_list:
-                if alm_itm.id != alm_itm_self.id:
-                    alm_itm.pk = None
-                    alm_itm.alarm = alm
-                    super(Alarm_Item, alm_itm).save(*args, **kwargs)
-                else:
-                    alm_itm_self.pk = None
-                    alm_itm_self.alarm = alm
-                    super(Alarm_Item, alm_itm_self).save(*args, **kwargs)
+                for alm_itm in alm_itm_list:
+                    if alm_itm.pk != alm_itm_self.pk:
+                        alm_itm.pk = None
+                        alm_itm.alarm = alm
+                        super(Alarm_Item, alm_itm).save(*args, **kwargs)
+                    else:
+                        alm_itm_self.pk = None
+                        alm_itm_self.alarm = alm
+                        super(Alarm_Item, alm_itm_self).save(*args, **kwargs)
 
 
 class Alarm_Active(BaseModel):
