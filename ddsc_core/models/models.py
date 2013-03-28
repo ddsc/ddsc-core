@@ -466,7 +466,7 @@ class LogicalGroup(BaseModel):
             return []
 
     def graph(self):
-        return '<img src="{0}"/>'.format(
+        return '<a href="{0}">graph</a>'.format(
             reverse('logical_group_graph', kwargs={'pk': self.pk})
         )
 

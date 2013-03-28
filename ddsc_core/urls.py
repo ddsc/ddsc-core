@@ -10,13 +10,14 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(
-        r'^logical_groups/(?P<pk>\d+)/graph/$',
+        r'^logicalgroup/(?P<pk>\d+)/graph/$',
         LogicalGroupGraph.as_view(),
         name='logical_group_graph'
     ),
     url(
-        r'^admin/ddsc_core/logicalgroup/(?P<pk>\d+)/rules/$',
+        r'^logicalgroup/(?P<pk>\d+)/rules/$',
         SelectionRulesView.as_view(),
+        name='logical_group_rules'
     ),
     url(
         r'^admin/',
