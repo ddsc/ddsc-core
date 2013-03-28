@@ -5,7 +5,9 @@
 django.jQuery(function() {
     var btn = django.jQuery('<input type="submit" value="Apply selection rules">').click(function(e) {
         e.preventDefault();
-        django.jQuery.post('rules/', {csrfmiddlewaretoken: '{{ csrf_token }}'});
+        django.jQuery.post('rules/', {csrfmiddlewaretoken: '{{ csrf_token }}'}, function() {
+            window.location = "{% url admin:ddsc_core_logicalgroup_changelist %}";
+        });
     });
     django.jQuery('.submit-row:last').prepend(btn);
 });

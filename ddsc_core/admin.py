@@ -26,35 +26,6 @@ class LocationTypeAdmin(admin.ModelAdmin):
     filter_horizontal = ("locations", )
 
 
-class SelectionRuleInline(admin.TabularInline):
-    model = models.SelectionRule
-    extra = 1
-
-
-class LogicalGroupAdmin(admin.ModelAdmin):
-    filter_horizontal = ("timeseries", )
-    list_display = ("name", "owner")
-    list_filter = ("owner", )
-    readonly_fields = ("graph", )
-    inlines = [SelectionRuleInline]
-
-    def get_readonly_fields(self, request, obj=None):
-        """Return a tuple of read-only fields.
-
-        Allowing one to change the owner of a logical group opens a can of
-        worms, because this may result in illegal edges (i.e. edges that
-        connect nodes having different owners). For that reason, the
-        owner cannot be changed afterwards.
-
-        """
-        if obj is None:
-            # Adding a LogicalGroup
-            return self.readonly_fields
-        else:
-            # Changing a LogicalGroup
-            return ("owner", ) + self.readonly_fields
-
-
 class LogRecordAdmin(admin.ModelAdmin):
 
     list_display = ("ftime", "host", "level", "message")
@@ -79,6 +50,40 @@ class LogRecordAdmin(admin.ModelAdmin):
     ftime.short_description = 'Time'
 
 
+class SelectionRuleInline(admin.TabularInline):
+    model = models.SelectionRule
+    extra = 1
+
+
+class LogicalGroupAdmin(admin.ModelAdmin):
+    inlines = [SelectionRuleInline]
+    list_display = ("name", "owner")
+    list_filter = ("owner", )
+    raw_id_fields = ("timeseries", )  # fast, but no multiple select...
+    readonly_fields = ("graph", )
+
+    def get_readonly_fields(self, request, obj=None):
+        """Return a tuple of read-only fields.
+
+        Allowing one to change the owner of a logical group opens a can of
+        worms, because this may result in illegal edges (i.e. edges that
+        connect nodes having different owners). For that reason, the
+        owner cannot be changed afterwards.
+
+        """
+        if obj is None:
+            # Adding a LogicalGroup
+            return self.readonly_fields
+        else:
+            # Changing a LogicalGroup
+            return ("owner", ) + self.readonly_fields
+
+
+class TimeseriesAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'description', 'uuid', )
+    search_fields = ('=id', 'name', 'description', 'uuid', )
+
+
 admin.site.register(models.Alarm)
 admin.site.register(models.Alarm_Item)
 admin.site.register(models.Compartment, AquoModelAdmin)
@@ -97,5 +102,5 @@ admin.site.register(models.Parameter, AquoModelAdmin)
 admin.site.register(models.ProcessingMethod, AquoModelAdmin)
 admin.site.register(models.ReferenceFrame, AquoModelAdmin)
 admin.site.register(models.Source)
-admin.site.register(models.Timeseries)
+admin.site.register(models.Timeseries, TimeseriesAdmin)
 admin.site.register(models.Unit, AquoModelAdmin)

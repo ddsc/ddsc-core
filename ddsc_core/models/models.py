@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 
 from StringIO import StringIO
 from datetime import datetime, timedelta
+import ast
 import logging
 import os.path
 import shutil
@@ -441,13 +442,17 @@ class LogicalGroup(BaseModel):
         ordering = ["owner", "name"]
         unique_together = ("owner", "name")
 
-    def get_timeseries(self):
+    def timeseries_by_rules(self):
         """Return a list of timeseries based on selection rules."""
 
         rules = self.selectionrule_set.all()
 
+        # Rules are ordered by entry order. The first
+        # rule should not have an operator.
+
         for rule in rules:
             k, v = rule.criterion.split("=", 1)
+            v = ast.literal_eval(v)
             if rule.operator is None:
                 q = Q(**{k: v})
             elif rule.operator == "&":
@@ -456,7 +461,7 @@ class LogicalGroup(BaseModel):
                 q = q | Q(**{k: v})
 
         if rules:
-            return Timeseries.objects.filter(q)
+            return Timeseries.objects.filter(q).only("name")
         else:
             return []
 
