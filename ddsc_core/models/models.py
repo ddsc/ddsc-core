@@ -571,6 +571,10 @@ class SelectionRule(BaseModel):
         return self.criterion
 
 
+class GenericSelectionRule(BaseModel):
+    pass
+
+
 class Manufacturer(BaseModel):
     """Manufacturer of a sensor."""
     code = models.CharField(max_length=3, unique=True)
