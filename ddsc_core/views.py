@@ -2,9 +2,7 @@
 
 from __future__ import division
 
-from django.core.urlresolvers import reverse
 from django.http import HttpResponse
-from django.http import HttpResponseRedirect
 from django.views.generic import View
 import networkx as nx
 from django.contrib.auth.decorators import permission_required
@@ -32,15 +30,15 @@ class LogicalGroupGraph(View):
 
 
 class SelectionRulesView(View):
-    """Docstring."""
+    """Expand the logical group with all timeseries that meet the rules."""
 
+    # Allow only superusers to POST (more fine-grained permissions
+    # will be needed in future versions).
     @method_decorator(permission_required('is_superuser'))
     def dispatch(self, *args, **kwargs):
         return super(SelectionRulesView, self).dispatch(*args, **kwargs)
 
     def post(self, request, *args, **kwargs):
         group = LogicalGroup.objects.get(**kwargs)
-        group.timeseries.add(*group.get_timeseries())
-        return HttpResponseRedirect(reverse(
-            'admin:ddsc_core_logicalgroup_change', args=(group.pk, )
-        ))
+        group.timeseries.add(*group.timeseries_by_rules())
+        return HttpResponse()
