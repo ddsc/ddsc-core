@@ -655,9 +655,8 @@ class StatusCache(BaseModel):
     std_val = models.FloatField(null=True, blank=True)
     # should I add a type like month or year or day?
 
-    def set_ts_status(self, start=None, end=None):
-        ts = self.timeseries
-        df = ts.get_events(start, end)
+    def set_ts_status(self, df):
+        ts = self.timeseries 
         self.nr_of_measurements_total = df['value'].count()
         histo = df['flag'].value_counts()
         try:
