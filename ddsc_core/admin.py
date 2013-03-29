@@ -123,8 +123,8 @@ admin.site.register(models.Unit, AquoModelAdmin)
 
 class DataSetAdmin(admin.ModelAdmin):
     fields = ('name', 'owner', )
-#   inlines = [TimeseriesSelectionRuleInline]
-    inlines = [TimeseriesSelectionRuleInline, TimeseriesInline]
+    inlines = [TimeseriesSelectionRuleInline]
+#   inlines = [TimeseriesSelectionRuleInline, TimeseriesInline]  # dead slow
     list_display = ('name', 'owner', )
 
 
