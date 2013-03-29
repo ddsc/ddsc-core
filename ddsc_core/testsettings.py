@@ -18,7 +18,7 @@ SETTINGS_DIR = os.path.dirname(os.path.realpath(__file__))
 # BUILDOUT_DIR/var/static files to give django-staticfiles a proper place
 # to place all collected static files.
 BUILDOUT_DIR = os.path.abspath(os.path.join(SETTINGS_DIR, '..'))
-LOGGING = setup_logging(BUILDOUT_DIR)
+LOGGING = setup_logging(BUILDOUT_DIR, sql=True)
 
 # ENGINE: 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
 # In case of geodatabase, prepend with:

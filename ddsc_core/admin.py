@@ -3,7 +3,10 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
+from django.contrib.contenttypes.generic import GenericTabularInline
 from treebeard.admin import TreeAdmin
+
+from lizard_security.models import DataSet
 
 from ddsc_core import models
 
@@ -50,17 +53,27 @@ class LogRecordAdmin(admin.ModelAdmin):
     ftime.short_description = 'Time'
 
 
-class SelectionRuleInline(admin.TabularInline):
-    model = models.SelectionRule
+class TimeseriesInline(admin.TabularInline):
+    model = models.Timeseries.data_set.through
+    extra = 1
+
+
+class TimeseriesSelectionRuleInline(GenericTabularInline):
+    model = models.TimeseriesSelectionRule
     extra = 1
 
 
 class LogicalGroupAdmin(admin.ModelAdmin):
-    inlines = [SelectionRuleInline]
-    list_display = ("name", "owner")
+    fields = (
+        "name", "description",
+        ("timeseries", "timeseries_count"),
+        "owner", "graph",
+    )
+    inlines = [TimeseriesSelectionRuleInline]
+    list_display = ("name", "owner", )
     list_filter = ("owner", )
     raw_id_fields = ("timeseries", )  # fast, but no multiple select...
-    readonly_fields = ("graph", )
+    readonly_fields = ("timeseries_count", "graph", )
 
     def get_readonly_fields(self, request, obj=None):
         """Return a tuple of read-only fields.
@@ -104,3 +117,16 @@ admin.site.register(models.ReferenceFrame, AquoModelAdmin)
 admin.site.register(models.Source)
 admin.site.register(models.Timeseries, TimeseriesAdmin)
 admin.site.register(models.Unit, AquoModelAdmin)
+
+# Override lizard_security's `DataSet` admin page.
+
+
+class DataSetAdmin(admin.ModelAdmin):
+    fields = ('name', 'owner', )
+#   inlines = [TimeseriesSelectionRuleInline]
+    inlines = [TimeseriesSelectionRuleInline, TimeseriesInline]
+    list_display = ('name', 'owner', )
+
+
+admin.site.unregister(DataSet)
+admin.site.register(DataSet, DataSetAdmin)

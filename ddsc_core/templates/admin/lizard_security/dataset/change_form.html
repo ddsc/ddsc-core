@@ -5,8 +5,8 @@
 django.jQuery(function() {
     var btn = django.jQuery('<input type="submit" value="Apply selection rules">').click(function(e) {
         e.preventDefault();
-        django.jQuery.post('{% url logical_group_rules original.pk %}', {csrfmiddlewaretoken: '{{ csrf_token }}'}, function() {
-            window.location = "{% url admin:ddsc_core_logicalgroup_changelist %}"; // redirect on success
+        django.jQuery.post('{% url data_set_rules original.pk %}', {csrfmiddlewaretoken: '{{ csrf_token }}'}, function() {
+            window.location = "{% url admin:lizard_security_dataset_changelist %}"; // redirect on success
         });
     });
     django.jQuery('.submit-row:last').prepend(btn);

@@ -1,10 +1,10 @@
 # (c) Nelen & Schuurmans. MIT licensed, see LICENSE.rst.
+
 from __future__ import absolute_import
 from __future__ import unicode_literals
 
 from StringIO import StringIO
 from datetime import datetime, timedelta
-import ast
 import logging
 import os.path
 import shutil
@@ -12,10 +12,11 @@ import tempfile
 
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.models import ContentType
 from django.contrib.gis.db import models
 from django.core.urlresolvers import reverse
 from django.db import transaction
-from django.db.models import Q
 from django.db.models.manager import Manager
 from django_extensions.db.fields import UUIDField
 import magic
@@ -36,9 +37,13 @@ FILENAME_FORMAT = '%Y-%m-%dT%H.%M.%S.%fZ'
 
 class Singleton(type):
     _instances = {}
+
     def __call__(cls, *args, **kwargs):
+
         if cls not in cls._instances:
-            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+            cls._instances[cls] = \
+                super(Singleton, cls). __call__(*args, **kwargs)
+
         return cls._instances[cls]
 
 
@@ -238,7 +243,11 @@ class Timeseries(BaseModel):
         blank=True,
         help_text="optional description for timeseries"
     )
-    data_set = models.ManyToManyField(DataSet, related_name='timeseries')
+    data_set = models.ManyToManyField(
+        DataSet,
+        related_name='timeseries',
+        blank=True
+    )
 
     supplying_systems = models.ManyToManyField(
         User,
@@ -471,36 +480,17 @@ class LogicalGroup(BaseModel):
         ordering = ["owner", "name"]
         unique_together = ("owner", "name")
 
-    def timeseries_by_rules(self):
-        """Return a list of timeseries based on selection rules."""
-
-        rules = self.selectionrule_set.all()
-
-        # Rules are ordered by entry order. The first
-        # rule should not have an operator.
-
-        for rule in rules:
-            k, v = rule.criterion.split("=", 1)
-            v = ast.literal_eval(v)
-            if rule.operator is None:
-                q = Q(**{k: v})
-            elif rule.operator == "&":
-                q = q & Q(**{k: v})
-            elif rule.operator == "|":
-                q = q | Q(**{k: v})
-
-        if rules:
-            return Timeseries.objects.filter(q).only("name")
-        else:
-            return []
-
     def graph(self):
-        return '<a href="{0}">graph</a>'.format(
+        return '<a href="{0}" target="_blank">graph</a>'.format(
             reverse('logical_group_graph', kwargs={'pk': self.pk})
         )
 
     # Do not escape HTML-output.
     graph.allow_tags = True
+
+    def timeseries_count(self):
+        """Return the number of timeseries in this group."""
+        return self.timeseries.count()
 
     def __unicode__(self):
         return self.name
@@ -546,7 +536,7 @@ class LogicalGroupEdge(BaseModel):
         return "{0} -> {1}".format(self.child, self.parent)
 
 
-class SelectionRule(BaseModel):
+class TimeseriesSelectionRule(BaseModel):
     """A simple, Django-like selection rule for timeseries.
 
     For example: source__manufacturer__code__exact='ALS'.
@@ -554,8 +544,16 @@ class SelectionRule(BaseModel):
     Multiple rules can be chained together using the
     logical `AND` or `OR` operators.
 
+    Generic relations are applied, because this model
+    is used with both `LogicalGroup` and `DataSet`.
+
     """
-    group = models.ForeignKey(LogicalGroup)
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    content_object = generic.GenericForeignKey(
+        'content_type',
+        'object_id'
+    )
     operator = models.CharField(
         blank=True,
         choices=(('&', 'AND'), ('|', 'OR')),
@@ -565,14 +563,10 @@ class SelectionRule(BaseModel):
     criterion = models.CharField(max_length=128)
 
     class Meta(BaseModel.Meta):
-        ordering = ["pk"]
+        ordering = ["pk"]  # entry order
 
     def __unicode__(self):
         return self.criterion
-
-
-class GenericSelectionRule(BaseModel):
-    pass
 
 
 class Manufacturer(BaseModel):
