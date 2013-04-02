@@ -194,6 +194,7 @@ class TimeseriesAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.Alarm, AlarmAdmin)
+admin.site.register(models.Alarm_Active)
 admin.site.register(models.Alarm_Item)
 admin.site.register(models.Compartment, AquoModelAdmin)
 admin.site.register(models.Folder, FolderAdmin)
