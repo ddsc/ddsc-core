@@ -7,6 +7,7 @@ from django.contrib.contenttypes.generic import GenericTabularInline
 from treebeard.admin import TreeAdmin
 
 from lizard_security.models import DataSet
+from lizard_security.models import PermissionMapper
 
 from ddsc_core import models
 
@@ -168,9 +169,14 @@ admin.site.register(models.Unit, AquoModelAdmin)
 # Override lizard_security's `DataSet` admin page.
 
 
+class PermissionMapperInline(admin.TabularInline):
+    model = PermissionMapper
+    extra = 1
+
+
 class DataSetAdmin(admin.ModelAdmin):
     fields = ('name', 'owner', )
-    inlines = [TimeseriesSelectionRuleInline]
+    inlines = [TimeseriesSelectionRuleInline, PermissionMapperInline]
     list_display = ('name', 'owner', )
     list_filter = ("owner", )
     search_fields = (
