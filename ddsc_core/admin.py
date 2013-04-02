@@ -172,6 +172,11 @@ class DataSetAdmin(admin.ModelAdmin):
     fields = ('name', 'owner', )
     inlines = [TimeseriesSelectionRuleInline]
     list_display = ('name', 'owner', )
+    list_filter = ("owner", )
+    search_fields = (
+        "name",
+        "owner__name",
+    )
 
 
 admin.site.unregister(DataSet)
