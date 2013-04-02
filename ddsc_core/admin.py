@@ -25,6 +25,29 @@ class AquoModelAdmin(admin.ModelAdmin):
         return False
 
 
+class FolderAdmin(admin.ModelAdmin):
+    list_display = ("path", "user", )
+    ordering = ("user__username", "path", )
+    search_fields = (
+        "path",
+        "user__username",
+        "user__first_name",
+        "user__last_name",
+        "user__email",
+    )
+
+
+class IPAddressAdmin(admin.ModelAdmin):
+    list_display = ("label", "user", )
+    ordering = ("user__username", "label", )
+    search_fields = (
+        "user__username",
+        "user__first_name",
+        "user__last_name",
+        "user__email",
+    )
+
+
 class LocationTypeAdmin(admin.ModelAdmin):
     filter_horizontal = ("locations", )
 
@@ -124,8 +147,8 @@ class TimeseriesAdmin(admin.ModelAdmin):
 admin.site.register(models.Alarm)
 admin.site.register(models.Alarm_Item)
 admin.site.register(models.Compartment, AquoModelAdmin)
-admin.site.register(models.Folder)
-admin.site.register(models.IPAddress)
+admin.site.register(models.Folder, FolderAdmin)
+admin.site.register(models.IPAddress, IPAddressAdmin)
 admin.site.register(models.IdMapping)
 admin.site.register(models.Location, TreeAdmin)
 admin.site.register(models.LocationType, LocationTypeAdmin)
