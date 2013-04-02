@@ -19,6 +19,8 @@ from django.core.urlresolvers import reverse
 from django.db import transaction
 from django.db.models.manager import Manager
 from django_extensions.db.fields import UUIDField
+from django.utils import timezone
+
 import magic
 import networkx as nx
 
@@ -675,7 +677,7 @@ class StatusCache(BaseModel):
             self.nr_of_measurements_unreliable = histo['6']
         except:
             self.nr_of_measurements_unreliable = 0
-        self.modify_timestamp = datetime.utcnow()
+        self.modify_timestamp = timezone.now()
         self.mean_val = df['value'].mean(0)
         self.max_val = df['value'].max(0)
         self.min_val = df['value'].min(0)
