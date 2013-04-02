@@ -53,11 +53,6 @@ class LogRecordAdmin(admin.ModelAdmin):
     ftime.short_description = 'Time'
 
 
-class TimeseriesInline(admin.TabularInline):
-    model = models.Timeseries.data_set.through
-    extra = 1
-
-
 class TimeseriesSelectionRuleInline(GenericTabularInline):
     model = models.TimeseriesSelectionRule
     extra = 1
@@ -93,8 +88,37 @@ class LogicalGroupAdmin(admin.ModelAdmin):
 
 
 class TimeseriesAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'description', 'uuid', )
+    filter_horizontal = ('data_set', )
+    list_display = ('uuid', 'id', 'name', 'description', )
+    readonly_fields = ('uuid', )
     search_fields = ('=id', 'name', 'description', 'uuid', )
+
+    fieldsets = (
+        (None, {
+            'fields': (
+                'uuid',
+                'name',
+                'description',
+            )
+        }),
+        ('Security', {
+            'fields': (
+                'owner',
+                'data_set',
+            )
+        }),
+        ('Aquo DS', {
+            'fields': (
+                'parameter',
+                'unit',
+                'reference_frame',
+                'compartment',
+                'measuring_device',
+                'measuring_method',
+                'processing_method',
+            )
+        }),
+    )
 
 
 admin.site.register(models.Alarm)
@@ -124,7 +148,6 @@ admin.site.register(models.Unit, AquoModelAdmin)
 class DataSetAdmin(admin.ModelAdmin):
     fields = ('name', 'owner', )
     inlines = [TimeseriesSelectionRuleInline]
-#   inlines = [TimeseriesSelectionRuleInline, TimeseriesInline]  # dead slow
     list_display = ('name', 'owner', )
 
 

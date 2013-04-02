@@ -317,6 +317,10 @@ class Timeseries(BaseModel):
         help_text='timestamp of latest value'
     )
 
+    class Meta(BaseModel.Meta):
+        verbose_name = "Timeseries"
+        verbose_name_plural = "Timeseries"
+
     def get_value_type(self):
         value_type = dict(self.VALUE_TYPE)
         return value_type[self.value_type]
