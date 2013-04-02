@@ -12,6 +12,54 @@ from lizard_security.models import PermissionMapper
 from ddsc_core import models
 
 
+class AlarmItemsInline(admin.TabularInline):
+    model = models.Alarm_Item
+    extra = 1
+
+
+class AlarmAdmin(admin.ModelAdmin):
+    inlines = [AlarmItemsInline]
+    list_display = (
+        'name',
+        'first_born',
+        'active_status',
+        'single_or_group',
+        'frequency',
+        'urgency',
+        'message_type',
+    )
+    fieldsets = (
+        (None, {
+            'fields': (
+                'name',
+                ('active_status', ),
+                ('single_or_group', 'object_id', ),
+                'frequency',
+                'urgency',
+                'message_type',
+                'template',
+                'logical_check',
+            )
+        }),
+        ('Details', {
+            'classes': ('collapse', ),
+            'fields': (
+                'description',
+                'last_checked',
+                'first_born',
+                'previous_alarm',
+                'date_cr',
+            )
+        })
+    )
+    readonly_fields = [
+        "last_checked",
+        "first_born",
+        "previous_alarm",
+        "date_cr",
+    ]
+
+
 class AquoModelAdmin(admin.ModelAdmin):
     """ModelAdmin that provides filtering by group."""
     list_filter = ("group", )
@@ -145,7 +193,7 @@ class TimeseriesAdmin(admin.ModelAdmin):
     )
 
 
-admin.site.register(models.Alarm)
+admin.site.register(models.Alarm, AlarmAdmin)
 admin.site.register(models.Alarm_Item)
 admin.site.register(models.Compartment, AquoModelAdmin)
 admin.site.register(models.Folder, FolderAdmin)
