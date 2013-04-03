@@ -123,38 +123,56 @@ class Alarm(BaseModel):
 
 
 class Alarm_Item(BaseModel):
-
-    EQUAL = 1
-    NOT_EQUAL = 2
-    GRATER = 3
-    LESS = 4
+    class ComparisionType:
+        EQUAL = 1
+        NOT_EQUAL = 2
+        GRATER = 3
+        LESS = 4
 
     COMPARISION_TYPE = (
-        (EQUAL, '=='),
-        (NOT_EQUAL, '!='),
-        (GRATER, '>'),
-        (LESS, '<'),
+        (ComparisionType.EQUAL, '=='),
+        (ComparisionType.NOT_EQUAL, '!='),
+        (ComparisionType.GRATER, '>'),
+        (ComparisionType.LESS, '<'),
     )
+
+    class ValueType:
+        LATEST_VALUE = 1
+        NR_MEASUR = 2
+        PR_RELIABLE = 3
+        PR_DOUBTFUL = 4
+        PR_UNRELIABLE = 5
+        MIN_MEASUR = 6
+        MAX_MEASUR = 7
+        AVG_MEASUR = 8
+        STD_MEASUR = 9
+        TIME_SINCE_LAST_MEASUR = 10
+        PR_DEV_EXPECTED_NR_MEASUR = 11
+
     VALUE_TYPE = (
-        (1, 'a. Waarde'),
-        (2, 'b. Status - Aantal metingen'),
-        (3, 'c. Status - Percentage betrouwbare waarden'),
-        (4, 'd. Status - Percentage twijfelachtige waarden'),
-        (5, 'e. Status - Percentage onbetrouwbare waarden'),
-        (6, 'f. Status - Minimum meetwaarde'),
-        (7, 'g. Status - Maximum meetwaarde'),
-        (8, 'h. Status - Gemiddelde meetwaarde'),
-        (9, 'i. Status - Standaard deviatie'),
-        (10, 'j. Status - Tijd sinds laatste meting'),
-        (11, 'k. Status - Procentuele afwijking van' +
-            'het aantal te verwachten metingen'),
+        (ValueType.LATEST_VALUE, 'a. Waarde'),
+        (ValueType.NR_MEASUR, 'b. Status - Aantal metingen'),
+        (ValueType.PR_RELIABLE, 'c. Status - Percentage' +
+            ' betrouwbare waarden'),
+        (ValueType.PR_DOUBTFUL, 'd. Status - Percentage' +
+            ' twijfelachtige waarden'),
+        (ValueType.PR_UNRELIABLE, 'e. Status - Percentage' +
+            ' onbetrouwbare waarden'),
+        (ValueType.MIN_MEASUR, 'f. Status - Minimum meetwaarde'),
+        (ValueType.MAX_MEASUR, 'g. Status - Maximum meetwaarde'),
+        (ValueType.AVG_MEASUR, 'h. Status - Gemiddelde meetwaarde'),
+        (ValueType.STD_MEASUR, 'i. Status - Standaard deviatie'),
+        (ValueType.TIME_SINCE_LAST_MEASUR, 'j. Status - Tijd sinds' +
+            ' laatste meting'),
+        (ValueType.PR_DEV_EXPECTED_NR_MEASUR, 'k. Status - Procentuele' +
+            ' afwijking van het aantal te verwachten metingen'),
     )
 
     alarm = models.ForeignKey(
         Alarm, limit_choices_to={'active_status': [True]})
     comparision = models.SmallIntegerField(
         choices=COMPARISION_TYPE,
-        default=EQUAL,
+        default=ComparisionType.EQUAL,
     )
     value_type = models.IntegerField(
         choices=VALUE_TYPE,
