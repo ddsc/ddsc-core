@@ -409,7 +409,7 @@ class Timeseries(BaseModel):
                     value = row['value']
                     if not 'flag' in row \
                             and self.latest_value_timestamp < timestamp:
-                        diff = abs(latest_value - value)
+                        diff = abs(latest_value - float(value))
                         if latest_value and (
                                 self.validate_diff_hard < diff
                                 or value > self.validate_max_hard
