@@ -18,11 +18,12 @@ from django.contrib.gis.db import models
 from django.core.urlresolvers import reverse
 from django.db import transaction
 from django.db.models.manager import Manager
-from django_extensions.db.fields import UUIDField
 from django.utils import timezone
+from django_extensions.db.fields import UUIDField
 
 import magic
 import networkx as nx
+import pytz
 
 from cassandralib.models import CassandraDataStore
 from cassandralib.models import INTERNAL_TIMEZONE
@@ -110,6 +111,10 @@ class Location(BaseModel, MP_Node_ByInstance):
         null=True,
         blank=True,
         help_text="precision in meters with respect to point geometry"
+    )
+    created = models.DateTimeField(
+        default=pytz.timezone('UTC').localize(datetime.utcnow()),
+        help_text="datetime of creation in UTC"
     )
 
     def __unicode__(self):
@@ -317,6 +322,10 @@ class Timeseries(BaseModel):
         null=True,
         blank=True,
         help_text='timestamp of latest value'
+    )
+    created = models.DateTimeField(
+        default=pytz.timezone('UTC').localize(datetime.utcnow()),
+        help_text="datetime of creation in UTC"
     )
 
     class Meta(BaseModel.Meta):
@@ -612,6 +621,10 @@ class Source(BaseModel):
     )
     manufacturer = models.ForeignKey(Manufacturer)
     details = models.TextField(blank=True, null=True)
+    created = models.DateTimeField(
+        default=pytz.timezone('UTC').localize(datetime.utcnow()),
+        help_text="datetime of creation in UTC"
+    )
 
     def __unicode__(self):
         return "{}".format(self.name)
@@ -662,7 +675,7 @@ class StatusCache(BaseModel):
     status_date = models.CharField(max_length=20)
 
     def set_ts_status(self, df):
-        ts = self.timeseries 
+#       ts = self.timeseries
         self.nr_of_measurements_total = df['value'].count()
         histo = df['flag'].value_counts()
         try:
