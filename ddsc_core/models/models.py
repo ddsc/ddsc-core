@@ -625,6 +625,16 @@ class Source(BaseModel):
         default=pytz.timezone('UTC').localize(datetime.utcnow()),
         help_text="datetime of creation in UTC"
     )
+    frequency = models.IntegerField(
+        blank=True,
+        help_text="frequency at which data is obtained in seconds",
+        null=True,
+    )
+    timeout = models.IntegerField(
+        blank=True,
+        help_text="timeout for triggering alarms in seconds",
+        null=True,
+    )
 
     def __unicode__(self):
         return "{}".format(self.name)
