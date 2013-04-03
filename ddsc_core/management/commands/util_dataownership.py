@@ -15,6 +15,7 @@ class Command(BaseCommand):
                 data_set_id = ds['id']
                 data_set_name = ds['name']
                 data_owner_id = ds['owner_id']
-            ts.owner_id = data_owner_id
-            ts.save()
+            if ts.onwer_id == None:
+                ts.owner_id = data_owner_id
+                ts.save()
         print "all completeted~!"
