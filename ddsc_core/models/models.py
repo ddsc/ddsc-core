@@ -392,7 +392,7 @@ class Timeseries(BaseModel):
 
     def set_events(self, df):
         for timestamp, row in df.iterrows():
-            self.set_event(timestamp, row)
+            self.set_event(timestamp, row.to_dict())
 
     def set_event(self, timestamp, row):
         if timestamp.tzinfo is None or \
