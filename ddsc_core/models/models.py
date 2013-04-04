@@ -685,7 +685,6 @@ class StatusCache(BaseModel):
     status_date = models.CharField(max_length=20)
 
     def set_ts_status(self, df):
-#       ts = self.timeseries
         self.nr_of_measurements_total = df['value'].count()
         histo = df['flag'].value_counts()
         try:
