@@ -135,12 +135,14 @@ class TimeseriesSelectionRuleInline(GenericTabularInline):
 class LogicalGroupParentsInline(admin.TabularInline):
     model = models.LogicalGroupEdge
     fk_name = 'child'  # yes 'child', not 'parent'
+    verbose_name_plural = "parent groups"
     extra = 1
 
 
 class LogicalGroupChildrenInline(admin.TabularInline):
     model = models.LogicalGroupEdge
     fk_name = 'parent'  # yes 'parent', not 'child'
+    verbose_name_plural = "child groups"
     extra = 1
 
 
