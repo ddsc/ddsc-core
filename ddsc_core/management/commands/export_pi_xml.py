@@ -108,7 +108,7 @@ class Command(BaseCommand):
         reader = PiXmlReader(source)
         writer = PiXmlWriter(reader.get_tz())
 
-        for md, _ in reader.get_series():
+        for md, dummy in reader.get_series():
 
             try:
                 uuid = md.pop('comment')
