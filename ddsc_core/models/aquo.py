@@ -21,22 +21,28 @@ class AquoModelManager(models.Manager):
 
 class AquoModel(models.Model):
     """Abstract base class for Aquo domain tables."""
+    # Aquo fields:
     objects = AquoModelManager()
     code = models.CharField(max_length=12, unique=True)
     description = models.CharField(max_length=60, unique=True)
     begin_date = models.DateField()
     end_date = models.DateField()
+    # Custom, non-aquo fields:
+    visible = models.BooleanField(
+        default=False,
+        help_text="visible in ui?",
+    )
+
+    class Meta:
+        abstract = True
+        app_label = APP_LABEL
+        ordering = ['description']
 
     def __unicode__(self):
         return "{0}".format(self.description)
 
     def natural_key(self):
         return (self.code, )
-
-    class Meta:
-        abstract = True
-        app_label = APP_LABEL
-        ordering = ['description']
 
 
 class Compartment(AquoModel):
@@ -58,8 +64,11 @@ class MeasuringMethod(AquoModel):
 
 class Parameter(AquoModel):
     """Aquo domain table `Parameter`."""
-    cas_number = models.CharField(max_length=12)
-    group = models.CharField(max_length=60)  # Required!
+    # Aquo requires cas_number and group to be present! For our convenience,
+    # however, these attributes are made nullable, so custom, non-aquo
+    # parameters can be added easily.
+    cas_number = models.CharField(max_length=12, null=True)  # Aquo not null!
+    group = models.CharField(max_length=60, null=True)  # Aquo not null!
     sikb_id = models.IntegerField(null=True, unique=True)
 
 
