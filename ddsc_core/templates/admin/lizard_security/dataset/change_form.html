@@ -1,6 +1,7 @@
 {% extends "admin/change_form.html" %}
 {% block submit_buttons_bottom %}
 {{ block.super }}
+{% if original %}
 <script>
 django.jQuery(function() {
     var btn = django.jQuery('<input type="submit" value="Apply selection rules">').click(function(e) {
@@ -12,4 +13,5 @@ django.jQuery(function() {
     django.jQuery('.submit-row:last').prepend(btn);
 });
 </script>
+{% endif %}
 {% endblock %}
