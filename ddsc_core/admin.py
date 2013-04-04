@@ -62,16 +62,18 @@ class AlarmAdmin(admin.ModelAdmin):
 
 class AquoModelAdmin(admin.ModelAdmin):
     """ModelAdmin that provides filtering by group."""
-    list_filter = ("group", )
+    list_display = ("description", "code", "group", "visible", )
+    list_filter = ("group", "visible", )
+    search_fields = ("code", "description", )
 
-    def has_add_permission(self, request, obj=None):
-        """Forbid adding any new objects via the Django admin.
+##  def has_add_permission(self, request, obj=None):
+##      """Forbid adding any new objects via the Django admin.
 
-        Currently, only one-way sync is supported. This is just a simple
-        reminder of that fact and by no means a hack-proof solution.
+##      Currently, only one-way sync is supported. This is just a simple
+##      reminder of that fact and by no means a hack-proof solution.
 
-        """
-        return False
+##      """
+##      return False
 
 
 class FolderAdmin(admin.ModelAdmin):
@@ -130,17 +132,35 @@ class TimeseriesSelectionRuleInline(GenericTabularInline):
     extra = 1
 
 
+class LogicalGroupParentsInline(admin.TabularInline):
+    model = models.LogicalGroupEdge
+    fk_name = 'child'  # yes 'child', not 'parent'
+    extra = 1
+
+
+class LogicalGroupChildrenInline(admin.TabularInline):
+    model = models.LogicalGroupEdge
+    fk_name = 'parent'  # yes 'parent', not 'child'
+    extra = 1
+
+
 class LogicalGroupAdmin(admin.ModelAdmin):
     fields = (
         "name", "description",
         ("timeseries", "timeseries_count"),
         "owner", "graph",
     )
-    inlines = [TimeseriesSelectionRuleInline]
-    list_display = ("name", "owner", )
+    inlines = [
+        LogicalGroupParentsInline,
+        LogicalGroupChildrenInline,
+        TimeseriesSelectionRuleInline,
+    ]
+    list_display = ("id", "name", "owner", )
+    list_display_links = ("name", )
     list_filter = ("owner", )
     raw_id_fields = ("timeseries", )  # fast, but no multiple select...
     readonly_fields = ("timeseries_count", "graph", )
+    search_fields = ("=id", "name", )
 
     def get_readonly_fields(self, request, obj=None):
         """Return a tuple of read-only fields.
@@ -161,7 +181,8 @@ class LogicalGroupAdmin(admin.ModelAdmin):
 
 class TimeseriesAdmin(admin.ModelAdmin):
     filter_horizontal = ('data_set', )
-    list_display = ('uuid', 'id', 'name', 'description', )
+    list_display = ('id', 'uuid', 'name', 'description', )
+    list_display_links = ('uuid', )
     readonly_fields = ('uuid', )
     search_fields = ('=id', 'name', 'description', 'uuid', )
 
@@ -204,7 +225,6 @@ admin.site.register(models.Location, TreeAdmin)
 admin.site.register(models.LocationType, LocationTypeAdmin)
 admin.site.register(models.LogRecord, LogRecordAdmin)
 admin.site.register(models.LogicalGroup, LogicalGroupAdmin)
-admin.site.register(models.LogicalGroupEdge)
 admin.site.register(models.Manufacturer)
 admin.site.register(models.MeasuringDevice, AquoModelAdmin)
 admin.site.register(models.MeasuringMethod, AquoModelAdmin)
