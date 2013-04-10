@@ -14,8 +14,8 @@ from datetime import datetime
 AND = 0
 OR = 1
 LOGIC_TYPES = (
-    (AND, 'And'),
-    (OR, 'OR'),
+    (AND, 'All'),
+    (OR, 'At least one'),
 )
 
 
@@ -45,6 +45,9 @@ class Alarm(BaseModel):
         (720, '12 hr'),
         (1440, '24 hr'),
     )
+
+    LOGIC_TYPES = LOGIC_TYPES
+
     name = models.CharField(max_length=80)
     single_or_group = models.ForeignKey(
         ContentType,
@@ -89,29 +92,29 @@ class Alarm(BaseModel):
     def __unicode__(self):
         return self.name
 
-    def save(self, *args, **kwargs):
-        if self.first_born is True:
-            self.first_born = False
-            super(Alarm, self).save(*args, **kwargs)
-        else:
-            try:
-                Alarm.objects.get(previous_alarm_id=self.pk)
-                raise Exception('you can not change the history!')
-            except ObjectDoesNotExist:
-                self.previous_alarm = self
-                alm_itm_list = Alarm_Item.objects.filter(alarm_id=self.pk)
-                self.pk = None
-                self.active_status = True
-                self.last_checked = datetime(1900, 1, 1, 0, 0)
-                self.date_cr = timezone.now()
-                super(Alarm, self).save(*args, **kwargs)
-                for alm_itm in alm_itm_list:
-                    alm_itm.pk = None
-                    alm_itm.alarm = self
-                    super(Alarm_Item, alm_itm).save(*args, **kwargs)
-                pre_alm = Alarm.objects.get(pk=self.previous_alarm_id)
-                pre_alm.active_status = False
-                super(Alarm, pre_alm).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     if self.first_born is True:
+    #         self.first_born = False
+    #         super(Alarm, self).save(*args, **kwargs)
+    #     else:
+    #         try:
+    #             Alarm.objects.get(previous_alarm_id=self.pk)
+    #             raise Exception('you can not change the history!')
+    #         except ObjectDoesNotExist:
+    #             self.previous_alarm = self
+    #             alm_itm_list = Alarm_Item.objects.filter(alarm_id=self.pk)
+    #             self.pk = None
+    #             self.active_status = True
+    #             self.last_checked = datetime(1900, 1, 1, 0, 0)
+    #             self.date_cr = timezone.now()
+    #             super(Alarm, self).save(*args, **kwargs)
+    #             for alm_itm in alm_itm_list:
+    #                 alm_itm.pk = None
+    #                 alm_itm.alarm = self
+    #                 super(Alarm_Item, alm_itm).save(*args, **kwargs)
+    #             pre_alm = Alarm.objects.get(pk=self.previous_alarm_id)
+    #             pre_alm.active_status = False
+    #             super(Alarm, pre_alm).save(*args, **kwargs)
 
     def make_active(self, *args, **kwargs):
         if self.active_status is False:
@@ -168,6 +171,8 @@ class Alarm_Item(BaseModel):
             ' afwijking van het aantal te verwachten metingen'),
     )
 
+    LOGIC_TYPES = LOGIC_TYPES
+
     alarm = models.ForeignKey(
         Alarm, limit_choices_to={'active_status': [True]})
     comparision = models.SmallIntegerField(
@@ -200,39 +205,39 @@ class Alarm_Item(BaseModel):
     content_object = generic.GenericForeignKey('alarm_type', 'object_id')
     first_born = models.BooleanField(default=True)
 
-    def save(self, *args, **kwargs):
-        if self.first_born is True:
-            self.first_born = False
-            super(Alarm_Item, self).save(*args, **kwargs)
-        else:
-            try:
-                Alarm.objects.get(previous_alarm_id=self.alarm_id)
-                raise Exception(
-                    "This is a historical alarm item which can not be edited!")
-            except ObjectDoesNotExist:
-                alm_itm_self = self
-                alm = self.alarm
-                alm_prev_id = alm.pk
-                alm_itm_list = Alarm_Item.objects.filter(alarm_id=alm.pk)
-                alm.active_status = False
-                super(Alarm, alm).save(*args, **kwargs)
-                alm.pk = None
-                alm.first_born = False
-                alm.active_status = True
-                alm.last_checked = datetime(1900, 1, 1, 0, 0)
-                alm.date_cr = timezone.now()
-                alm.previous_alarm_id = alm_prev_id
-                super(Alarm, alm).save(*args, **kwargs)
-
-                for alm_itm in alm_itm_list:
-                    if alm_itm.pk != alm_itm_self.pk:
-                        alm_itm.pk = None
-                        alm_itm.alarm = alm
-                        super(Alarm_Item, alm_itm).save(*args, **kwargs)
-                    else:
-                        alm_itm_self.pk = None
-                        alm_itm_self.alarm = alm
-                        super(Alarm_Item, alm_itm_self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     if self.first_born is True:
+    #         self.first_born = False
+    #         super(Alarm_Item, self).save(*args, **kwargs)
+    #     else:
+    #         try:
+    #             Alarm.objects.get(previous_alarm_id=self.alarm_id)
+    #             raise Exception(
+    #                 "This is a historical alarm item which can not be edited!")
+    #         except ObjectDoesNotExist:
+    #             alm_itm_self = self
+    #             alm = self.alarm
+    #             alm_prev_id = alm.pk
+    #             alm_itm_list = Alarm_Item.objects.filter(alarm_id=alm.pk)
+    #             alm.active_status = False
+    #             super(Alarm, alm).save(*args, **kwargs)
+    #             alm.pk = None
+    #             alm.first_born = False
+    #             alm.active_status = True
+    #             alm.last_checked = datetime(1900, 1, 1, 0, 0)
+    #             alm.date_cr = timezone.now()
+    #             alm.previous_alarm_id = alm_prev_id
+    #             super(Alarm, alm).save(*args, **kwargs)
+    #
+    #             for alm_itm in alm_itm_list:
+    #                 if alm_itm.pk != alm_itm_self.pk:
+    #                     alm_itm.pk = None
+    #                     alm_itm.alarm = alm
+    #                     super(Alarm_Item, alm_itm).save(*args, **kwargs)
+    #                 else:
+    #                     alm_itm_self.pk = None
+    #                     alm_itm_self.alarm = alm
+    #                     super(Alarm_Item, alm_itm_self).save(*args, **kwargs)
 
 
 class Alarm_Active(BaseModel):
