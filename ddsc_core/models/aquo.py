@@ -49,6 +49,7 @@ class Compartment(AquoModel):
     """Aquo domain table `Compartiment`."""
     group = models.CharField(max_length=60, null=True)
     numeric_code = models.CharField(max_length=12, null=True)
+    source = models.CharField(max_length=12, null=True)
 
 
 class MeasuringDevice(AquoModel):
@@ -70,6 +71,7 @@ class Parameter(AquoModel):
     cas_number = models.CharField(max_length=12, null=True)  # Aquo not null!
     group = models.CharField(max_length=60, null=True)  # Aquo not null!
     sikb_id = models.IntegerField(null=True, unique=True)
+    source = models.CharField(max_length=12, null=True)
 
 
 class ProcessingMethod(AquoModel):
@@ -87,3 +89,4 @@ class Unit(AquoModel):
     group = models.CharField(max_length=60, null=True)
     dimension = models.CharField(max_length=12, null=True)
     conversion_factor = models.CharField(max_length=12, null=True)
+    source = models.CharField(max_length=12, null=True)
