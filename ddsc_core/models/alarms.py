@@ -85,7 +85,7 @@ class Alarm(BaseModel):
     active_status = models.BooleanField(default=True)
     last_checked = models.DateTimeField(default=datetime(1900, 1, 1, 0, 0))
     date_cr = models.DateTimeField(default=timezone.now)
-    object_id = models.PositiveIntegerField()
+    object_id = models.PositiveIntegerField(null=True, blank=True)
     content_object = generic.GenericForeignKey('single_or_group', 'object_id')
     first_born = models.BooleanField(default=True)
 
@@ -172,6 +172,12 @@ class Alarm_Item(BaseModel):
     )
 
     LOGIC_TYPES = LOGIC_TYPES
+
+    ALARM_TYPE = (
+        ('timeseries', 'timeseries'),
+        ('logicalgroup', 'logicalgroup'),
+        ('location', 'location'),
+    )
 
     alarm = models.ForeignKey(
         Alarm, limit_choices_to={'active_status': [True]})
