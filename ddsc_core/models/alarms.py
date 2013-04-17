@@ -5,7 +5,7 @@ from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.utils import timezone
-from django.core.exceptions import ObjectDoesNotExist
+#from django.core.exceptions import ObjectDoesNotExist
 from ddsc_core.models.models import BaseModel
 
 from datetime import datetime
@@ -20,14 +20,17 @@ LOGIC_TYPES = (
 
 
 class Alarm(BaseModel):
-    EMAIL = 1
-    SMS = 2
-    EMAIL_AND_SMS = 3
+    class MessageType:
+        EMAIL = 1
+        SMS = 2
+        EMAIL_AND_SMS = 3
+        NO_MESSAGE = 4
 
     MESSAGE_TYPE = (
-        (EMAIL, 'Email'),
-        (SMS, 'SMS'),
-        (EMAIL_AND_SMS, 'Email and SMS'),
+        (MessageType.EMAIL, 'Email'),
+        (MessageType.SMS, 'SMS'),
+        (MessageType.EMAIL_AND_SMS, 'Email and SMS'),
+        (MessageType.NO_MESSAGE, 'NO MESSAGE'),
     )
 
     URGENCY_TYPE = (
@@ -79,7 +82,7 @@ class Alarm(BaseModel):
     )
     message_type = models.IntegerField(
         choices=MESSAGE_TYPE,
-        default=EMAIL,
+        default=MessageType.NO_MESSAGE,
     )
     previous_alarm = models.ForeignKey('self', null=True, blank=True)
     active_status = models.BooleanField(default=True)
@@ -219,7 +222,7 @@ class Alarm_Item(BaseModel):
     #         try:
     #             Alarm.objects.get(previous_alarm_id=self.alarm_id)
     #             raise Exception(
-    #                 "This is a historical alarm item which can not be edited!")
+    #             "This is a historical alarm item which can not be edited!")
     #         except ObjectDoesNotExist:
     #             alm_itm_self = self
     #             alm = self.alarm
