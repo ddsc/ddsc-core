@@ -30,7 +30,7 @@ class Alarm(BaseModel):
         (MessageType.EMAIL, 'Email'),
         (MessageType.SMS, 'SMS'),
         (MessageType.EMAIL_AND_SMS, 'Email and SMS'),
-        (MessageType.NO_MESSAGE, 'NO MESSAGE'),
+        (MessageType.NO_MESSAGE, 'No message'),
     )
 
     URGENCY_TYPE = (
@@ -126,6 +126,9 @@ class Alarm(BaseModel):
             self.active_status = True
             super(Alarm, alm).save(*args, **kwargs)
             super(Alarm, self).save(*args, **kwargs)
+
+
+
 
 
 class Alarm_Item(BaseModel):
