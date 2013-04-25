@@ -107,7 +107,7 @@ class Command(BaseCommand):
                     usr = row[4]
                     remote_id = row[5]
                     ts = Timeseries.objects.get(uuid=uuid)
-                    user = User.object.get(username=usr)
+                    user = User.objects.get(username=usr)
                     IdMapping.objects.create(user_id=user.pk, remote_id=remote_id, timeseries_id=ts.pk)
                     ts.owner_id = do.pk
                     ts.save()
