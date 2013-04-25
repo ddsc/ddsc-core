@@ -1,8 +1,10 @@
 #from adaptor.model import CsvDbModel
 from django.core.management.base import BaseCommand
-from ddsc_core.models.models import Timeseries, Source, Location
+from ddsc_core.models.models import Timeseries, Source, Location, IdMapping
+from django.contrib.auth.models import User
 from ddsc_core.models.aquo import Unit, Parameter, Compartment, MeasuringDevice, MeasuringMethod
 from ddsc_core.models.aquo import ReferenceFrame, ProcessingMethod
+from lizard_security import DataOwner
 import string
 #from ddsc_core.models import Location
 import csv
@@ -12,6 +14,8 @@ class Command(BaseCommand):
     help = 'Imports a CSV file of timeseries into the database.'
 
     def handle(self, *args, **options):
+        dataowner = args[1]
+        do, created = DataOwner.objects.get_or_create(name=dataowner)
         i = Timeseries.objects.count() + 1
         with open(args[0], 'rb') as f:
             reader = csv.reader(f)
@@ -35,59 +39,63 @@ class Command(BaseCommand):
                     value_type = f(type)
                     
                     try: 
-                        lc = Location.objects.get(uuid=row[8])
+                        lc = Location.objects.get(uuid=row[7])
                     except:
                         lc = Location.objects.get(name='unknown')
                     location_id = lc.id
                     
                     try: 
-                        pr = Parameter.objects.get(code=row[9])
+                        pr = Parameter.objects.get(code=row[8].split('-')[0])
                     except:
                         pr = Parameter.objects.get(code='unknown')
                     parameter_id = pr.id 
                     
                     try: 
-                        ut = Unit.objects.get(code=row[10])
+                        ut = Unit.objects.get(code=row[9])
                     except:
-                        ut = Unit.objects.get(code='unknown')
+                        try:
+                            ut = Unit.objects.get(description=row[9])
+                        except:
+                            ut = Unit.objects.get(code='unknown')
                     unit_id = ut.id
                     
                     try: 
-                        rf = ReferenceFrame.objects.get(code=row[11])
+                        rf = ReferenceFrame.objects.get(code=row[10].split('-')[0])
                     except:
                         rf = ReferenceFrame.objects.get(code='unknown')
                     reference_f_id = rf.id
                      
                     try: 
-                        cp = Compartment.objects.get(code=row[12])
+                        cp = Compartment.objects.get(code=row[11].split('-')[0])
                     except:
                         cp = Compartment.objects.get(code='unknown')
                     compartment_id = cp.id
                     
                     try: 
-                        md = MeasuringDevice.objects.get(code=row[13])
+                        md = MeasuringDevice.objects.get(code=row[12].split('-')[0])
                     except:
                         md = MeasuringDevice.objects.get(code='unknown')
                     measuring_device_id = md.id
                         
                     try: 
-                        mm = MeasuringMethod.objects.get(code=row[14])
+                        mm = MeasuringMethod.objects.get(code=row[13].split('-')[0])
                     except:
                         mm = MeasuringMethod.objects.get(code='unknown')
                     measuring_method_id = mm.id
                     
                     try: 
-                        pm = ProcessingMethod.objects.get(code=row[15])
+                        pm = ProcessingMethod.objects.get(code=row[14].split('-')[0])
                     except:
                         pm = ProcessingMethod.objects.get(code='unknown')
                     processing_method_id = pm.id
                         
                     try: 
-                        src = Source.objects.get(uuid=row[7])
+                        src = Source.objects.get(uuid=row[6])
                     except:
                         src = Source.objects.get(uuid='unknown')
                     source_id = src.id    
-                        
+                    
+                    
                     
                     Timeseries.objects.create(name=name, description=description, value_type=value_type,
                                               location_id=location_id, parameter_id=parameter_id,
@@ -95,5 +103,14 @@ class Command(BaseCommand):
                                               compartment_id=compartment_id, measuring_device_id=measuring_device_id,
                                               measuring_method_id=measuring_method_id, id=i, uuid=uuid,
                                               processing_method_id=processing_method_id, source_id=source_id)
+                    
+                    usr = row[4]
+                    remote_id = row[5]
+                    ts = Timeseries.objects.get(uuid=uuid)
+                    user = User.object.get(username=usr)
+                    IdMapping.objects.create(user_id=user.pk, remote_id=remote_id, timeseries_id=ts.pk)
+                    ts.owner_id = do.pk
+                    ts.save()
+                    
                     i += 1
         print "completeted~!"
