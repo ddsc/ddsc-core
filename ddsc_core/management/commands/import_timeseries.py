@@ -4,7 +4,7 @@ from ddsc_core.models.models import Timeseries, Source, Location, IdMapping
 from django.contrib.auth.models import User
 from ddsc_core.models.aquo import Unit, Parameter, Compartment, MeasuringDevice, MeasuringMethod
 from ddsc_core.models.aquo import ReferenceFrame, ProcessingMethod
-from lizard_security import DataOwner
+from lizard_security.models import DataOwner
 import string
 #from ddsc_core.models import Location
 import csv
