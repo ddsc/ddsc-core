@@ -99,6 +99,35 @@ class IPAddressAdmin(admin.ModelAdmin):
     )
 
 
+class IdMappingAdmin(admin.ModelAdmin):
+    fields = (
+        "user",
+        "timeseries",
+        "remote_id",
+    )
+    list_display = (
+        "user",
+        "internal_id",
+        "external_id",
+    )
+    list_display_links = (
+        "internal_id",
+    )
+    ordering = (
+        "user__username",
+        "timeseries__pk",
+    )
+
+    def internal_id(self, obj):
+        return obj.timeseries.pk
+
+    def external_id(self, obj):
+        return obj.remote_id
+
+    internal_id.short_description = "Internal timeseries ID"
+    external_id.short_description = "External timeseries ID"
+
+
 class LocationTypeAdmin(admin.ModelAdmin):
     filter_horizontal = ("locations", )
 
@@ -222,7 +251,7 @@ admin.site.register(models.Alarm_Item)
 admin.site.register(models.Compartment, AquoModelAdmin)
 admin.site.register(models.Folder, FolderAdmin)
 admin.site.register(models.IPAddress, IPAddressAdmin)
-admin.site.register(models.IdMapping)
+admin.site.register(models.IdMapping, IdMappingAdmin)
 admin.site.register(models.Location, TreeAdmin)
 admin.site.register(models.LocationType, LocationTypeAdmin)
 admin.site.register(models.LogRecord, LogRecordAdmin)
