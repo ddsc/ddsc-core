@@ -132,6 +132,9 @@ class Location(BaseModel, MP_Node_ByInstance):
         except:
             return []
 
+    def get_srid(self):
+        return 4258
+
     def save_under(self, parent_pk=None):
         '''
         Apparently Treebeard makes normal tree operations, like
@@ -695,6 +698,11 @@ class IdMapping(BaseModel):
 
 class StatusCache(BaseModel):
     """statistics for each timeseries among a certain time period"""
+
+    objects = manager.StatusCacheManager()
+    # The admin manager should be below the secured manager!!
+    objects_nosecurity = Manager()
+
     timeseries = models.ForeignKey(Timeseries)
     nr_of_measurements_total = models.IntegerField(null=True, blank=True)
     nr_of_measurements_reliable = models.IntegerField(null=True, blank=True)
