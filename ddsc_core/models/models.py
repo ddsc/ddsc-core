@@ -401,13 +401,13 @@ class Timeseries(BaseModel):
 
                 value = float(row['value'])
 
-                # Only when all boundaries are set, the value can be 'OK'.
+                # When at least one boundary is set, the value can be 'OK'.
                 if self.validate_max_soft is not None \
-                        and self.validate_max_soft is not None \
-                        and self.validate_min_hard is not None \
-                        and self.validate_min_soft is not None \
-                        and self.validate_diff_hard is not None \
-                        and self.validate_diff_soft is not None:
+                        or self.validate_max_soft is not None \
+                        or self.validate_min_hard is not None \
+                        or self.validate_min_soft is not None \
+                        or self.validate_diff_hard is not None \
+                        or self.validate_diff_soft is not None:
                     row['flag'] = Timeseries.ValidationFlag.OK
 
                 # Check soft boundaries, possibly marking value 'DOUBTFUL'.
@@ -417,7 +417,7 @@ class Timeseries(BaseModel):
                 if self.validate_min_soft is not None \
                         and value < self.validate_min_soft:
                     row['flag'] = Timeseries.ValidationFlag.DOUBTFUL
-                if self.validate_diff_soft and last is not None \
+                if self.validate_diff_soft is not None and last is not None \
                         and abs(last - value) > self.validate_diff_soft:
                     row['flag'] = Timeseries.ValidationFlag.DOUBTFUL
 
@@ -428,7 +428,7 @@ class Timeseries(BaseModel):
                 if self.validate_min_hard is not None \
                         and value < self.validate_min_hard:
                     row['flag'] = Timeseries.ValidationFlag.UNRELIABLE
-                if self.validate_diff_hard and last is not None \
+                if self.validate_diff_hard is not None and last is not None \
                         and abs(last - value) > self.validate_diff_hard:
                     row['flag'] = Timeseries.ValidationFlag.UNRELIABLE
 
