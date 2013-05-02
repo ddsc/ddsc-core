@@ -394,38 +394,62 @@ class Timeseries(BaseModel):
             convert_values_to=convert_values_to)
 
     def set_events(self, df):
-        for timestamp, row in df.iterrows():
-            self.set_event(timestamp, row.to_dict())
+        last = None
+        for timestamp, row_obj in df.iterrows():
+            row = row_obj.to_dict()
+
+            # Validate.
+            if 'value' in row and self.value_type in \
+                    (Timeseries.ValueType.INTEGER, Timeseries.ValueType.FLOAT):
+
+                value = float(row['value'])
+
+                # Only when all boundaries are set, the value can be 'OK'.
+                if self.validate_max_soft is not None \
+                        and self.validate_max_soft is not None \
+                        and self.validate_min_hard is not None \
+                        and self.validate_min_soft is not None \
+                        and self.validate_diff_hard is not None \
+                        and self.validate_diff_soft is not None:
+                    row['flag'] = Timeseries.ValidationFlag.OK
+
+                # Check soft boundaries, possibly marking value 'DOUBTFUL'.
+                if self.validate_max_soft is not None \
+                        and value > self.validate_max_soft:
+                    row['flag'] = Timeseries.ValidationFlag.DOUBTFUL
+                if self.validate_min_soft is not None \
+                        and value < self.validate_min_soft:
+                    row['flag'] = Timeseries.ValidationFlag.DOUBTFUL
+                if self.validate_diff_soft and last is not None \
+                        and abs(last - value) > self.validate_diff_soft:
+                    row['flag'] = Timeseries.ValidationFlag.DOUBTFUL
+
+                # Check hard boundaries, possibly marking value 'UNRELIABLE'.
+                if self.validate_max_hard is not None \
+                        and value > self.validate_max_hard:
+                    row['flag'] = Timeseries.ValidationFlag.UNRELIABLE
+                if self.validate_min_hard is not None \
+                        and value < self.validate_min_hard:
+                    row['flag'] = Timeseries.ValidationFlag.UNRELIABLE
+                if self.validate_diff_hard and last is not None \
+                        and abs(last - value) > self.validate_diff_hard:
+                    row['flag'] = Timeseries.ValidationFlag.UNRELIABLE
+
+                self.set_event(timestamp, row)
+                last = value
 
     def set_event(self, timestamp, row):
         if timestamp.tzinfo is None or \
                 timestamp.tzinfo.utcoffset(timestamp) is None:
             timestamp = INTERNAL_TIMEZONE.localize(timestamp)
 
-        # Update first and latest value. Also validate.
+        # Update first and latest value.
         if 'value' in row:
             if not self.latest_value_timestamp \
                     or self.latest_value_timestamp <= timestamp:
                 if self.value_type in (Timeseries.ValueType.INTEGER,
                         Timeseries.ValueType.FLOAT):
-                    latest_value = self.latest_value_number
-                    value = row['value']
-                    if not 'flag' in row \
-                            and self.latest_value_timestamp < timestamp:
-                        diff = abs(latest_value - float(value))
-                        if latest_value and (
-                                self.validate_diff_hard < diff
-                                or value > self.validate_max_hard
-                                or value < self.validate_min_hard):
-                            row['flag'] = Timeseries.ValidationFlag.UNRELIABLE
-                        elif latest_value and (
-                                self.validate_diff_soft < diff
-                                or value > self.validate_max_soft
-                                or value < self.validate_min_soft):
-                            row['flag'] = Timeseries.ValidationFlag.DOUBTFUL
-                        else:
-                            row['flag'] = Timeseries.ValidationFlag.OK
-                    self.latest_value_number = value
+                    self.latest_value_number = row['value']
                 elif self.value_type in (
                         Timeseries.ValueType.TEXT,
                         Timeseries.ValueType.IMAGE,

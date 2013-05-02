@@ -5,7 +5,6 @@ from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.utils import timezone
-#from django.core.exceptions import ObjectDoesNotExist
 from ddsc_core.models.models import BaseModel
 
 from datetime import datetime
