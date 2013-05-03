@@ -219,6 +219,7 @@ class Timeseries(BaseModel):
     )
 
     class ValidationFlag:
+        NONE = '-1'
         OK = '0'
         DOUBTFUL = '3'
         UNRELIABLE = '6'
@@ -403,6 +404,7 @@ class Timeseries(BaseModel):
                     (Timeseries.ValueType.INTEGER, Timeseries.ValueType.FLOAT):
 
                 value = float(row['value'])
+                row['flag'] = Timeseries.ValidationFlag.NONE
 
                 # When at least one boundary is set, the value can be 'OK'.
                 if self.validate_max_soft is not None \
