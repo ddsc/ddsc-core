@@ -116,6 +116,10 @@ class Location(BaseModel, MP_Node_ByInstance):
         default=pytz.timezone('UTC').localize(datetime.utcnow()),
         help_text="datetime of creation in UTC"
     )
+    show_on_map = models.BooleanField(
+        default=True,
+        help_text="whether to show the location on the map"
+    )
 
     def __unicode__(self):
         return self.name
