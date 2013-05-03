@@ -93,6 +93,7 @@ class Location(BaseModel, MP_Node_ByInstance):
     name = models.CharField(
         max_length=80,
         help_text="name of location",
+        db_index=True,
     )
     description = models.TextField(
         blank=True,
@@ -115,6 +116,10 @@ class Location(BaseModel, MP_Node_ByInstance):
     created = models.DateTimeField(
         default=pytz.timezone('UTC').localize(datetime.utcnow()),
         help_text="datetime of creation in UTC"
+    )
+    show_on_map = models.BooleanField(
+        default=True,
+        help_text="whether to show the location on the map"
     )
 
     def __unicode__(self):
@@ -247,7 +252,8 @@ class Timeseries(BaseModel):
         max_length=64,
         blank=True,
         null=True,
-        help_text="optional name for timeseries"
+        help_text="optional name for timeseries",
+        db_index=True,
     )
     description = models.TextField(
         default="",
@@ -643,7 +649,10 @@ class Source(BaseModel):
         help_text="universally unique identifier",
         verbose_name="UUID",
     )
-    name = models.CharField(max_length=64)
+    name = models.CharField(
+        max_length=64,
+        db_index=True,
+    )
     source_type = models.SmallIntegerField(
         choices=SOURCE_TYPES,
         default=SENSOR,
@@ -675,7 +684,7 @@ class TimeseriesGroup(BaseModel):
     Bastiaan (and only Bastiaan) knows.
 
     """
-    name = models.CharField(max_length=64)
+    name = models.CharField(max_length=64, unique=True)
     sources = models.ManyToManyField(Source)
     parameters = models.ManyToManyField('Parameter')
 
@@ -686,7 +695,7 @@ class SourceGroup(BaseModel):
     Bastiaan (and only Bastiaan) knows.
 
     """
-    name = models.CharField(max_length=64)
+    name = models.CharField(max_length=64, unique=True)
     sources = models.ManyToManyField(Source)
     description = models.TextField(blank=True)
 
