@@ -391,7 +391,10 @@ class Timeseries(BaseModel):
                 start = None
                 end = None
 
+        timer_start = datetime.now()
         store = DataStore()
+        timer_datastore = datetime.now() - timer_start
+        logger.debug("got datastore in %s", timer_datastore)
         value_type_map = {
             Timeseries.ValueType.FLOAT: 'float',
             Timeseries.ValueType.INTEGER: 'integer',
