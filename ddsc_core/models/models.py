@@ -361,6 +361,8 @@ class Timeseries(BaseModel):
                                    Timeseries.ValueType.FILE)
 
     def latest_value_file(self):
+        if not self.is_file():
+            raise Exception("Timeseries is not a file type.")
         if self.latest_value_timestamp:
             return self.latest_value_timestamp.strftime(FILENAME_FORMAT)
         return None
@@ -479,6 +481,8 @@ class Timeseries(BaseModel):
         return '%s/%s/' % (file_dir, self.uuid)
 
     def set_file(self, timestamp, content):
+        if not self.is_file():
+            raise Exception("Timeseries is not a file type.")
         if timestamp.tzinfo is None or \
                 timestamp.tzinfo.utcoffset(timestamp) is None:
             timestamp = INTERNAL_TIMEZONE.localize(timestamp)
@@ -494,6 +498,8 @@ class Timeseries(BaseModel):
         self.set_event(timestamp, row)
 
     def get_file(self, timestamp):
+        if not self.is_file():
+            raise Exception("Timeseries is not a file type.")
         if timestamp.tzinfo is None or \
                 timestamp.tzinfo.utcoffset(timestamp) is None:
             timestamp = INTERNAL_TIMEZONE.localize(timestamp)
