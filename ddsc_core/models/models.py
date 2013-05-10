@@ -393,10 +393,7 @@ class Timeseries(BaseModel):
                 start = None
                 end = None
 
-        timer_start = datetime.now()
         store = DataStore()
-        timer_datastore = datetime.now() - timer_start
-        logger.debug("got datastore in %s", timer_datastore)
         value_type_map = {
             Timeseries.ValueType.FLOAT: 'float',
             Timeseries.ValueType.INTEGER: 'integer',
@@ -477,8 +474,23 @@ class Timeseries(BaseModel):
         store.write_row('events', self.uuid, timestamp, row)
 
     def _data_dir(self, timestamp):
-        file_dir = getattr(settings, 'FILE_DIR')
-        return '%s/%s/' % (file_dir, self.uuid)
+        paths = getattr(settings, 'IMPORTER_PATH')
+        base_path = paths['storage_base_path']
+        if self.value_type == Timeseries.ValueType.IMAGE:
+            type_path = paths['image']
+        elif self.value_type == Timeseries.ValueType.GEO_REMOTE_SENSING:
+            type_path = paths['geotiff']
+        elif self.value_type == Timeseries.ValueType.MOVIE:
+            type_path = paths['video']
+        elif self.value_type == Timeseries.ValueType.FILE:
+            type_path = paths['file']
+        else:
+            type_path = paths['unrecognized']
+        str_year = str(timestamp.year)
+        str_month = str(timestamp.month)
+        str_day = str(timestamp.day)
+        date = str_year + '-' + str_month + '-' + str_day
+        return '%s%s%s/%s/' % (base_path, type_path, self.uuid, date)
 
     def set_file(self, timestamp, content):
         if not self.is_file():
@@ -500,11 +512,11 @@ class Timeseries(BaseModel):
     def get_file(self, timestamp):
         if not self.is_file():
             raise Exception("Timeseries is not a file type.")
-        if timestamp.tzinfo is None or \
-                timestamp.tzinfo.utcoffset(timestamp) is None:
-            timestamp = INTERNAL_TIMEZONE.localize(timestamp)
-        dt = timestamp.strftime(FILENAME_FORMAT)
-        file_path = self._data_dir(timestamp) + dt
+        end = timestamp + timedelta(seconds=1)
+        events = self.get_events(timestamp, end, ['value'])
+        if len(events) < 1 or 'value' not in events or len(events['value']) < 1:
+            raise Exception("File not found.")
+        file_path = events['value'][0]
         file_mime = magic.from_file(file_path, mime=True)
         io = StringIO(file(file_path, "rb").read())
         file_size = os.path.getsize(file_path)
