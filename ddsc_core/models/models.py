@@ -367,7 +367,8 @@ class Timeseries(BaseModel):
             return self.latest_value_timestamp.strftime(FILENAME_FORMAT)
         return None
 
-    def get_events(self, start=None, end=None, filter=None):
+    def get_events(self, start=None, end=None, filter=None, 
+        ignore_rejected=None):
         if filter is None:
             filter = ['value', 'flag']
 
@@ -400,7 +401,8 @@ class Timeseries(BaseModel):
         }
         convert_values_to = value_type_map.get(self.value_type)
         return store.read('events', self.uuid, start, end, params=filter,
-            convert_values_to=convert_values_to)
+            convert_values_to=convert_values_to, 
+            ignore_rejected=ignore_rejected)
 
     def set_events(self, df):
         last = None
