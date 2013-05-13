@@ -197,9 +197,9 @@ class LocationType(BaseModel):
 
 
 class Timeseries(BaseModel):
-    objects = manager.TimeseriesManager()
+    #objects = manager.TimeseriesManager()
     # The admin manager should be below the secured manager!!
-    objects_nosecurity = Manager()
+    #objects_nosecurity = Manager()
 
     def __unicode__(self):
         return "{}".format(self.name)
@@ -541,7 +541,7 @@ class LogicalGroup(BaseModel):
     groups can be combined into new groups.
 
     """
-    objects = manager.LogicalGroupManager()
+    #objects = manager.LogicalGroupManager()
 
     name = models.CharField(max_length=64)
     owner = models.ForeignKey(DataOwner)
@@ -733,9 +733,9 @@ class IdMapping(BaseModel):
 class StatusCache(BaseModel):
     """statistics for each timeseries among a certain time period"""
 
-    objects = manager.StatusCacheManager()
+    #objects = manager.StatusCacheManager()
     # The admin manager should be below the secured manager!!
-    objects_nosecurity = Manager()
+    #objects_nosecurity = Manager()
 
     timeseries = models.ForeignKey(Timeseries)
     nr_of_measurements_total = models.IntegerField(null=True, blank=True)
