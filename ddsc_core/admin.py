@@ -113,9 +113,17 @@ class IdMappingAdmin(admin.ModelAdmin):
     list_display_links = (
         "internal_id",
     )
+    list_filter = (
+        "user",
+    )
     ordering = (
         "user__username",
         "timeseries__pk",
+    )
+    search_fields = (
+        "remote_id",
+        "timeseries__pk",
+        "user__username",
     )
 
     def internal_id(self, obj):
