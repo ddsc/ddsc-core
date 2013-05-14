@@ -746,9 +746,8 @@ class StatusCache(BaseModel):
     max_val = models.FloatField(null=True, blank=True)
     mean_val = models.FloatField(null=True, blank=True)
     std_val = models.FloatField(null=True, blank=True)
-    modify_timestamp = models.DateTimeField(
-                   default=datetime(1900, 1, 1, 0, 0))
-    status_date = models.CharField(max_length=20)
+    modify_timestamp = models.DateTimeField(null=True)
+    date = models.DateField(null=True)
 
     def set_ts_status(self, df):
         self.nr_of_measurements_total = df['value'].count()
