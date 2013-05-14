@@ -5,6 +5,7 @@ from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.utils import timezone
+#from django.core.exceptions import ObjectDoesNotExist
 from ddsc_core.models.models import BaseModel
 
 from datetime import datetime
@@ -29,7 +30,7 @@ class Alarm(BaseModel):
         (MessageType.EMAIL, 'Email'),
         (MessageType.SMS, 'SMS'),
         (MessageType.EMAIL_AND_SMS, 'Email and SMS'),
-        (MessageType.NO_MESSAGE, 'No message'),
+        (MessageType.NO_MESSAGE, 'NO MESSAGE'),
     )
 
     URGENCY_TYPE = (
@@ -85,7 +86,7 @@ class Alarm(BaseModel):
     )
     previous_alarm = models.ForeignKey('self', null=True, blank=True)
     active_status = models.BooleanField(default=True)
-    last_checked = models.DateTimeField(default=datetime(1900, 1, 1, 0, 0))
+    last_checked = models.DateTimeField(null=True)
     date_cr = models.DateTimeField(default=timezone.now)
     object_id = models.PositiveIntegerField(null=True, blank=True)
     content_object = generic.GenericForeignKey('single_or_group', 'object_id')
@@ -125,9 +126,6 @@ class Alarm(BaseModel):
             self.active_status = True
             super(Alarm, alm).save(*args, **kwargs)
             super(Alarm, self).save(*args, **kwargs)
-
-
-
 
 
 class Alarm_Item(BaseModel):
@@ -253,9 +251,7 @@ class Alarm_Item(BaseModel):
 
 class Alarm_Active(BaseModel):
     alarm = models.ForeignKey(Alarm)
-    first_triggered_on = models.DateTimeField(
-        default=datetime(1900, 1, 1, 0, 0)
-    )
+    first_triggered_on = models.DateTimeField(null=True)
     message = models.TextField()
-    deactivated_on = models.DateTimeField(default=datetime(1900, 1, 1, 0, 0))
+    deactivated_on = models.DateTimeField(null=True)
     active = models.BooleanField(default=True)
