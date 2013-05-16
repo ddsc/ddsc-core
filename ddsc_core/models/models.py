@@ -565,6 +565,17 @@ class LogicalGroup(BaseModel):
         """Return the number of timeseries in this group."""
         return self.timeseries.count()
 
+    # Recursively grab all Timeseries in this Logical Group and its descendants.
+    def timeseries_r(self, max_depth=10):
+        all = []
+        for ts in self.timeseries.all():
+            all.append(ts)
+        if max_depth > 0:
+            for child in self.childs.all():
+                for ts in child.child.timeseries_r(max_depth-1):
+                    all.append(ts)
+        return all
+
     def __unicode__(self):
         return self.name
 
