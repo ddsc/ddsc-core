@@ -566,6 +566,17 @@ class LogicalGroup(BaseModel):
         """Return the number of timeseries in this group."""
         return self.timeseries.count()
 
+    # Recursively grab all Timeseries in this Logical Group and its descendants.
+    def timeseries_r(self, max_depth=10):
+        all = []
+        for ts in self.timeseries.all():
+            all.append(ts)
+        if max_depth > 0:
+            for child in self.childs.all():
+                for ts in child.child.timeseries_r(max_depth-1):
+                    all.append(ts)
+        return all
+
     def __unicode__(self):
         return self.name
 
@@ -748,9 +759,8 @@ class StatusCache(BaseModel):
     max_val = models.FloatField(null=True, blank=True)
     mean_val = models.FloatField(null=True, blank=True)
     std_val = models.FloatField(null=True, blank=True)
-    modify_timestamp = models.DateTimeField(
-                   default=datetime(1900, 1, 1, 0, 0))
-    status_date = models.CharField(max_length=20)
+    modify_timestamp = models.DateTimeField(null=True)
+    date = models.DateField(null=True)
 
     def set_ts_status(self, df):
         self.nr_of_measurements_total = df['value'].count()
