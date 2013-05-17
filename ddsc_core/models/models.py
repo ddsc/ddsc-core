@@ -82,7 +82,7 @@ class Location(BaseModel, MP_Node_ByInstance):
     the Django admin interface to keep it consistent.
 
     """
-    objects = manager.LocationManager()
+    #objects = manager.LocationManager()
 
     uuid = UUIDField(
         version=4,
@@ -108,6 +108,7 @@ class Location(BaseModel, MP_Node_ByInstance):
     # The real geometry (point, linestring, polygon, etc):
     real_geometry = models.GeometryField(srid=4258, null=True, blank=True)
     # Precision in meters with respect to point_geometry:
+    owner = models.ForeignKey(DataOwner, null=True, blank=True)
     geometry_precision = models.FloatField(
         null=True,
         blank=True,
@@ -680,6 +681,7 @@ class Source(BaseModel):
         choices=SOURCE_TYPES,
         default=SENSOR,
     )
+    owner = models.ForeignKey(DataOwner, null=True, blank=True)
     manufacturer = models.ForeignKey(Manufacturer)
     details = models.TextField(blank=True, null=True)
     created = models.DateTimeField(
