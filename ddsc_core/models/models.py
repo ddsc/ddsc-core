@@ -20,6 +20,7 @@ from django.db import transaction
 from django.db.models.manager import Manager
 from django.utils import timezone
 from django_extensions.db.fields import UUIDField
+from django.db.models import Q
 
 import magic
 import networkx as nx
@@ -568,17 +569,24 @@ class LogicalGroup(BaseModel):
 
     # Recursively grab all Timeseries in this Logical Group and its descendants.
     def timeseries_r(self, max_depth=10):
-        all = []
-        for ts in self.timeseries.all():
-            all.append(ts)
-        if max_depth > 0:
-            for child in self.childs.all():
-                for ts in child.child.timeseries_r(max_depth-1):
-                    all.append(ts)
-        return all
+
+        childs = self.get_child_ids()
+        childs.append(self.id)
+
+        return Timeseries.objects.filter(logical_groups__in=childs).distinct()
 
     def __unicode__(self):
         return self.name
+
+    def get_child_ids(self):
+
+        G = nx.DiGraph()
+        G.add_edges_from([(obj.parent.id, obj.child.id) for obj in
+                          LogicalGroupEdge.objects.filter(parent__owner=self.owner).select_related('parent','child')])
+        if G.has_node(self.id):
+            return G.successors(self.id)
+        else:
+            return []
 
 
 class LogicalGroupEdge(BaseModel):
@@ -619,6 +627,8 @@ class LogicalGroupEdge(BaseModel):
 
     def __unicode__(self):
         return "{0} -> {1}".format(self.child, self.parent)
+
+
 
 
 class TimeseriesSelectionRule(BaseModel):
