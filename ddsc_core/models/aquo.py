@@ -29,7 +29,7 @@ class AquoModel(models.Model):
     end_date = models.DateField()
     # Custom, non-aquo fields:
     visible = models.BooleanField(
-        default=False,
+        default=False,  # Make sure this is also set at the database level!
         help_text="visible in ui?",
     )
 
