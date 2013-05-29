@@ -29,7 +29,7 @@ class AquoModel(models.Model):
     end_date = models.DateField()
     # Custom, non-aquo fields:
     visible = models.BooleanField(
-        default=False,
+        default=False,  # Make sure this is also set at the database level!
         help_text="visible in ui?",
     )
 
@@ -47,20 +47,20 @@ class AquoModel(models.Model):
 
 class Compartment(AquoModel):
     """Aquo domain table `Compartiment`."""
-    group = models.CharField(max_length=60, null=True)
-    numeric_code = models.CharField(max_length=12, null=True)
-    source = models.CharField(max_length=12, null=True)
+    group = models.CharField(max_length=60, null=True, blank=True)
+    numeric_code = models.CharField(max_length=12, null=True, blank=True)
+    source = models.CharField(max_length=12, null=True, blank=True)
 
 
 class MeasuringDevice(AquoModel):
     """Aquo domain table `Meetapparaat`."""
-    group = models.CharField(max_length=60, null=True)
+    group = models.CharField(max_length=60, null=True, blank=True)
 
 
 class MeasuringMethod(AquoModel):
     """Aquo domain table `Waardebepalingsmethode`."""
-    group = models.CharField(max_length=60, null=True)
-    titel = models.CharField(max_length=600, null=True)
+    group = models.CharField(max_length=60, null=True, blank=True)
+    titel = models.CharField(max_length=600, null=True, blank=True)
 
 
 class Parameter(AquoModel):
@@ -68,25 +68,33 @@ class Parameter(AquoModel):
     # Aquo requires cas_number and group to be present! For our convenience,
     # however, these attributes are made nullable, so custom, non-aquo
     # parameters can be added easily.
-    cas_number = models.CharField(max_length=12, null=True)  # Aquo not null!
-    group = models.CharField(max_length=60, null=True)  # Aquo not null!
-    sikb_id = models.IntegerField(null=True, unique=True)
-    source = models.CharField(max_length=12, null=True)
+    cas_number = models.CharField(
+        blank=True,
+        max_length=12,
+        null=True,  # Aquo not null!
+    )
+    group = models.CharField(
+        blank=True,
+        max_length=60,
+        null=True,  # Aquo not null!
+    )
+    sikb_id = models.IntegerField(null=True, unique=True, blank=True)
+    source = models.CharField(max_length=12, null=True, blank=True)
 
 
 class ProcessingMethod(AquoModel):
     """Aquo domain table `Waardebewerkingsmethode`."""
-    group = models.CharField(max_length=60, null=True)
+    group = models.CharField(max_length=60, null=True, blank=True)
 
 
 class ReferenceFrame(AquoModel):
     """Aquo domain table `Hoedanigheid`."""
-    group = models.CharField(max_length=60, null=True)
+    group = models.CharField(max_length=60, null=True, blank=True)
 
 
 class Unit(AquoModel):
     """Aquo domain table `Eenheid`."""
-    group = models.CharField(max_length=60, null=True)
-    dimension = models.CharField(max_length=12, null=True)
-    conversion_factor = models.CharField(max_length=12, null=True)
-    source = models.CharField(max_length=12, null=True)
+    group = models.CharField(max_length=60, null=True, blank=True)
+    dimension = models.CharField(max_length=12, null=True, blank=True)
+    conversion_factor = models.CharField(max_length=12, null=True, blank=True)
+    source = models.CharField(max_length=12, null=True, blank=True)
