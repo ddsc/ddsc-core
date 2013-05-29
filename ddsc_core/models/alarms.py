@@ -30,7 +30,7 @@ class Alarm(BaseModel):
         (MessageType.EMAIL, 'Email'),
         (MessageType.SMS, 'SMS'),
         (MessageType.EMAIL_AND_SMS, 'Email and SMS'),
-        (MessageType.NO_MESSAGE, 'NO MESSAGE'),
+        (MessageType.NO_MESSAGE, 'No message'),
     )
 
     URGENCY_TYPE = (
