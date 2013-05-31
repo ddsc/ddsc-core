@@ -5,7 +5,7 @@ from ddsc_core.models.models import Location
 import csv
 from django.utils import timezone
 
-from django.contrib.gis.geos import GEOSGeometry
+from django.contrib.gis.geos import Point
 
 
 class Command(BaseCommand):
@@ -42,8 +42,9 @@ class Command(BaseCommand):
                         geometry_precision = None
                     location_description = row[11]
                     if x is not '':
-                        geo_input = 'POINT(' + x + ' ' + y + ' ' + z + ')'
-                        point_geometry = GEOSGeometry(geo_input, int(srid))
+                        point_geometry = Point([float(x), float(y), float(z)], srid=int(srid))
+                        if int(srid) != 4258:
+                            point_geometry = point_geometry.transform(4258, clone=True)
                     else:
                         point_geometry = ''
                     Location.objects.create(name=name,
