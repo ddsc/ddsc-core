@@ -761,16 +761,16 @@ class StatusCache(BaseModel):
     #objects_nosecurity = Manager()
 
     timeseries = models.ForeignKey(Timeseries)
-    nr_of_measurements_total = models.IntegerField(null=True, blank=True)
-    nr_of_measurements_reliable = models.IntegerField(null=True, blank=True)
-    nr_of_measurements_doubtful = models.IntegerField(null=True, blank=True)
-    nr_of_measurements_unreliable = models.IntegerField(null=True, blank=True)
+    nr_of_measurements_total = models.IntegerField(null=True, blank=True, db_index=True)
+    nr_of_measurements_reliable = models.IntegerField(null=True, blank=True, db_index=True)
+    nr_of_measurements_doubtful = models.IntegerField(null=True, blank=True, db_index=True)
+    nr_of_measurements_unreliable = models.IntegerField(null=True, blank=True, db_index=True)
     min_val = models.FloatField(null=True, blank=True)
     max_val = models.FloatField(null=True, blank=True)
     mean_val = models.FloatField(null=True, blank=True)
     std_val = models.FloatField(null=True, blank=True)
     modify_timestamp = models.DateTimeField(null=True)
-    date = models.DateField(null=True)
+    date = models.DateField(null=True, db_index=True)
 
     def set_ts_status(self, df):
         self.nr_of_measurements_total = df['value'].count()
