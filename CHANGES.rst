@@ -2,7 +2,7 @@ Changelog of ddsc-core
 ===================================================
 
 
-0.2 (unreleased)
+1.0 (2013-05-31)
 ----------------
 
 - Nothing changed yet.
