@@ -1,14 +1,14 @@
 # (c) Fugro Geoservices. MIT licensed, see LICENSE.rst.
+
 from __future__ import unicode_literals
 
-from django.db import models
-from django.contrib.contenttypes.models import ContentType
+from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.models import ContentType
+from django.db import models
 from django.utils import timezone
-#from django.core.exceptions import ObjectDoesNotExist
-from ddsc_core.models.models import BaseModel
 
-from datetime import datetime
+from ddsc_core.models.models import BaseModel
 
 
 AND = 0
@@ -55,7 +55,7 @@ class Alarm(BaseModel):
     single_or_group = models.ForeignKey(
         ContentType,
         limit_choices_to={"model__in": ("user", "usergroup")},
-        default=1,
+        default=ContentType.objects.get_for_model(User).pk,
     )
     description = models.TextField(
         null=True,
