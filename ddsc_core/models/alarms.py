@@ -55,7 +55,7 @@ class Alarm(BaseModel):
     single_or_group = models.ForeignKey(
         ContentType,
         limit_choices_to={"model__in": ("user", "usergroup")},
-        default=ContentType.objects.get_for_model(User).pk,
+        default=lambda: ContentType.objects.get_for_model(User).pk,
     )
     description = models.TextField(
         null=True,
