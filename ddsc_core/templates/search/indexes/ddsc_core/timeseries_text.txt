@@ -1,0 +1,4 @@
+{{ object.content }}
+{{ object.name }}
+{{ object.location.name }}
+{{ object.source }}
