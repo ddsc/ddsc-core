@@ -17,10 +17,8 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.gis.db import models
 from django.core.urlresolvers import reverse
 from django.db import transaction
-from django.db.models.manager import Manager
 from django.utils import timezone
 from django_extensions.db.fields import UUIDField
-from django.db.models import Q
 
 import magic
 import networkx as nx
@@ -29,7 +27,6 @@ import pytz
 from cassandralib.models import CassandraDataStore
 from cassandralib.models import INTERNAL_TIMEZONE
 from ddsc_core.models.treebeard_overrides import MP_Node_ByInstance
-from lizard_security import manager
 from lizard_security.models import DataOwner, DataSet
 
 logger = logging.getLogger(__name__)
@@ -369,16 +366,20 @@ class Timeseries(BaseModel):
             return self.latest_value_timestamp.strftime(FILENAME_FORMAT)
         return None
 
-    def get_events(self, start=None, end=None, filter=None, 
-        ignore_rejected=None):
+    def get_events(self, start=None, end=None, filter=None,
+                   ignore_rejected=None):
         if filter is None:
             filter = ['value', 'flag']
 
         if start and (
-            start.tzinfo is None or start.tzinfo.utcoffset(start) is None):
+            start.tzinfo is None
+            or start.tzinfo.utcoffset(start) is None
+        ):
             start = INTERNAL_TIMEZONE.localize(start)
         if end and (
-            end.tzinfo is None or end.tzinfo.utcoffset(end) is None):
+            end.tzinfo is None
+            or end.tzinfo.utcoffset(end) is None
+        ):
             end = INTERNAL_TIMEZONE.localize(end)
 
         if (self.first_value_timestamp is None or
@@ -402,9 +403,11 @@ class Timeseries(BaseModel):
             Timeseries.ValueType.INTEGER: 'integer',
         }
         convert_values_to = value_type_map.get(self.value_type)
-        return store.read('events', self.uuid, start, end, params=filter,
-            convert_values_to=convert_values_to, 
-            ignore_rejected=ignore_rejected)
+        return store.read(
+            'events', self.uuid, start, end, params=filter,
+            convert_values_to=convert_values_to,
+            ignore_rejected=ignore_rejected
+        )
 
     def set_events(self, df):
         last = None
@@ -461,8 +464,10 @@ class Timeseries(BaseModel):
         if 'value' in row:
             if not self.latest_value_timestamp \
                     or self.latest_value_timestamp <= timestamp:
-                if self.value_type in (Timeseries.ValueType.INTEGER,
-                        Timeseries.ValueType.FLOAT):
+                if self.value_type in (
+                    Timeseries.ValueType.INTEGER,
+                    Timeseries.ValueType.FLOAT
+                ):
                     self.latest_value_number = row['value']
                 elif self.value_type in (
                         Timeseries.ValueType.TEXT,
@@ -518,7 +523,11 @@ class Timeseries(BaseModel):
             raise Exception("Timeseries is not a file type.")
         end = timestamp + timedelta(seconds=1)
         events = self.get_events(timestamp, end, ['value'])
-        if len(events) < 1 or 'value' not in events or len(events['value']) < 1:
+        if (
+            len(events) < 1
+            or 'value' not in events
+            or len(events['value']) < 1
+        ):
             raise Exception("File not found.")
         file_path = events['value'][0]
         file_mime = magic.from_file(file_path, mime=True)
@@ -567,7 +576,8 @@ class LogicalGroup(BaseModel):
         """Return the number of timeseries in this group."""
         return self.timeseries.count()
 
-    # Recursively grab all Timeseries in this Logical Group and its descendants.
+    # Recursively grab all Timeseries in this Logical Group and its
+    # descendants.
     def timeseries_r(self, max_depth=10):
 
         childs = self.get_child_ids()
@@ -581,8 +591,11 @@ class LogicalGroup(BaseModel):
     def get_child_ids(self):
 
         G = nx.DiGraph()
-        G.add_edges_from([(obj.parent.id, obj.child.id) for obj in
-                          LogicalGroupEdge.objects.filter(parent__owner=self.owner).select_related('parent','child')])
+        G.add_edges_from([
+            (obj.parent.id, obj.child.id)
+            for obj in LogicalGroupEdge.objects.filter(
+                parent__owner=self.owner).select_related('parent', 'child')
+        ])
         if G.has_node(self.id):
             return G.successors(self.id)
         else:
@@ -627,8 +640,6 @@ class LogicalGroupEdge(BaseModel):
 
     def __unicode__(self):
         return "{0} -> {1}".format(self.child, self.parent)
-
-
 
 
 class TimeseriesSelectionRule(BaseModel):
@@ -761,10 +772,14 @@ class StatusCache(BaseModel):
     #objects_nosecurity = Manager()
 
     timeseries = models.ForeignKey(Timeseries)
-    nr_of_measurements_total = models.IntegerField(null=True, blank=True, db_index=True)
-    nr_of_measurements_reliable = models.IntegerField(null=True, blank=True, db_index=True)
-    nr_of_measurements_doubtful = models.IntegerField(null=True, blank=True, db_index=True)
-    nr_of_measurements_unreliable = models.IntegerField(null=True, blank=True, db_index=True)
+    nr_of_measurements_total = models.IntegerField(
+        null=True, blank=True, db_index=True)
+    nr_of_measurements_reliable = models.IntegerField(
+        null=True, blank=True, db_index=True)
+    nr_of_measurements_doubtful = models.IntegerField(
+        null=True, blank=True, db_index=True)
+    nr_of_measurements_unreliable = models.IntegerField(
+        null=True, blank=True, db_index=True)
     min_val = models.FloatField(null=True, blank=True)
     max_val = models.FloatField(null=True, blank=True)
     mean_val = models.FloatField(null=True, blank=True)
