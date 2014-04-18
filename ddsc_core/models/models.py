@@ -120,6 +120,14 @@ class Location(BaseModel, MP_Node_ByInstance):
         default=True,
         help_text="whether to show the location on the map"
     )
+    # Django's URLField is ment for absolute URLs (you cannot save a relative
+    # URL via Django's Admin interface), so let's use a standard CharField.
+    icon_url = models.CharField(
+        max_length=200, blank=True, null=True,
+        help_text="Absolute or relative URL to a non-standard icon used for "
+        "displaying this location on the map. NB: relative URLs should be "
+        "relative to the DDSC portal not the API website."
+    )
 
     def __unicode__(self):
         return self.name
