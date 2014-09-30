@@ -165,11 +165,17 @@ class Location(BaseModel, MP_Node_ByInstance):
             if parent_pk is not None:
                 # this is a new leaf node
                 parent = instance.__class__.objects.get(pk=parent_pk)
-                instance = parent.add_child_by_instance(instance)
+                # We require treebeard 2.0 for its Django 1.5 support,
+                # but apparently the API has changed a bit:
+                ##instance = parent.add_child_by_instance(instance)
+                instance = parent.add_child(instance=instance)
                 instance.move(parent, pos='last-child')
             else:
                 # this is a new tree root
-                instance = instance.__class__.add_root_by_instance(instance)
+                # We require treebeard 2.0 for its Django 1.5 support,
+                # but apparently the API has changed a bit:
+                ##instance = instance.__class__.add_root_by_instance(instance)
+                instance = instance.__class__.add_root(instance=instance)
         else:
             # need to save first before we can operate on the parent
             instance.save()
