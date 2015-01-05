@@ -124,7 +124,7 @@ class Location(BaseModel, MP_Node_ByInstance):
     # URL via Django's Admin interface), so let's use a standard CharField.
     icon_url = models.CharField(
         max_length=200, blank=True, null=True,
-        default='app/images/marker-dam-3.png',
+        default='/app/images/marker-dam-3.png',
         help_text="Absolute or relative URL to a non-standard icon used for "
         "displaying this location on the map. NB: relative URLs should be "
         "relative to the DDSC portal not the API website."
