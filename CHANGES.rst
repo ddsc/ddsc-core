@@ -7,6 +7,8 @@ Changelog of ddsc-core
 
 - Nothing changed yet.
 
+- Set default value for icon_url in Location model.
+
 
 1.0 (2013-05-31)
 ----------------
