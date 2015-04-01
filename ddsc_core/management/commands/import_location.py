@@ -1,85 +1,87 @@
-# (c) Fugro GeoServices. MIT licensed, see LICENSE.rst.
+# (c) Fugro GeoServices, Nelen & Schuurmans. MIT licensed, see LICENSE.rst.
 
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+from __future__ import unicode_literals
+
+from collections import namedtuple
+from datetime import datetime
 import csv
 
 from django.contrib.gis.geos import Point
 from django.core.management.base import BaseCommand
-from django.utils import timezone
+from django.db import transaction
+import pytz
 
-from ddsc_core.models.models import Location
+from ddsc_core.models import Location
 from ddsc_core.utils import transform
+
+ETRS89 = 4258  # European Terrestrial Reference System 1989
+
+# The named fields below correspond to the 12 columns in Fugro's Excel sheet.
+# Fugro did not process `real_geometry` and `srid_real_geometry` in their
+# original code. Question: why would one need `srid_real_geometry` if
+# `real_geometry` is in EWKT?
+
+row = namedtuple(
+    'LocationRow', 'uuid, name, x, y, z, srid, parent_uuid, real_geometry, '
+    'srid_real_geometry, description, geometry_precision, relative_location'
+)
+
+# Apparently, `real_geometry` has not been missed in 2 years, so it may
+# safely be regarded as obsolete.
 
 
 class Command(BaseCommand):
     args = '<CSV file>'
     help = 'Imports a CSV file of locations into the database.'
 
+    @transaction.commit_on_success
     def handle(self, *args, **options):
-        loc_latest = Location.objects.latest("pk")
-        root_nodes = loc_latest.__class__.get_root_nodes()
-        i = len(root_nodes) + 5
-        count = 0
-        maintain_list = []
-        nr_0 = 0
-        with open(args[0], 'rb') as f:
-            reader = csv.reader(f)
-            for row in reader:
-                if len(row) >= 0:
-                    uuid = row[0]
-                    name = row[1]
-                    x = row[2]
-                    y = row[3]
-                    z = row[4]
-                    srid = row[5]
-                    parentuuid = row[6]
-                    if len(parentuuid) < 5:
-                        maintain_list.append(0)
-                        nr_0 += 1
-                    else:
-                        maintain_list.append(parentuuid)
-                    description = row[9]
-                    if row[10] is not '':
-                        geometry_precision = row[10]
-                    else:
-                        geometry_precision = None
-                    location_description = row[11]
-                    if x is not '':
-                        point_geometry = Point(
-                            [float(x), float(y), float(z)],
-                            srid=int(srid)
-                        )
-                        if int(srid) != 4258:
-                            point_geometry = transform(
-                                point_geometry, 4258, clone=True
-                            )
-                    else:
-                        point_geometry = ''
-                    Location.objects.create(name=name,
-                        description=description,
-                        geometry_precision=geometry_precision,
-                        point_geometry=point_geometry,
-                        real_geometry='',
-                        depth=1,
-                        numchild=0,
-                        path='{0:04}'.format(i),
-                        relative_location=location_description,
-                        uuid=uuid, created=timezone.now())
-                    i += 1
-                    count += 1
-            loc_latest = Location.objects.latest("pk")
-            j = loc_latest.pk - count + 1
-            print 'first loop completed!'
-            print 'nr. of root nodes are: ' + str(nr_0)
-#            while sum(maintain_list) is not 0 :
-            print j
-            for st in maintain_list:
-                if st != 0:
-                    currentnode = Location.objects.get(pk=j)
-                    try:
-                        parentnode = Location.objects.get(uuid=st)
-                        currentnode.save_under(parentnode.pk)
-                    except:
-                        currentnode = currentnode.save_under()
+        with open(args[0], 'rU') as f:
 
-                j += 1
-        print "all completeted~!"
+            # Loop over each row (i.e. Location) in the CSV file.
+            for r in map(row._make, csv.reader(f)):
+
+                # Create a new instance of Location.
+                if r.parent_uuid:
+                    # It's a child node.
+                    parent = Location.objects.get(uuid=r.parent_uuid)
+                    location = parent.add_child(name=r.name)
+                else:
+                    # It's a root node.
+                    location = Location.add_root(name=r.name)
+
+                # Assign properties.
+                location.description = r.description
+                location.geometry_precision = str2float(r.geometry_precision)
+                point_geometry = point(r)
+                location.point_geometry = point_geometry
+                location.show_on_map = True if point_geometry else False
+                location.relative_location = r.relative_location
+                location.uuid = r.uuid
+                location.created = datetime.now(tz=pytz.utc)
+
+                # Persist to database.
+                self.stdout.write("Saving {}.".format(location))
+                location.save()
+
+
+def str2float(s):
+    "Create a float from its string representation."
+    try:
+        f = float(s)
+    except ValueError:
+        f = None
+    return f
+
+
+def point(r):
+    "Create an ETRS89 point from x, y, z and srid."
+    try:
+        p = Point([float(r.x), float(r.y), float(r.z)], srid=int(r.srid))
+        p = transform(p, ETRS89, clone=True)
+    except ValueError:
+        p = None
+    return p
