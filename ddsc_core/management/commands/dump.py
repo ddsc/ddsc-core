@@ -30,9 +30,12 @@ class Command(BaseCommand):
             raise Exception("Model '%s' not found" % model_name)
 
         for item in model.objects.all()[:limit]:
-            if model_name != 'Location' or item.timeseries.count() > 0:
-                props = dict(get(item, key.name) for key in model._meta.fields if key.name[:1] != '_')
-                if model_name == 'Timeseries':
+            if model.__name__ != 'Location' or item.timeseries.count() > 0:
+                props = dict(
+                    get(item, key.name) for key in model._meta.fields
+                    if key.name[:1] != '_'
+                )
+                if model.__name__ == 'Timeseries':
                     for data_set in item.data_set.all():
                         props['data_set.name'] = data_set.name
                         if data_set.owner is not None:
