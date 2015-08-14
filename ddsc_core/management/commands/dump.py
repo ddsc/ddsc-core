@@ -35,9 +35,4 @@ class Command(BaseCommand):
                     get(item, key.name) for key in model._meta.fields
                     if key.name[:1] != '_'
                 )
-                if model.__name__ == 'Timeseries':
-                    for data_set in item.data_set.all():
-                        props['data_set.name'] = data_set.name
-                        if data_set.owner is not None:
-                            props['data_set_owner.name'] = data_set.owner.name
                 print(json.dumps(props, sort_keys=True))
